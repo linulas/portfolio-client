@@ -13,12 +13,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-strapi",
+      resolve: "gatsby-source-graphql",
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
-        collectionTypes: ["Projects", "Skills"],
-        singleTypes: [`Portfolio`],
-        queryLimit: 1000,
+        typeName: "Strapi",
+        fieldName: "strapi",
+        url: "http://localhost:1337/graphql"
       },
     },
     "gatsby-plugin-image",
@@ -27,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "gatsby-starter-default",
-        short_name: "starter",
+        name: "portfolio-client",
+        short_name: "portfolio",
         start_url: "/",
         background_color: `#663399`,
         theme_color: `#663399`,

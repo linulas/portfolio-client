@@ -1,50 +1,46 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { getPage_strapi_portfolio_settings, getPage_strapi_portfolio_settings_defaultSEO } from "../graphql/getPage";
 
-const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(query);
-  const { defaultSeo, siteName, favicon } = strapiGlobal;
+export const Seo : React.FC<getPage_strapi_portfolio_settings> = ({siteName, defaultSEO}) => {
+  console.log({siteName, defaultSEO})
 
-  // Merge default and page-specific SEO values
-  const fullSeo = { ...defaultSeo, ...seo };
-
-  const getMetaTags = () => {
+  const getMetaTags = (seo: getPage_strapi_portfolio_settings_defaultSEO) => {
+  const { title, description, image } = seo;
     const tags = [];
 
-    if (fullSeo.metaTitle) {
+    if (title) {
       tags.push(
         {
           property: "og:title",
-          content: fullSeo.metaTitle,
+          content: title,
         },
         {
           name: "twitter:title",
-          content: fullSeo.metaTitle,
+          content: title,
         }
       );
     }
-    if (fullSeo.metaDescription) {
+    if (description) {
       tags.push(
         {
           name: "description",
-          content: fullSeo.metaDescription,
+          content: description,
         },
         {
           property: "og:description",
-          content: fullSeo.metaDescription,
+          content: description,
         },
         {
           name: "twitter:description",
-          content: fullSeo.metaDescription,
+          content: description,
         }
       );
     }
-    if (fullSeo.shareImage) {
+    if (image) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        fullSeo.shareImage.localFile.publicURL;
+        image.url;
       tags.push(
         {
           name: "image",
@@ -60,27 +56,21 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
-    if (fullSeo.article) {
-      tags.push({
-        property: "og:type",
-        content: "article",
-      });
-    }
     tags.push({ name: "twitter:card", content: "summary_large_image" });
 
     return tags;
   };
 
-  const metaTags = getMetaTags();
+  const metaTags = defaultSEO ? getMetaTags(defaultSEO) : [];
 
   return (
     <Helmet
-      title={fullSeo.metaTitle}
+      title={defaultSEO?.title || 'portfolio'}
       titleTemplate={`%s | ${siteName}`}
       link={[
         {
           rel: "icon",
-          href: favicon.publicURL,
+          href: defaultSEO?.image?.url,
         },
         {
           rel: "stylesheet",
@@ -110,24 +100,4 @@ const SEO = ({ seo = {} }) => {
   );
 };
 
-export default SEO;
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  article: PropTypes.bool,
-};
-
-SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
-};
-
-const query = graphql`
-  query {
-    
-  }
-`;
+export default Seo;
