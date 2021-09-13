@@ -3,6 +3,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Nav, Seo } from "../components";
 import "../assets/css/main.css";
 import { getPage } from "../graphql/getPage";
+import "modern-normalize";
+import "../styles/normalize";
 
 const IndexPage = () => {
   const { strapi } = useStaticQuery<getPage>(query);
@@ -11,7 +13,7 @@ const IndexPage = () => {
   return portfolio && portfolio.settings ? (
     <>
       <Seo {...portfolio.settings} />
-      <Nav />
+      <Nav title={portfolio.settings.siteName} />
       <main>
         <div className="uk-section">
           <div className="uk-container uk-container-large">
