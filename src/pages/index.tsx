@@ -2,24 +2,54 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Nav, Seo } from "../components";
 import "../assets/css/main.css";
-import { getPage } from "../graphql/getPage";
+import { Page } from "../graphql/Page";
 import "modern-normalize";
 import "../styles/normalize";
 
 const IndexPage = () => {
-  const { strapi } = useStaticQuery<getPage>(query);
-  const { portfolio } = strapi;
+  const { strapi } = useStaticQuery<Page>(query);
+  const attributes = strapi.portfolio?.data?.attributes;
 
-  console.log({ portfolio });
+  if (!attributes) {
+    return null;
+  }
 
-  return portfolio && portfolio.settings ? (
+  const {
+    setting,
+    banner,
+    aboutHeading,
+    aboutParagraph,
+    skills,
+    resumeLink,
+    projectsHeading,
+    projects,
+    contactHeading,
+    contactParagraph,
+    references,
+  } = attributes;
+
+  console.log({
+    setting,
+    banner,
+    aboutHeading,
+    aboutParagraph,
+    skills,
+    resumeLink,
+    projectsHeading,
+    projects,
+    contactHeading,
+    contactParagraph,
+    references,
+  });
+
+  return setting ? (
     <>
-      <Seo {...portfolio.settings} />
-      <Nav title={portfolio.settings.siteName} />
+      <Seo {...setting} />
+      <Nav title={setting.data?.attributes?.siteName || ''} />
       <main>
         <div className="uk-section">
           <div className="uk-container uk-container-large">
-            <h1>{portfolio.banner?.title}</h1>
+            <h1>{banner?.data?.attributes?.title}</h1>
           </div>
         </div>
       </main>
@@ -30,11 +60,23 @@ const IndexPage = () => {
 };
 
 const query = graphql`
-  query getPage {
+  query Page {
     strapi {
       portfolio {
         data {
           attributes {
+            banner {
+              data {
+                attributes {
+                  title
+                  subtitle
+                  text
+                  image {
+                    ...MediaEntityRes
+                  }
+                }
+              }
+            }
             aboutHeading
             aboutParagraph
             resumeLink {
@@ -75,6 +117,26 @@ const query = graphql`
                     ...MediaEntityRes
                   }
                 }
+              }
+            }
+            setting {
+              data {
+                attributes {
+                  siteName
+                  defaultSeo {
+                    data {
+                      id
+                      attributes {
+                        title
+                        description
+                        image {
+                          ...MediaEntityRes
+                        }
+                      }
+                    }
+                  }
+                }
+                id
               }
             }
           }
