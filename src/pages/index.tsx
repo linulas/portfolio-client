@@ -10,6 +10,8 @@ const IndexPage = () => {
   const { strapi } = useStaticQuery<getPage>(query);
   const { portfolio } = strapi;
 
+  console.log({ portfolio });
+
   return portfolio && portfolio.settings ? (
     <>
       <Seo {...portfolio.settings} />
@@ -31,66 +33,74 @@ const query = graphql`
   query getPage {
     strapi {
       portfolio {
-        settings {
-          siteName
-          defaultSEO {
-            title
-            description
-            image {
-              url
+        data {
+          attributes {
+            aboutHeading
+            aboutParagraph
+            resumeLink {
+              ...Link
+            }
+            skills {
+              data {
+                attributes {
+                  name
+                  icon {
+                    ...MediaRelRes
+                  }
+                }
+              }
+            }
+            projectsHeading
+            projects {
+              data {
+                attributes {
+                  title
+                  description
+                  image {
+                    ...MediaEntityRes
+                  }
+                  link {
+                    ...Link
+                  }
+                }
+              }
+            }
+            contactHeading
+            contactParagraph
+            references {
+              data {
+                attributes {
+                  name
+                  icon {
+                    ...MediaEntityRes
+                  }
+                }
+              }
             }
           }
         }
+      }
+    }
+  }
+  fragment Link on Strapi_ComponentCommonLink {
+    text
+    url
+  }
 
-        banner {
-          title
-          subtitle
-          preamble
-          background {
-            url
-            alternativeText
-          }
-        }
+  fragment MediaRelRes on Strapi_UploadFileRelationResponseCollection {
+    data {
+      attributes {
+        url
+        alternativeText
+      }
+    }
+  }
 
-        about {
-          heading
-          resumeLink
-          paragraph
-          skills {
-            name
-            icon {
-              url
-              alternativeText
-            }
-          }
-        }
-
-        projects {
-          heading
-          projects {
-            __typename
-            title
-            description
-            link
-            image {
-              url
-              alternativeText
-            }
-          }
-        }
-
-        contact {
-          heading
-          paragraph
-          references {
-            name
-            link
-            icon {
-              url
-              alternativeText
-            }
-          }
-        }
+  fragment MediaEntityRes on Strapi_UploadFileEntityResponse {
+    data {
+      attributes {
+        url
+        alternativeText
       }
     }
   }
