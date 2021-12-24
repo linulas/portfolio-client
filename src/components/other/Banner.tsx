@@ -1,11 +1,11 @@
 import React, { CSSProperties } from "react";
 import styled from "@emotion/styled";
-import { Div } from "./styled/Elements";
-import { ComponentInterface } from "../typescript/interfaces";
-import { colors, breakpoints } from "../styles/variables";
-import { getEmSize } from "../styles/mixins";
+import { Div } from "../styled/Elements";
+import { ComponentInterface } from "../../typescript/interfaces";
+import { colors, breakpoints } from "../../styles/variables";
+import { getEmSize } from "../../styles/mixins";
 import { ParallaxBanner } from "react-scroll-parallax";
-import { hasWindow } from "../helpers";
+import { hasWindow } from "../../helpers";
 
 export interface BannerProps extends ComponentInterface {
   backgroundImage: any;

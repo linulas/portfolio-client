@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { hasWindow } from "../helpers";
+import { hasWindow } from "../../helpers";
 
 const Wrapper = styled("div")`
   background-color: #c0c0c0;

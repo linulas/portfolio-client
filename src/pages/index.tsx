@@ -28,6 +28,8 @@ const IndexPage = () => {
     references,
   } = attributes;
 
+  const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
+
   console.log({
     setting,
     banner,
@@ -44,7 +46,7 @@ const IndexPage = () => {
 
   return setting ? (
     <>
-      <Seo {...setting} />
+      {seo && <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />}
       <Nav title={setting.data?.attributes?.siteName || ''} />
       <main>
         <div className="uk-section">

@@ -1,9 +1,9 @@
 import React from "react";
-import { ComponentInterface } from "../typescript/interfaces";
-import { Div } from "./styled/Elements";
+import { ComponentInterface } from "../../typescript/interfaces";
+import { Div } from "../styled/Elements";
 import Project, { ProjectInterface } from "./Project";
 import { getIcon } from "./Skills";
-import { DividerHeading } from "./DividerHeading";
+import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
 
 export interface ProjectProps extends ComponentInterface {

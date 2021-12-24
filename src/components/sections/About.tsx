@@ -1,8 +1,8 @@
 import React from "react";
-import { Div } from "./styled/Elements";
+import { Div } from "../styled/Elements";
 import Skills, { SkillsProps } from "./Skills";
-import { ComponentInterface } from "../typescript/interfaces";
-import { DividerHeading } from "./DividerHeading";
+import { ComponentInterface } from "../../typescript/interfaces";
+import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
 
 export interface AboutProps extends ComponentInterface {

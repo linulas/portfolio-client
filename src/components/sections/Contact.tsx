@@ -1,13 +1,13 @@
 import React from "react";
-import { ComponentInterface } from "../typescript/interfaces";
-import { Reference } from "../typescript/types";
-import { Div } from "./styled/Elements";
+import { ComponentInterface } from "../../typescript/interfaces";
+import { Reference } from "../../typescript/types";
+import { Div } from "../styled/Elements";
 import { getIcon } from "./Skills";
-import { DividerHeading } from "./DividerHeading";
+import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
-import { getEmSize } from "../styles/mixins";
-import { breakpoints } from "../styles/variables";
-import { hasWindow } from "../helpers";
+import { getEmSize } from "../../styles/mixins";
+import { breakpoints } from "../../styles/variables";
+import { hasWindow } from "../../helpers";
 
 export interface ContactInterface extends ComponentInterface {
   references: Reference[];

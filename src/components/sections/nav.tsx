@@ -8,12 +8,12 @@ import {
   colors,
   breakpoints,
   fonts,
-} from "../styles/variables";
-import Container from "./styled/Container";
+} from "../../styles/variables";
+import Container from "../styled/Container";
 import { useEffect, useState, useRef } from "react";
-import { Div } from "./styled/Elements";
-import { MenuIcon, MenuOpenIcon } from "./MenuIcons";
-import { hasWindow } from "../helpers";
+import { Div } from "../styled/Elements";
+import { MenuIcon, MenuOpenIcon } from "../other/MenuIcons";
+import { hasWindow } from "../../helpers";
 
 interface IHeaderStyleProps {
   top?: boolean;

@@ -1,9 +1,9 @@
 import React from "react";
-import { Div } from "./styled/Elements";
-import { Skill } from "../typescript/types";
+import { Div } from "../styled/Elements";
+import { Skill } from "../../typescript/types";
 import styled from "@emotion/styled";
-import { getEmSize } from "../styles/mixins";
-import { breakpoints } from "../styles/variables";
+import { getEmSize } from "../../styles/mixins";
+import { breakpoints } from "../../styles/variables";
 
 export interface SkillsProps {
   resumeLink?: string;

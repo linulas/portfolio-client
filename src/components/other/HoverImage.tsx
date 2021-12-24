@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledHoverImage } from "./styled";
+import { StyledHoverImage } from "../styled";
 
 interface HoverImageProps {
   fluidImage: any;

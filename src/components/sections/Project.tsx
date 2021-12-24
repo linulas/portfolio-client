@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import {
   ComponentInterface,
   HoverImageInterface,
-} from "../typescript/interfaces";
-import { Reference } from "../typescript/types";
-import { Div } from "./styled/Elements";
+} from "../../typescript/interfaces";
+import { Reference } from "../../typescript/types";
+import { Div } from "../styled/Elements";
 import styled from "@emotion/styled";
-import HoverImage from "./HoverImage";
-import { hasWindow } from "../helpers";
+import HoverImage from "../other/HoverImage";
+import { hasWindow } from "../../helpers";
 
 export interface ProjectInterface extends ComponentInterface {
   reference?: Reference;

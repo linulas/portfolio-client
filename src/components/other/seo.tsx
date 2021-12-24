@@ -1,12 +1,24 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { getPage_strapi_portfolio_settings, getPage_strapi_portfolio_settings_defaultSEO } from "../graphql/getPage";
+import {
+  Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo,
+  Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes,
+} from "../../graphql/Page";
 
-export const Seo : React.FC<getPage_strapi_portfolio_settings> = ({siteName, defaultSEO}) => {
-  console.log({siteName, defaultSEO})
+interface SeoProps
+  extends Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes {
+  siteName: string;
+}
 
-  const getMetaTags = (seo: getPage_strapi_portfolio_settings_defaultSEO) => {
-  const { title, description, image } = seo;
+export const Seo: React.FC<SeoProps> = ({
+  title,
+  description,
+  image,
+  siteName,
+}) => {
+  console.log({ title, description, image, siteName });
+
+  const getMetaTags = () => {
     const tags = [];
 
     if (title) {
@@ -39,8 +51,8 @@ export const Seo : React.FC<getPage_strapi_portfolio_settings> = ({siteName, def
     }
     if (image) {
       const imageUrl =
-        (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        image.url;
+        (process.env.API_URL || "http://localhost:8000") +
+        image.data?.attributes?.url;
       tags.push(
         {
           name: "image",
@@ -61,16 +73,16 @@ export const Seo : React.FC<getPage_strapi_portfolio_settings> = ({siteName, def
     return tags;
   };
 
-  const metaTags = defaultSEO ? getMetaTags(defaultSEO) : [];
+  const metaTags = getMetaTags();
 
   return (
     <Helmet
-      title={defaultSEO?.title || 'portfolio'}
+      title={title || "portfolio"}
       titleTemplate={`%s | ${siteName}`}
       link={[
         {
           rel: "icon",
-          href: defaultSEO?.image?.url,
+          href: image?.data?.attributes?.url,
         },
         {
           rel: "stylesheet",
@@ -78,18 +90,15 @@ export const Seo : React.FC<getPage_strapi_portfolio_settings> = ({siteName, def
         },
         {
           rel: "stylesheet",
-          href:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
+          href: "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
         },
       ]}
       script={[
         {
-          src:
-            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
+          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
         },
         {
-          src:
-            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
+          src: "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
         },
         {
           src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
