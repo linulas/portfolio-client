@@ -24,3 +24,23 @@ export type Reference = {
 export type FlexDisplay = "flex" | "block" | "none";
 export type FlexDirection = "row" | "column";
 export type Float = "right" | "left" | "none";
+
+export type UploadFile = {
+  name: string
+  alternativeText: string
+  caption: string
+  width: number
+  height: number
+  formats: any
+  hash: string
+  ext: string
+  mime: string
+  size: Float
+  url: string
+  previewUrl: string
+  provider: string
+  provider_metadata: any
+  related: any[]
+  createdAt: string
+  updatedAt: string
+}

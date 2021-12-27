@@ -32,7 +32,8 @@
     "react-helmet": "^6.1.0",
     "react-markdown": "^7.1.1",
     "react-moment": "^1.1.1",
-    "react-scroll-parallax": "^2.4.2"
+    "react-scroll-parallax": "^2.4.2",
+    "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
     "@types/graphql": "^14.5.0",
@@ -56,8 +57,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop --open",
+    "build": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 gatsby build",
+    "develop": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 gatsby develop --open",
     "dev": "npm run develop",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
