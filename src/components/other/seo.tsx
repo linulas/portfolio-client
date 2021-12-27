@@ -1,9 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import {
-  Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo,
-  Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes,
-} from "../../graphql/Page";
+import { Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes } from "../../graphql/Page";
 
 interface SeoProps
   extends Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes {
@@ -16,8 +13,6 @@ export const Seo: React.FC<SeoProps> = ({
   image,
   siteName,
 }) => {
-  console.log({ title, description, image, siteName });
-
   const getMetaTags = () => {
     const tags = [];
 

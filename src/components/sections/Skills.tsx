@@ -55,7 +55,6 @@ const Skills: React.FC<SkillsProps> = (props) => {
   const { strapi } = useStaticQuery<SkillsParagraph>(query);
   const skillGroup1 = props.programming.splice(0, props.programming.length / 2);
   const skillGroup2 = props.programming;
-  console.log({skillGroup1, skillGroup2});
   return (
     <Wrapper>
       <h3>Skills</h3>
