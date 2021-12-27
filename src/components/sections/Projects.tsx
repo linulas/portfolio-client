@@ -13,14 +13,14 @@ const Wrapper = styled(Div)`
   flex-wrap: wrap;
 `;
 
-const Projects: React.FC<ProjectProps> = (props) => {
+const Projects: React.FC<ProjectProps> = ({title, items}) => {
   return (
     <Div position="relative">
       <Div position="absolute" id={"projects"} top={-70} />
-      <DividerHeading text={props.title || ""} highlight="Projects" />
+      <DividerHeading text={title || ""} highlight="Projects" />
 
       <Wrapper display={["flex"]}>
-        {props.items.map((project, index) => {
+        {items.map((project, index) => {
           return (
             project.attributes && (
               <Project key={`project-${index}`} {...project.attributes} />

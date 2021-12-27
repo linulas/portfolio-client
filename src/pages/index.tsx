@@ -6,7 +6,7 @@ import "modern-normalize";
 import "../styles/normalize";
 import Banner from "../components/other/Banner";
 import { ParallaxProvider } from "react-scroll-parallax";
-//import Contact from "../components/sections/Contact";
+import Contact from "../components/sections/Contact";
 import About from "../components/sections/About";
 import Projects from "../components/sections/Projects";
 
@@ -29,6 +29,7 @@ const IndexPage = () => {
     contactHeading,
     contactParagraph,
     references,
+    avatar
   } = attributes;
 
   const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
@@ -41,13 +42,24 @@ const IndexPage = () => {
       <Nav title={setting?.data?.attributes?.siteName || ""} />
       {banner && <Banner {...banner} />}
       <main>
-        <About title={aboutHeading} paragraph={aboutParagraph} skills={skills?.data || [] } />
-        <Projects items={projects?.data || []}/>
-        {/* <Contact /> */}
+        <About
+          title={aboutHeading}
+          paragraph={aboutParagraph}
+          skills={skills?.data || []}
+        />
+        <Projects items={projects?.data || []} title={projectsHeading} />
+        <Contact
+          references={references?.data || []}
+          title={contactHeading}
+          paragraph={contactParagraph}
+          avatar={avatar as unknown as UploadFile}
+        />
       </main>
     </ParallaxProvider>
   ) : (
-    <div>There was an error fetching the data</div> /** Todo - Make it more fun */
+    <div>
+      There was an error fetching the data
+    </div> /** Todo - Make it more fun */
   );
 };
 
@@ -71,6 +83,9 @@ const query = graphql`
             }
             aboutHeading
             aboutParagraph
+            profilePicture {
+              ...MediaEntityRes
+            }
             skills {
               data {
                 attributes {
@@ -98,6 +113,9 @@ const query = graphql`
             }
             contactHeading
             contactParagraph
+            avatar {
+              ...MediaEntityRes
+            }
             references {
               data {
                 attributes {

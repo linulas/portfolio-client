@@ -43,6 +43,24 @@ export interface Page_strapi_portfolio_data_attributes_banner {
   data: Page_strapi_portfolio_data_attributes_banner_data | null;
 }
 
+export interface Page_strapi_portfolio_data_attributes_profilePicture_data_attributes {
+  __typename: "Strapi_UploadFile";
+  url: string;
+  alternativeText: string | null;
+  formats: any | null;
+  caption: string | null;
+}
+
+export interface Page_strapi_portfolio_data_attributes_profilePicture_data {
+  __typename: "Strapi_UploadFileEntity";
+  attributes: Page_strapi_portfolio_data_attributes_profilePicture_data_attributes | null;
+}
+
+export interface Page_strapi_portfolio_data_attributes_profilePicture {
+  __typename: "Strapi_UploadFileEntityResponse";
+  data: Page_strapi_portfolio_data_attributes_profilePicture_data | null;
+}
+
 export interface Page_strapi_portfolio_data_attributes_skills_data_attributes_icon_data_attributes {
   __typename: "Strapi_UploadFile";
   url: string;
@@ -117,6 +135,24 @@ export interface Page_strapi_portfolio_data_attributes_projects_data {
 export interface Page_strapi_portfolio_data_attributes_projects {
   __typename: "Strapi_ProjectRelationResponseCollection";
   data: Page_strapi_portfolio_data_attributes_projects_data[];
+}
+
+export interface Page_strapi_portfolio_data_attributes_avatar_data_attributes {
+  __typename: "Strapi_UploadFile";
+  url: string;
+  alternativeText: string | null;
+  formats: any | null;
+  caption: string | null;
+}
+
+export interface Page_strapi_portfolio_data_attributes_avatar_data {
+  __typename: "Strapi_UploadFileEntity";
+  attributes: Page_strapi_portfolio_data_attributes_avatar_data_attributes | null;
+}
+
+export interface Page_strapi_portfolio_data_attributes_avatar {
+  __typename: "Strapi_UploadFileEntityResponse";
+  data: Page_strapi_portfolio_data_attributes_avatar_data | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_references_data_attributes_icon_data_attributes {
@@ -213,11 +249,13 @@ export interface Page_strapi_portfolio_data_attributes {
   banner: Page_strapi_portfolio_data_attributes_banner | null;
   aboutHeading: string;
   aboutParagraph: string;
+  profilePicture: Page_strapi_portfolio_data_attributes_profilePicture;
   skills: Page_strapi_portfolio_data_attributes_skills | null;
   projectsHeading: string;
   projects: Page_strapi_portfolio_data_attributes_projects | null;
   contactHeading: string;
   contactParagraph: string;
+  avatar: Page_strapi_portfolio_data_attributes_avatar;
   references: Page_strapi_portfolio_data_attributes_references | null;
   setting: Page_strapi_portfolio_data_attributes_setting | null;
 }

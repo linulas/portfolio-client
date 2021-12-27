@@ -1,16 +1,15 @@
 import React from "react";
 import { Div } from "../styled/Elements";
-import { getIcon } from "./Skills";
 import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
 import { getEmSize } from "../../styles/mixins";
 import { breakpoints } from "../../styles/variables";
 import { hasWindow } from "../../helpers";
+import { Page_strapi_portfolio_data_attributes_references_data } from "../../graphql/Page";
 
 export interface ContactInterface extends ComponentInterface {
-  references: any[];
-  icons: any;
-  avatar: any;
+  references: Page_strapi_portfolio_data_attributes_references_data[];
+  avatar?: UploadFile;
 }
 
 const Wrapper = styled(Div)`
@@ -59,9 +58,7 @@ const Wrapper = styled(Div)`
   }
 `;
 
-const Contact: React.FC<ContactInterface> = (props) => {
-  const { avatar } = props;
-  const icons = props.icons.edges;
+const Contact: React.FC<ContactInterface> = ({title, paragraph, avatar, references}) => {
 
   const handleClick = (url: string) => {
     hasWindow && window.open(url);
@@ -69,22 +66,18 @@ const Contact: React.FC<ContactInterface> = (props) => {
   return (
     <Wrapper position="relative">
       <Div position="absolute" id={"contact"} top={-70} />
-      <DividerHeading text={props.title || ""} highlight="me" />
+      <DividerHeading text={title || ""} highlight="me" />
       <Div display={["flex"]} direction={["column", "column", "row"]}>
         <Div width={["100%"]}>
-          <p className="paragraph">{props.paragraph}</p>
+          <p className="paragraph">{paragraph}</p>
           <div></div>
           <Div className="social-icons">
             <ul>
-              {props.references.map((reference, index) => {
-                const fixed = getIcon(
-                  reference.icon ? reference.icon.name : "",
-                  icons
-                );
+              {references.map((reference, index) => {
                 return (
                   <li key={`contact-${index}`}>
-                    {fixed && reference.icon && (
-                      <span onClick={() => handleClick(reference.link)}>
+                    {reference?.attributes?.icon && (
+                      <span onClick={() => handleClick(reference.attributes?.link || "")}>
                         insert image
                       </span>
                     )}
