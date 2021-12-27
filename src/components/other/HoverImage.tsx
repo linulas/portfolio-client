@@ -1,6 +1,4 @@
 import React from "react";
-import { StyledHoverImage } from "../styled";
-
 interface HoverImageProps {
   image: UploadFile;
   link: string;
@@ -17,15 +15,15 @@ const HoverImage: React.FC<HoverImageProps> = ({
   width,
 }) => {
   return (
-    <StyledHoverImage width={width}>
-      <a className="tile" href={link}>
+    <div>
+      <a href={link}>
         insert image
-        <div className="details">
-          <div className="text">
-            <span className="title">{title}</span>
-            <span className="info">{info}</span>
+        <div>
+          <div >
+            <span >{title}</span>
+            <span >{info}</span>
           </div>
-          <span className="arrow">
+          <span >
             <svg
               height="48"
               viewBox="0 0 48 48"
@@ -38,7 +36,7 @@ const HoverImage: React.FC<HoverImageProps> = ({
           </span>
         </div>
       </a>
-    </StyledHoverImage>
+    </div>
   );
 };
 

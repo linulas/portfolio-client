@@ -9,6 +9,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Contact from "../components/sections/Contact";
 import About from "../components/sections/About";
 import Projects from "../components/sections/Projects";
+import '../styles/global.css';
 
 const IndexPage = () => {
   const { strapi } = useStaticQuery<Page>(query);

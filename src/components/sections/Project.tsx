@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Div } from "../styled/Elements";
-import styled from "@emotion/styled";
 import HoverImage from "../other/HoverImage";
 import { hasWindow } from "../../helpers";
 import { Page_strapi_portfolio_data_attributes_projects_data_attributes } from "../../graphql/Page";
 
 export interface ProjectInterface
   extends Page_strapi_portfolio_data_attributes_projects_data_attributes {}
-
-const Wrapper = styled(Div)`
-  padding-right: 16px;
-`;
 
 export const projectText = "Hi! I would like to participate in this project.";
 export const mailTo = (subject?: string, message?: string) => {
@@ -37,7 +31,7 @@ const Project: React.FC<ProjectInterface> = ({
     };
   }, [screenWidth]);
   return (
-    <Wrapper width={["100%", "50%"]}>
+    <div>
       {title && (
         <h3 ref={(r) => setWidth((r && r.scrollWidth) || 0)}>{title}</h3>
       )}
@@ -57,7 +51,7 @@ const Project: React.FC<ProjectInterface> = ({
           <a href={link.url}>{link.text}</a>
         </p>
       )}
-    </Wrapper>
+    </div>
   );
 };
 

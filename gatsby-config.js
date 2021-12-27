@@ -23,7 +23,6 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    'gatsby-plugin-emotion',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -37,5 +36,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
+    'gatsby-plugin-postcss',
   ],
 };

@@ -1,42 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { hasWindow } from "../../helpers";
-
-const Wrapper = styled("div")`
-  background-color: #c0c0c0;
-  p {
-    text-align: center;
-    margin-top: 32px;
-  }
-
-  .git {
-    display: flex;
-    > div {
-      margin: auto;
-    }
-    .gatsby-image-wrapper {
-      cursor: pointer;
-      &:hover {
-        filter: brightness(190%);
-      }
-    }
-  }
-
-  .references {
-    display: flex;
-    margin: 16px 0 16px 0;
-    ul {
-      margin: auto;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 10px;
-      li {
-        padding-right: 4px;
-      }
-    }
-  }
-`;
 
 const Footer: React.FC<{ gitIcon: any }> = ({ gitIcon }) => {
   const date = new Date();
@@ -46,14 +9,14 @@ const Footer: React.FC<{ gitIcon: any }> = ({ gitIcon }) => {
     hasWindow && window.open("https://github.com/linulas");
   };
   return (
-    <Wrapper>
+    <div>
       <p>Linus Brännström {year}</p>
-      <div className="git">
+      <div>
         <div onClick={handleClick}>
           insert image
         </div>
       </div>
-      <div className="references">
+      <div>
         <ul>
           <li>Icons made by: </li>
           <li>
@@ -87,7 +50,7 @@ const Footer: React.FC<{ gitIcon: any }> = ({ gitIcon }) => {
           </li>
         </ul>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 
