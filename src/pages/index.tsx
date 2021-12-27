@@ -29,7 +29,8 @@ const IndexPage = () => {
     contactHeading,
     contactParagraph,
     references,
-    avatar
+    avatar,
+    profilePicture,
   } = attributes;
 
   const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
@@ -46,6 +47,7 @@ const IndexPage = () => {
           title={aboutHeading}
           paragraph={aboutParagraph}
           skills={skills?.data || []}
+          image={profilePicture as unknown as UploadFile}
         />
         <Projects items={projects?.data || []} title={projectsHeading} />
         <Contact
