@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { Div } from "../styled/Elements";
 import { colors, breakpoints } from "../../styles/variables";
@@ -21,8 +21,9 @@ const Wrapper = styled("div")`
   }
   img {
     filter: brightness(50%);
-    width: 100%;
+    width: auto;
     height: 100vh;
+    max-width: unset;
   }
 `;
 
@@ -64,9 +65,8 @@ const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({
     return null;
   }
 
-  const { title, subtitle, text, image } = data.attributes;
+  const { title, subtitle, image } = data.attributes;
   const imgAttributes = image?.data?.attributes as unknown;
-  console.log({ title, subtitle, text, image });
 
   return (
     <Wrapper>
@@ -80,7 +80,6 @@ const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({
                 <Text>
                   <h1>{title}</h1>
                   {subtitle && <p>{subtitle}</p>}
-                  {text && <p>{text}</p>}
                 </Text>
               </Div>
             ),
