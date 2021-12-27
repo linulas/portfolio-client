@@ -1,10 +1,11 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Nav, Seo } from "../components";
-import "../assets/css/main.css";
 import { Page } from "../graphql/Page";
 import "modern-normalize";
 import "../styles/normalize";
+import Banner from "../components/other/Banner";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 const IndexPage = () => {
   const { strapi } = useStaticQuery<Page>(query);
@@ -30,32 +31,15 @@ const IndexPage = () => {
 
   const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
 
-  console.log({
-    setting,
-    banner,
-    aboutHeading,
-    aboutParagraph,
-    skills,
-    resumeLink,
-    projectsHeading,
-    projects,
-    contactHeading,
-    contactParagraph,
-    references,
-  });
-
   return setting ? (
-    <>
-      {seo && <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />}
-      <Nav title={setting.data?.attributes?.siteName || ''} />
-      <main>
-        <div className="uk-section">
-          <div className="uk-container uk-container-large">
-            <h1>{banner?.data?.attributes?.title}</h1>
-          </div>
-        </div>
-      </main>
-    </>
+    <ParallaxProvider>
+      {seo && (
+        <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />
+      )}
+      <Nav title={setting.data?.attributes?.siteName || ""} />
+      {banner && <Banner {...banner} />}
+      <main></main>
+    </ParallaxProvider>
   ) : (
     <div>Portfolio data was null</div>
   );
@@ -156,6 +140,7 @@ const query = graphql`
       attributes {
         url
         alternativeText
+        formats
       }
     }
   }
@@ -165,6 +150,7 @@ const query = graphql`
       attributes {
         url
         alternativeText
+        formats
       }
     }
   }

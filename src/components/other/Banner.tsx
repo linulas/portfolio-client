@@ -1,25 +1,28 @@
 import React, { CSSProperties } from "react";
 import styled from "@emotion/styled";
 import { Div } from "../styled/Elements";
-import { ComponentInterface } from "../../typescript/interfaces";
 import { colors, breakpoints } from "../../styles/variables";
 import { getEmSize } from "../../styles/mixins";
 import { ParallaxBanner } from "react-scroll-parallax";
 import { hasWindow } from "../../helpers";
-
-export interface BannerProps extends ComponentInterface {
-  backgroundImage: any;
-  subTitle: string;
-  sideImage?: any;
-}
+import { Page_strapi_portfolio_data_attributes_banner } from "../../graphql/Page";
+import { Image } from "./Image";
+import { UploadFile } from "../../typescript/types";
 
 const Wrapper = styled("div")`
   .parallax-banner {
-    height: ${hasWindow
-      ? window.innerWidth > breakpoints.md
-        ? "75vh"
-        : "85vh"
-      : "75vh"};
+    height: ${
+      hasWindow
+        ? window.innerWidth > breakpoints.md
+          ? "75vh"
+          : "85vh"
+        : "75vh"
+    };
+  }
+  img {
+    filter: brightness(50%);
+    width: 100%;
+    height: 100vh;
   }
 `;
 
@@ -54,42 +57,50 @@ const Text = styled("div")`
   }
 `;
 
-const ImageStyle: CSSProperties = {
-  filter: "brightness(50%)",
-  width: "100%",
-  height: "100vh",
-};
+const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({
+  data,
+}) => {
+  if (!data?.attributes) {
+    return null;
+  }
 
-const Banner: React.FC<BannerProps> = (props) => (
-  <Wrapper>
-    <ParallaxBanner
-      className="parallax"
-      layers={[
-        {
-          children: (
-            <Div position="relative">
-              <Text>
-                <h1>{props.title}</h1>
-                {props.preamble && <p>{props.preamble}</p>}
-              </Text>
-            </Div>
-          ),
-          amount: hasWindow
+  const { title, subtitle, text, image } = data.attributes;
+  const imgAttributes = image?.data?.attributes as unknown;
+  console.log({ title, subtitle, text, image });
+
+  return (
+    <Wrapper>
+      <ParallaxBanner
+        className="parallax"
+        layers={[
+          {
+            children: (
+              <Div position="relative">
+                {imgAttributes && <Image {...(imgAttributes as UploadFile)} />}
+                <Text>
+                  <h1>{title}</h1>
+                  {subtitle && <p>{subtitle}</p>}
+                  {text && <p>{text}</p>}
+                </Text>
+              </Div>
+            ),
+            amount: hasWindow
+              ? window.innerWidth > breakpoints.md
+                ? 0.4
+                : 0.2
+              : 0.4,
+          },
+        ]}
+        style={{
+          height: hasWindow
             ? window.innerWidth > breakpoints.md
-              ? 0.4
-              : 0.2
-            : 0.4,
-        },
-      ]}
-      style={{
-        height: hasWindow
-          ? window.innerWidth > breakpoints.md
-            ? "75vh"
-            : "85vh"
-          : "75vh",
-      }}
-    />
-  </Wrapper>
-);
+              ? "75vh"
+              : "85vh"
+            : "75vh",
+        }}
+      />
+    </Wrapper>
+  );
+};
 
 export default Banner;
