@@ -1,2 +1,2 @@
-export * from './sections/nav';
+export * from './other/header';
 export * from './other/seo';

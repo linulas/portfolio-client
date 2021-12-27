@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Nav, Seo } from "../components";
+import { Header, Seo } from "../components";
 import { Page } from "../graphql/Page";
 import "modern-normalize";
 import "../styles/normalize";
@@ -41,7 +41,7 @@ const IndexPage = () => {
       {seo && (
         <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />
       )}
-      <Nav title={setting?.data?.attributes?.siteName || ""} />
+      <Header title={setting?.data?.attributes?.siteName || ""} />
       {banner && <Banner {...banner} />}
       <main>
         <About

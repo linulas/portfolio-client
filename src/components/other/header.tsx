@@ -1,17 +1,15 @@
 import * as React from "react";
 
-import {
-  breakpoints,
-} from "../../styles/variables";
+import { breakpoints } from "../../styles/variables";
 import { useEffect, useState, useRef } from "react";
-import { MenuIcon, MenuOpenIcon } from "../other/MenuIcons";
+import { MenuIcon, MenuOpenIcon } from "./MenuIcons";
 import { hasWindow } from "../../helpers";
 
 interface HeaderProps {
   title: string;
 }
 
-export const Nav: React.FC<HeaderProps> = ({ title }) => {
+export const Header: React.FC<HeaderProps> = ({ title }) => {
   const [top, toggleTop] = useState(true);
   const [open, toggleOpen] = useState(false);
   const [active, setActive] = useState({
@@ -80,30 +78,21 @@ export const Nav: React.FC<HeaderProps> = ({ title }) => {
     <div ref={wrapperRef}>
       <div className="flex">
         <a
-        className="justify-end"
+          className="justify-end"
           onClick={() => toggleOpen(false)}
           href="#top"
         >
           {title}
         </a>
         <div className="flex justify-end" onClick={() => toggleOpen(false)}>
-          <div
-          >
-            <a href="#about">
-              About
-            </a>
+          <div>
+            <a href="#about">About</a>
           </div>
-          <div
-          >
-            <a href="#projects">
-              Projects
-            </a>
+          <div>
+            <a href="#projects">Projects</a>
           </div>
-          <div
-          >
-            <a href="#contact">
-              Contact
-            </a>
+          <div>
+            <a href="#contact">Contact</a>
           </div>
         </div>
         <div onClick={() => toggleOpen(!open)}>
@@ -114,4 +103,4 @@ export const Nav: React.FC<HeaderProps> = ({ title }) => {
   );
 };
 
-export default Nav;
+export default Header;
