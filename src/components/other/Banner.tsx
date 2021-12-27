@@ -7,7 +7,6 @@ import { ParallaxBanner } from "react-scroll-parallax";
 import { hasWindow } from "../../helpers";
 import { Page_strapi_portfolio_data_attributes_banner } from "../../graphql/Page";
 import { Image } from "./Image";
-import { UploadFile } from "../../typescript/types";
 
 const Wrapper = styled("div")`
   .parallax-banner {

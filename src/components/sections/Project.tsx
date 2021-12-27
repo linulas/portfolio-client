@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  ComponentInterface,
-  HoverImageInterface,
-} from "../../typescript/interfaces";
-import { Reference } from "../../typescript/types";
 import { Div } from "../styled/Elements";
 import styled from "@emotion/styled";
 import HoverImage from "../other/HoverImage";
 import { hasWindow } from "../../helpers";
+import { Page_strapi_portfolio_data_attributes_references_data_attributes } from "../../graphql/Page";
 
 export interface ProjectInterface extends ComponentInterface {
-  reference?: Reference;
+  reference?: Page_strapi_portfolio_data_attributes_references_data_attributes;
   fluidImage?: any;
   hoverImageProps?: HoverImageInterface;
 }
@@ -60,7 +56,7 @@ const Project: React.FC<ProjectInterface> = ({
       <p>{paragraph}</p>
       {reference && (
         <p>
-          {`${reference.text} `}
+          {`${reference.name} `}
           <a href={reference.link}>{reference.linkText}</a>
         </p>
       )}

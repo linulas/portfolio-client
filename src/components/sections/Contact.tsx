@@ -1,6 +1,4 @@
 import React from "react";
-import { ComponentInterface } from "../../typescript/interfaces";
-import { Reference } from "../../typescript/types";
 import { Div } from "../styled/Elements";
 import { getIcon } from "./Skills";
 import { DividerHeading } from "../other/DividerHeading";
@@ -10,7 +8,7 @@ import { breakpoints } from "../../styles/variables";
 import { hasWindow } from "../../helpers";
 
 export interface ContactInterface extends ComponentInterface {
-  references: Reference[];
+  references: any[];
   icons: any;
   avatar: any;
 }
@@ -75,6 +73,7 @@ const Contact: React.FC<ContactInterface> = (props) => {
       <Div display={["flex"]} direction={["column", "column", "row"]}>
         <Div width={["100%"]}>
           <p className="paragraph">{props.paragraph}</p>
+          <div></div>
           <Div className="social-icons">
             <ul>
               {props.references.map((reference, index) => {

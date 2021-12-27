@@ -11,6 +11,7 @@ export interface Page_strapi_portfolio_data_attributes_banner_data_attributes_im
   __typename: "Strapi_UploadFile";
   url: string;
   alternativeText: string | null;
+  formats: any | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_banner_data_attributes_image_data {
@@ -51,6 +52,7 @@ export interface Page_strapi_portfolio_data_attributes_skills_data_attributes_ic
   __typename: "Strapi_UploadFile";
   url: string;
   alternativeText: string | null;
+  formats: any | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_skills_data_attributes_icon_data {
@@ -83,6 +85,7 @@ export interface Page_strapi_portfolio_data_attributes_projects_data_attributes_
   __typename: "Strapi_UploadFile";
   url: string;
   alternativeText: string | null;
+  formats: any | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_projects_data_attributes_image_data {
@@ -123,6 +126,7 @@ export interface Page_strapi_portfolio_data_attributes_references_data_attribute
   __typename: "Strapi_UploadFile";
   url: string;
   alternativeText: string | null;
+  formats: any | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_references_data_attributes_icon_data {
@@ -138,6 +142,8 @@ export interface Page_strapi_portfolio_data_attributes_references_data_attribute
 export interface Page_strapi_portfolio_data_attributes_references_data_attributes {
   __typename: "Strapi_Reference";
   name: string;
+  link: string;
+  linkText: string | null;
   icon: Page_strapi_portfolio_data_attributes_references_data_attributes_icon | null;
 }
 
@@ -155,6 +161,7 @@ export interface Page_strapi_portfolio_data_attributes_setting_data_attributes_d
   __typename: "Strapi_UploadFile";
   url: string;
   alternativeText: string | null;
+  formats: any | null;
 }
 
 export interface Page_strapi_portfolio_data_attributes_setting_data_attributes_defaultSeo_data_attributes_image_data {

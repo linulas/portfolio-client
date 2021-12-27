@@ -11,7 +11,8 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": false
+    "removeComments": false,
+    "typeRoots": ["./typescript", "./node_modules/@types"]
   },
   "include": ["./src/**/*"]
 }

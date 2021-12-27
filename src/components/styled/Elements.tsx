@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "@emotion/styled";
 import { breakpoints } from "../../styles/variables";
 import { getEmSize } from "../../styles/mixins";
-import { DivProps } from "../../typescript/interfaces";
 
 export const Div: React.FC<DivProps> = (props) => {
   const StyledDiv = styled("div")<DivProps>`

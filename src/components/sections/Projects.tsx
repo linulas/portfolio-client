@@ -1,5 +1,4 @@
 import React from "react";
-import { ComponentInterface } from "../../typescript/interfaces";
 import { Div } from "../styled/Elements";
 import Project, { ProjectInterface } from "./Project";
 import { getIcon } from "./Skills";

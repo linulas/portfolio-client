@@ -12189,6 +12189,18 @@
             "deprecationReason": null
           },
           {
+            "name": "linkText",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "Strapi_StringFilterInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "createdAt",
             "description": null,
             "type": {
@@ -12317,6 +12329,18 @@
             "deprecationReason": null
           },
           {
+            "name": "linkText",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "publishedAt",
             "description": null,
             "type": {
@@ -12378,6 +12402,18 @@
             "type": {
               "kind": "OBJECT",
               "name": "Strapi_UploadFileEntityResponse",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "linkText",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
