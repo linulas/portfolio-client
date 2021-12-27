@@ -1,23 +1,15 @@
 import React from "react";
 import { Div } from "../styled/Elements";
-import { Skill } from "../../typescript/types";
 import styled from "@emotion/styled";
 import { getEmSize } from "../../styles/mixins";
 import { breakpoints } from "../../styles/variables";
+import { graphql, useStaticQuery } from "gatsby";
+import { Page_strapi_portfolio_data_attributes_skills_data } from "../../graphql/Page";
+import { SkillsParagraph } from "../../graphql/SkillsParagraph";
 
 export interface SkillsProps {
-  resumeLink?: string;
-  programming: Skill[];
-  paragraph: string;
-  icons?: any;
+  programming: Page_strapi_portfolio_data_attributes_skills_data[];
 }
-
-export const getIcon = (name: string, icons: any[], fluid?: boolean) => {
-  const icon = icons.filter((icon) => icon.node.name == name)[0];
-  return fluid
-    ? icon && icon.node.childImageSharp.fluid
-    : icon && icon.node.childImageSharp.fixed;
-};
 
 const StyledSkill = styled("span")`
   display: flex;
@@ -60,9 +52,10 @@ const Wrapper = styled("div")`
 `;
 
 const Skills: React.FC<SkillsProps> = (props) => {
-  const icons: any[] = props.icons.edges;
+  const { strapi } = useStaticQuery<SkillsParagraph>(query);
   const skillGroup1 = props.programming.splice(0, props.programming.length / 2);
   const skillGroup2 = props.programming;
+  console.log({skillGroup1, skillGroup2});
   return (
     <Wrapper>
       <h3>Skills</h3>
@@ -70,12 +63,11 @@ const Skills: React.FC<SkillsProps> = (props) => {
         <Div display={["flex"]} direction={["row"]}>
           <ul>
             {skillGroup1.map((skill, index) => {
-              const fixed = getIcon(skill.icon.name, icons);
               return (
                 <li key={`skill-${index}`}>
                   <StyledSkill>
-                    {fixed && <span>image placeholder</span>}
-                    <span>{skill.text}</span>
+                    <span>image placeholder</span>
+                    <span>{skill.attributes?.name}</span>
                   </StyledSkill>
                 </li>
               );
@@ -83,12 +75,11 @@ const Skills: React.FC<SkillsProps> = (props) => {
           </ul>
           <ul>
             {skillGroup2.map((skill, index) => {
-              const fixed = getIcon(skill.icon.name, icons);
               return (
                 <li key={`skill-${index}`}>
                   <StyledSkill>
-                    {fixed && <span>image placeholder</span>}
-                    <span>{skill.text}</span>
+                    <span>image placeholder</span>
+                    <span>{skill.attributes?.name}</span>
                   </StyledSkill>
                 </li>
               );
@@ -97,14 +88,24 @@ const Skills: React.FC<SkillsProps> = (props) => {
         </Div>
       </Div>
       <Div>
-        <p>{props.paragraph}</p>
-        <p>
-          Read more by downloading my resume (in swedish) by visiting my{" "}
-          <a href={props.resumeLink}>google drive</a>
-        </p>
+        <p>{strapi.texts?.data[0].attributes?.text}</p>
       </Div>
     </Wrapper>
   );
 };
+
+const query = graphql`
+  query SkillsParagraph {
+    strapi {
+      texts(filters: { name: { eq: "skills-paragraph" } }) {
+        data {
+          attributes {
+            text
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default Skills;

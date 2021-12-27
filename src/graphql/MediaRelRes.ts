@@ -12,6 +12,7 @@ export interface MediaRelRes_data_attributes {
   url: string;
   alternativeText: string | null;
   formats: any | null;
+  caption: string | null;
 }
 
 export interface MediaRelRes_data {

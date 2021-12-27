@@ -1,25 +1,21 @@
 import React from "react";
 import { Div } from "../styled/Elements";
-import Skills, { SkillsProps } from "./Skills";
-import { ComponentInterface } from "../../typescript/interfaces";
+import Skills from "./Skills";
 import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
+import { Page_strapi_portfolio_data_attributes_skills_data } from "../../graphql/Page";
 
 export interface AboutProps extends ComponentInterface {
-  icons: any;
-  profileImage: any;
-  skills: SkillsProps;
+  skills: Page_strapi_portfolio_data_attributes_skills_data[];
 }
 
 const Wrapper = styled(Div)``;
 
-const About: React.FC<AboutProps> = (props) => {
-  const { profileImage } = props;
-  const fluid = profileImage.childImageSharp.fluid;
+const About: React.FC<AboutProps> = ({title, paragraph, image, skills}) => {
   return (
     <Div position="relative">
       <Div position="absolute" id={"about"} top={-70} />
-      <DividerHeading text={props.title || ""} highlight="me" />
+      <DividerHeading text={title || ""} highlight="me" />
       <Wrapper display={["flex"]} direction={["column", "column", "row"]}>
         <Div
           width={["100%", "50%"]}
@@ -28,11 +24,11 @@ const About: React.FC<AboutProps> = (props) => {
           {/* <Img className="card" fluid={fluid} /> */}
         </Div>
         <Div width={["100%", "50%"]}>
-          <p dangerouslySetInnerHTML={{ __html: props.paragraph || "" }} />
+          <p dangerouslySetInnerHTML={{ __html: paragraph || "" }} />
         </Div>
       </Wrapper>
       <Div>
-        <Skills {...props.skills} icons={props.icons} />
+        <Skills programming={skills}  />
       </Div>
     </Div>
   );

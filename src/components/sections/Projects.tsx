@@ -1,13 +1,12 @@
 import React from "react";
 import { Div } from "../styled/Elements";
-import Project, { ProjectInterface } from "./Project";
-import { getIcon } from "./Skills";
+import Project from "./Project";
 import { DividerHeading } from "../other/DividerHeading";
 import styled from "@emotion/styled";
+import { Page_strapi_portfolio_data_attributes_projects_data } from "../../graphql/Page";
 
 export interface ProjectProps extends ComponentInterface {
-  items: ProjectInterface[];
-  projectImages: any;
+  items: Page_strapi_portfolio_data_attributes_projects_data[];
 }
 
 const Wrapper = styled(Div)`
@@ -15,7 +14,6 @@ const Wrapper = styled(Div)`
 `;
 
 const Projects: React.FC<ProjectProps> = (props) => {
-  const icons: any[] = props.projectImages.edges;
   return (
     <Div position="relative">
       <Div position="absolute" id={"projects"} top={-70} />
@@ -23,13 +21,10 @@ const Projects: React.FC<ProjectProps> = (props) => {
 
       <Wrapper display={["flex"]}>
         {props.items.map((project, index) => {
-          const fluid = getIcon(
-            project.image && project.image.name ? project.image.name : "",
-            icons,
-            true
-          );
           return (
-            <Project key={`project-${index}`} {...project} fluidImage={fluid} />
+            project.attributes && (
+              <Project key={`project-${index}`} {...project.attributes} />
+            )
           );
         })}
       </Wrapper>

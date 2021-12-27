@@ -1,6 +1,6 @@
 interface ComponentInterface {
   title?: string;
-  image?: Image;
+  image?: UploadFile;
   preamble?: string;
   paragraph?: string;
 }

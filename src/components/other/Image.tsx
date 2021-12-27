@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import VSensor from "react-visibility-sensor";
 import { getEmSize } from "../../styles/mixins";
 import { breakpoints } from "../../styles/variables";
-import { UploadFile } from "../../typescript/types";
 
 interface VBSensorProps {
   delayedCall: boolean;
@@ -50,7 +49,6 @@ export const Image: React.FC<UploadFile> = ({
   formats,
   alternativeText,
 }) => {
-  console.log({ url, formats, alternativeText });
   const imageBaseUrl = "http://localhost:1337";
   const small = `${imageBaseUrl}${formats.small.url}`;
   const [srcSet, setSrcSet] = useState("");

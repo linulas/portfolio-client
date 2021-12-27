@@ -6,6 +6,9 @@ import "modern-normalize";
 import "../styles/normalize";
 import Banner from "../components/other/Banner";
 import { ParallaxProvider } from "react-scroll-parallax";
+//import Contact from "../components/sections/Contact";
+import About from "../components/sections/About";
+import Projects from "../components/sections/Projects";
 
 const IndexPage = () => {
   const { strapi } = useStaticQuery<Page>(query);
@@ -21,7 +24,6 @@ const IndexPage = () => {
     aboutHeading,
     aboutParagraph,
     skills,
-    resumeLink,
     projectsHeading,
     projects,
     contactHeading,
@@ -31,17 +33,21 @@ const IndexPage = () => {
 
   const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
 
-  return setting ? (
+  return strapi ? (
     <ParallaxProvider>
       {seo && (
         <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />
       )}
-      <Nav title={setting.data?.attributes?.siteName || ""} />
+      <Nav title={setting?.data?.attributes?.siteName || ""} />
       {banner && <Banner {...banner} />}
-      <main></main>
+      <main>
+        <About title={aboutHeading} paragraph={aboutParagraph} skills={skills?.data || [] } />
+        <Projects items={projects?.data || []}/>
+        {/* <Contact /> */}
+      </main>
     </ParallaxProvider>
   ) : (
-    <div>Portfolio data was null</div>
+    <div>There was an error fetching the data</div> /** Todo - Make it more fun */
   );
 };
 
@@ -65,9 +71,6 @@ const query = graphql`
             }
             aboutHeading
             aboutParagraph
-            resumeLink {
-              ...Link
-            }
             skills {
               data {
                 attributes {
@@ -99,6 +102,8 @@ const query = graphql`
               data {
                 attributes {
                   name
+                  link
+                  linkText
                   icon {
                     ...MediaEntityRes
                   }
@@ -141,6 +146,7 @@ const query = graphql`
         url
         alternativeText
         formats
+        caption
       }
     }
   }
@@ -151,6 +157,7 @@ const query = graphql`
         url
         alternativeText
         formats
+        caption
       }
     }
   }

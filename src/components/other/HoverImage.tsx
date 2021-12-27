@@ -2,7 +2,7 @@ import React from "react";
 import { StyledHoverImage } from "../styled";
 
 interface HoverImageProps {
-  fluidImage: any;
+  image: UploadFile;
   link: string;
   title: string;
   info: string;
