@@ -76,12 +76,14 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       ref={wrapperRef}
       className={`${
         top ? 'h-20 bg-transparent' : 'h-16 bg-blue-primary'
-      } fixed w-screen top-0 z-10 flex items-center transition-all duration-300 ease-in-out`}
+      } fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out ${
+        open && 'h-40 items-start'
+      }`}
     >
-      <div className={'w-1/4'}>
+      <div className={'w-1/4 flex items-center h-full max-h-16'}>
         <a
           className={`p-4 uppercase font-bold text-bronze-primary hover:text-bronze-hover transition-all ${
-            top ? 'text-4xl' : 'text-2xl'
+            top ? 'text-3xl' : 'text-2xl'
           } duration-300 ease-in-out`}
           onClick={() => toggleOpen(false)}
           href="#top"
@@ -89,10 +91,17 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           {title}
         </a>
       </div>
-      <div className="w-3/4 flex justify-end" onClick={() => toggleOpen(false)}>
+      <div
+        className={`w-full sm:w-3/4 flex justify-center sm:justify-end items-center h-full max-h-16 sm:opacity-100 transition-opacity ${
+          open ? 'opacity-100' : 'opacity-0'
+        }`}
+        onClick={() => toggleOpen(false)}
+      >
         <div>
           <a
-            className={`p-3 uppercase font-bold text-white rounded-3xl ${active.about && 'bg-bronze-primary'}`}
+            className={`p-4 uppercase font-bold text-white rounded-3xl ${
+              active.about && 'bg-bronze-primary'
+            }`}
             href="#about"
           >
             About
@@ -100,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         </div>
         <div>
           <a
-            className={`p-3 uppercase font-bold text-white rounded-3xl ${
+            className={`p-4 uppercase font-bold text-white rounded-3xl ${
               active.projects && 'bg-bronze-primary'
             }`}
             href="#projects"
@@ -110,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         </div>
         <div>
           <a
-            className={`p-3 uppercase font-bold text-white rounded-3xl ${
+            className={`p-4 uppercase font-bold text-white rounded-3xl ${
               active.contact && 'bg-bronze-primary'
             }`}
             href="#contact"
@@ -119,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
           </a>
         </div>
       </div>
-      <div onClick={() => toggleOpen(!open)} className="sm:hidden">
+      <div onClick={() => toggleOpen(!open)} className="sm:hidden absolute right-4 top-5">
         {open ? <MenuOpenIcon /> : <MenuIcon />}
       </div>
     </div>
