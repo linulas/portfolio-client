@@ -2,7 +2,6 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Header, Seo } from "../components";
 import { Page } from "../graphql/Page";
-import "modern-normalize";
 import "../styles/normalize";
 import Banner from "../components/other/Banner";
 import { ParallaxProvider } from "react-scroll-parallax";

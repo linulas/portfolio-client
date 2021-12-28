@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { breakpoints } from '../../styles/variables';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import { hasWindow } from '../../helpers';
 import { Page_strapi_portfolio_data_attributes_banner } from '../../graphql/Page';
-import { Image } from './Image';
+import BackgroundImage from 'gatsby-background-image';
+import { graphql } from 'gatsby';
+import { useStaticQuery } from 'gatsby';
 
 const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }) => {
-  if (!data?.attributes) {
+  const result = useStaticQuery(query);
+
+  if (!data?.attributes || !result?.image) {
     return null;
   }
 
-  const { title, subtitle, image } = data.attributes;
-  const imgAttributes = image?.data?.attributes as unknown;
+  const { title, subtitle } = data.attributes;
+  const fluid = result.image.childImageSharp.fluid;
+
+  const ImageStyle: CSSProperties = {
+    filter: 'brightness(50%)',
+    width: '100%',
+    height: '100vh',
+  };
 
   return (
     <div className="w-full">
@@ -19,9 +29,9 @@ const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }
         layers={[
           {
             children: (
-              <div>
-                {imgAttributes && <Image {...(imgAttributes as UploadFile)} className="w-screen" />}
-                <div>
+              <div className={`relative flex items-center justify-center`}>
+                {fluid && <BackgroundImage fluid={fluid} style={ImageStyle} />}
+                <div className={`absolute`}>
                   <h1>{title}</h1>
                   {subtitle && <p>{subtitle}</p>}
                 </div>
@@ -37,5 +47,17 @@ const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }
     </div>
   );
 };
+
+const query = graphql`
+  query Banner {
+    image: file(relativePath: { eq: "img/coding-bg.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
 
 export default Banner;
