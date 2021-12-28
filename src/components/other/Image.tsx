@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import VSensor from "react-visibility-sensor";
-import { getEmSize } from "../../styles/mixins";
-import { breakpoints } from "../../styles/variables";
+import React, { useEffect, useState } from 'react';
+import VSensor from 'react-visibility-sensor';
+import { getEmSize } from '../../styles/mixins';
+import { breakpoints } from '../../styles/variables';
 
 interface VBSensorProps {
   delayedCall: boolean;
@@ -12,13 +12,13 @@ interface VBSensorProps {
 
 const getBreakPoint = (key: string) => {
   switch (key) {
-    case "thumbnail":
+    case 'thumbnail':
       return breakpoints.xs;
-    case "small":
+    case 'small':
       return breakpoints.sm;
-    case "medium":
+    case 'medium':
       return breakpoints.md;
-    case "large":
+    case 'large':
       return breakpoints.lg;
     default:
       return 0;
@@ -44,19 +44,19 @@ export const VisibilitySensor: React.FC<VBSensorProps> = ({
   );
 };
 
-export const Image: React.FC<UploadFile> = ({
-  url,
-  formats,
-  alternativeText,
-}) => {
-  const imageBaseUrl = "http://localhost:1337";
+interface ImageProps extends UploadFile {
+  className?: string;
+}
+
+export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, className }) => {
+  const imageBaseUrl = 'http://localhost:1337';
   const small = `${imageBaseUrl}${formats.small.url}`;
-  const [srcSet, setSrcSet] = useState("");
-  const [sizes, setSizes] = useState("");
+  const [srcSet, setSrcSet] = useState('');
+  const [sizes, setSizes] = useState('');
 
   useEffect(() => {
-    let sizes = "";
-    let srcSet = "";
+    let sizes = '';
+    let srcSet = '';
 
     Object.keys(formats).map((key) => {
       const breakpoint = getBreakPoint(key);
@@ -84,9 +84,10 @@ export const Image: React.FC<UploadFile> = ({
               alt={alternativeText}
               sizes={sizes}
               srcSet={srcSet}
+              className={className}
             />
           ) : (
-            <img src={small} alt={alternativeText} />
+            <img className={className} src={small} alt={alternativeText} />
           )}
         </>
       )}

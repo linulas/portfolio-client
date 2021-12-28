@@ -74,9 +74,12 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <div
       ref={wrapperRef}
-      className={`${top ? 'h-20 bg-transparent shadow-none' : 'h-16 bg-white'} ${
-        open && 'h-40 items-start'
-      } fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out shadow-md`}
+      className={`
+        ${top ? 'h-20 bg-transparent shadow-none' : 'h-16 bg-white'} 
+        ${open && 'h-40 items-start'} 
+        ${!top && 'shadow-md'} 
+        fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out
+      `}
     >
       <div className={'w-1/4 flex items-center h-full max-h-16'}>
         <a
