@@ -8,6 +8,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Contact from "../components/sections/Contact";
 import About from "../components/sections/About";
 import Projects from "../components/sections/Projects";
+import 'typeface-montserrat';
 import '../styles/global.css';
 
 const IndexPage = () => {

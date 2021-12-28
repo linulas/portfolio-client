@@ -24,6 +24,10 @@ module.exports = {
           hover: '#E2E2E2',
         },
       },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Montserrat'],
+      },
     },
   },
   plugins: [],

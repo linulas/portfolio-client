@@ -17,25 +17,18 @@ const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }
   const { title, subtitle } = data.attributes;
   const fluid = result.image.childImageSharp.fluid;
 
-  const ImageStyle: CSSProperties = {
-    filter: 'brightness(50%)',
-    width: '100%',
-    height: '100vh',
-  };
-
   return (
     <div className="w-full">
       <ParallaxBanner
         layers={[
           {
-            children: (
-              <div className={`relative flex items-center justify-center`}>
-                {fluid && <BackgroundImage fluid={fluid} style={ImageStyle} />}
-                <div className={`absolute`}>
-                  <h1>{title}</h1>
-                  {subtitle && <p>{subtitle}</p>}
+            children: fluid && (
+              <BackgroundImage fluid={fluid} className={`banner`}>
+                <div className={`p-4 sm:max-w-screen-md`}>
+                  <h1 className={`text-white font-bold tracking-wider`}>{title}</h1>
+                  {subtitle && <p className={`text-white preamble`}>{subtitle}</p>}
                 </div>
-              </div>
+              </BackgroundImage>
             ),
             amount: hasWindow ? (window.innerWidth > breakpoints.md ? 0.4 : 0.2) : 0.4,
           },
