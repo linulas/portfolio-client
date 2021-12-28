@@ -74,15 +74,13 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <div
       ref={wrapperRef}
-      className={`${
-        top ? 'h-20 bg-transparent' : 'h-16 bg-blue-primary'
-      } fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out ${
+      className={`${top ? 'h-20 bg-transparent shadow-none' : 'h-16 bg-white'} ${
         open && 'h-40 items-start'
-      }`}
+      } fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out shadow-md`}
     >
       <div className={'w-1/4 flex items-center h-full max-h-16'}>
         <a
-          className={`p-4 uppercase font-bold text-bronze-primary hover:text-bronze-hover transition-all ${
+          className={`p-4 uppercase font-bold text-blue-primary hover:text-blue-hover transition-all ${
             top ? 'text-3xl' : 'text-2xl'
           } duration-300 ease-in-out`}
           onClick={() => toggleOpen(false)}
@@ -99,8 +97,8 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
       >
         <div>
           <a
-            className={`p-4 uppercase font-bold text-white rounded-3xl ${
-              active.about && 'bg-bronze-primary'
+            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
+              active.about && 'bg-blue-300'
             }`}
             href="#about"
           >
@@ -109,8 +107,8 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         </div>
         <div>
           <a
-            className={`p-4 uppercase font-bold text-white rounded-3xl ${
-              active.projects && 'bg-bronze-primary'
+            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
+              active.projects && 'bg-blue-300'
             }`}
             href="#projects"
           >
@@ -119,8 +117,8 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         </div>
         <div>
           <a
-            className={`p-4 uppercase font-bold text-white rounded-3xl ${
-              active.contact && 'bg-bronze-primary'
+            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
+              active.contact && 'bg-blue-300'
             }`}
             href="#contact"
           >

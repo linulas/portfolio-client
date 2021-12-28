@@ -37,6 +37,7 @@ const IndexPage = () => {
   const seo = setting?.data?.attributes?.defaultSeo?.data?.attributes;
 
   return strapi ? (
+    <div className="">
     <ParallaxProvider>
       {seo && (
         <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />
@@ -59,6 +60,7 @@ const IndexPage = () => {
         />
       </main>
     </ParallaxProvider>
+    </div>
   ) : (
     <div>
       There was an error fetching the data

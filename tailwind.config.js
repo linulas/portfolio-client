@@ -23,7 +23,6 @@ module.exports = {
           primary: "#C0C0C0",
           hover: "#E2E2E2",
         },
-        white: "#EFF1F3",
       },
     },
   },
