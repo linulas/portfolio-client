@@ -1,49 +1,48 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Page_strapi_portfolio_data_attributes_skills_data } from "../../graphql/Page";
-import { SkillsParagraph } from "../../graphql/SkillsParagraph";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Page_strapi_portfolio_data_attributes_skills_data } from '../../graphql/Page';
+import { SkillsParagraph } from '../../graphql/SkillsParagraph';
+import renderMarkdown from '../other/renderMarkdown';
+import Image from '../other/Image';
 
 export interface SkillsProps {
   programming: Page_strapi_portfolio_data_attributes_skills_data[];
 }
 
-const Skills: React.FC<SkillsProps> = (props) => {
+const renderList = (items: Page_strapi_portfolio_data_attributes_skills_data[]) => (
+  <ul className='p-0 w-56'>
+    {items.map((skill, index) => {
+      const icon = skill.attributes?.icon?.data[0]?.attributes;
+      return (
+        <li key={`skill-${index}`} className="p-2">
+          <span className="flex items-center">
+            {icon && <Image {...(icon as unknown as UploadFile)} className="w-16 h-16" />}
+            <span className="ml-2 font-bold">{skill.attributes?.name}</span>
+          </span>
+        </li>
+      );
+    })}
+  </ul>
+);
+
+const Skills: React.FC<SkillsProps> = ({ programming }) => {
   const { strapi } = useStaticQuery<SkillsParagraph>(query);
-  const skillGroup1 = props.programming.splice(0, props.programming.length / 2);
-  const skillGroup2 = props.programming;
+  const halfPoint = programming.length / 2;
+  const firstList = programming.slice(0, halfPoint);
+  const secondList = programming.slice(halfPoint, programming.length);
   return (
-    <div>
-      <h3>Skills</h3>
-      <div>
-        <div>
-          <ul>
-            {skillGroup1.map((skill, index) => {
-              return (
-                <li key={`skill-${index}`}>
-                  <span>
-                    <span>image placeholder</span>
-                    <span>{skill.attributes?.name}</span>
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-          <ul>
-            {skillGroup2.map((skill, index) => {
-              return (
-                <li key={`skill-${index}`}>
-                  <span>
-                    <span>image placeholder</span>
-                    <span>{skill.attributes?.name}</span>
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
+    <div className='mt-6'>
+      <h3 className="text-center">Skills</h3>
+      <div className="lg:flex">
+        <div className="w-full lg:flex lg:w-1/2 lg:justify-center lg:items-center">
+          {renderList(firstList)}
+          {renderList(secondList)}
         </div>
-      </div>
-      <div>
-        <p>{strapi.texts?.data[0].attributes?.text}</p>
+        <div className="w-full lg:w-1/2">
+          <div className="m-auto lg:max-w-md">
+            {renderMarkdown(strapi.texts?.data[0].attributes?.text || '')}
+          </div>
+        </div>
       </div>
     </div>
   );

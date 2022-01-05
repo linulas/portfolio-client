@@ -42,7 +42,7 @@ const IndexPage = () => {
         {seo && <Seo {...seo} siteName={setting.data?.attributes?.siteName || ''} />}
         <Header title={setting?.data?.attributes?.siteName || ''} />
         {banner && <Banner {...banner} />}
-        <main className={`p-3`}>
+        <main className={`max-w-screen-xl p-4 xl:p-0 m-auto`}>
           <About
             title={aboutHeading}
             paragraph={aboutParagraph}

@@ -17,11 +17,15 @@ const About: React.FC<AboutProps> = ({ title, paragraph, skills }) => {
     <div>
       <div id={'about'} />
       <DividerHeading text={title || ''} highlight="me" />
-      <div>
-        {fluid && <Img className={`rounded-lg shadow-md p-2`} fluid={fluid}></Img>}
-        {renderMarkdown(paragraph || "")}
+      <div className="lg:flex lg:justify-between">
+        <div className="lg:w-1/2">{renderMarkdown(paragraph || '')}</div>
+        {fluid && (
+          <div className='lg:w-1/2 flex justify-center'>
+            <Img className={`rounded-lg shadow-md p-2 w-full lg:max-w-md`} fluid={fluid}></Img>
+          </div>
+        )}
       </div>
-        <Skills programming={skills} />
+      <Skills programming={skills} />
     </div>
   );
 };
@@ -30,7 +34,7 @@ const query = graphql`
   query ProfileImage {
     image: file(relativePath: { eq: "img/profile.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 2000, quality: 100) {
+        fluid(maxWidth: 1000, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
