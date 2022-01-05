@@ -34,3 +34,12 @@ h5 {
 .banner:after {
   filter: brightness(50%);
 }
+
+.divider-lines {
+  @apply before:right-full before:mr-4 after:left-full after:ml-4;
+}
+
+.divider-lines:before,
+.divider-lines:after {
+  @apply absolute content-[""] border-y-2 border-solid border-silver-primary h-3 top-[42.5%] w-full;
+}

@@ -1,34 +1,17 @@
-import React from "react";
-import { colors } from "../../styles/variables";
+import React from 'react';
 
 export interface DividerHeadingProps {
   text: string;
   highlight?: string;
 }
 
-export const DividerHeading: React.FC<DividerHeadingProps> = ({
-  text,
-  highlight,
-}) => {
-  /*   const Heading: React.FC = () => {
-    switch (level) {
-      case 1:
-        return <h1>{Children}</h1>;
-      case 2:
-        return <h2>{() => Children}</h2>;
-      default:
-        return <h1>{Children}</h1>;
-    }
-  }; */
-
+export const DividerHeading: React.FC<DividerHeadingProps> = ({ text, highlight }) => {
   return (
-    <div>
-      <h2>
-        <span className="text">
-          {text}
-          {highlight && <span className="highlight">{highlight}</span>}
-        </span>
-      </h2>
-    </div>
+    <h2 className={`overflow-hidden text-center`}>
+      <span className={`inline-block relative divider-lines`}>
+        {text}
+        {highlight && <span className="text-blue-primary font-black ml-2">{highlight}</span>}
+      </span>
+    </h2>
   );
 };
