@@ -30,7 +30,6 @@ const IndexPage = () => {
     contactHeading,
     contactParagraph,
     references,
-    avatar,
     profilePicture,
   } = attributes;
 
@@ -54,7 +53,6 @@ const IndexPage = () => {
             references={references?.data || []}
             title={contactHeading}
             paragraph={contactParagraph}
-            avatar={avatar as unknown as UploadFile}
           />
         </main>
       </ParallaxProvider>
