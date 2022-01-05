@@ -4,6 +4,7 @@ import { DividerHeading } from '../other/dividerHeading';
 import { Page_strapi_portfolio_data_attributes_skills_data } from '../../graphql/Page';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import renderMarkdown from '../other/renderMarkdown';
 
 export interface AboutProps extends ComponentInterface {
   skills: Page_strapi_portfolio_data_attributes_skills_data[];
@@ -18,13 +19,9 @@ const About: React.FC<AboutProps> = ({ title, paragraph, skills }) => {
       <DividerHeading text={title || ''} highlight="me" />
       <div>
         {fluid && <Img className={`rounded-lg shadow-md p-2`} fluid={fluid}></Img>}
-        <div>
-          <p dangerouslySetInnerHTML={{ __html: paragraph || '' }} />
-        </div>
+        {renderMarkdown(paragraph || "")}
       </div>
-      <div>
         <Skills programming={skills} />
-      </div>
     </div>
   );
 };
