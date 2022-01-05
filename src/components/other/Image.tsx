@@ -50,7 +50,7 @@ interface ImageProps extends UploadFile {
 
 export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, className }) => {
   const imageBaseUrl = 'http://localhost:1337';
-  const small = `${imageBaseUrl}${formats.small.url}`;
+  const small = `${imageBaseUrl}${formats ? formats.small.url : url}`;
   const [srcSet, setSrcSet] = useState('');
   const [sizes, setSizes] = useState('');
 
@@ -58,7 +58,7 @@ export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, cla
     let sizes = '';
     let srcSet = '';
 
-    Object.keys(formats).map((key) => {
+    formats && Object.keys(formats).map((key) => {
       const breakpoint = getBreakPoint(key);
       const width = formats[key].width;
       if (srcSet.length > 0) {
