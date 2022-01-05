@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { breakpoints } from '../../styles/variables';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import { hasWindow } from '../../helpers';
@@ -8,14 +8,14 @@ import { graphql } from 'gatsby';
 import { useStaticQuery } from 'gatsby';
 
 const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }) => {
-  const result = useStaticQuery(query);
+  const { image } = useStaticQuery(query);
 
-  if (!data?.attributes || !result?.image) {
+  if (!data?.attributes || !image) {
     return null;
   }
 
   const { title, subtitle } = data.attributes;
-  const fluid = result.image.childImageSharp.fluid;
+  const fluid = image.childImageSharp.fluid;
 
   return (
     <div className="w-full">

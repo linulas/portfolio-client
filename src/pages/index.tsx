@@ -1,13 +1,13 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Header, Seo } from "../components";
-import { Page } from "../graphql/Page";
-import "../styles/normalize";
-import Banner from "../components/other/Banner";
-import { ParallaxProvider } from "react-scroll-parallax";
-import Contact from "../components/sections/Contact";
-import About from "../components/sections/About";
-import Projects from "../components/sections/Projects";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Header, Seo } from '../components';
+import { Page } from '../graphql/Page';
+import '../styles/normalize';
+import Banner from '../components/other/Banner';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import Contact from '../components/sections/Contact';
+import About from '../components/sections/About';
+import Projects from '../components/sections/Projects';
 import 'typeface-montserrat';
 import '../styles/global.css';
 
@@ -38,33 +38,29 @@ const IndexPage = () => {
 
   return strapi ? (
     <div className="">
-    <ParallaxProvider>
-      {seo && (
-        <Seo {...seo} siteName={setting.data?.attributes?.siteName || ""} />
-      )}
-      <Header title={setting?.data?.attributes?.siteName || ""} />
-      {banner && <Banner {...banner} />}
-      <main>
-        <About
-          title={aboutHeading}
-          paragraph={aboutParagraph}
-          skills={skills?.data || []}
-          image={profilePicture as unknown as UploadFile}
-        />
-        <Projects items={projects?.data || []} title={projectsHeading} />
-        <Contact
-          references={references?.data || []}
-          title={contactHeading}
-          paragraph={contactParagraph}
-          avatar={avatar as unknown as UploadFile}
-        />
-      </main>
-    </ParallaxProvider>
+      <ParallaxProvider>
+        {seo && <Seo {...seo} siteName={setting.data?.attributes?.siteName || ''} />}
+        <Header title={setting?.data?.attributes?.siteName || ''} />
+        {banner && <Banner {...banner} />}
+        <main className={`container p-3`}>
+          <About
+            title={aboutHeading}
+            paragraph={aboutParagraph}
+            skills={skills?.data || []}
+            image={profilePicture as unknown as UploadFile}
+          />
+          <Projects items={projects?.data || []} title={projectsHeading} />
+          <Contact
+            references={references?.data || []}
+            title={contactHeading}
+            paragraph={contactParagraph}
+            avatar={avatar as unknown as UploadFile}
+          />
+        </main>
+      </ParallaxProvider>
     </div>
   ) : (
-    <div>
-      There was an error fetching the data
-    </div> /** Todo - Make it more fun */
+    <div>There was an error fetching the data</div> /** Todo - Make it more fun */
   );
 };
 
