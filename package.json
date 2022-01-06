@@ -8,6 +8,7 @@
     "@blocks/kit": "0.0.28",
     "apollo": "^2.33.9",
     "babel-preset-gatsby": "^2.4.0",
+    "framer-motion": "^5.5.5",
     "gatsby": "^4.4.0",
     "gatsby-background-image": "^1.6.0",
     "gatsby-image": "^3.11.0",
