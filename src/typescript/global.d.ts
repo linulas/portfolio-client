@@ -55,3 +55,8 @@ type UploadFile = {
   createdAt: string
   updatedAt: string
 }
+
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}
