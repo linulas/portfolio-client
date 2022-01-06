@@ -1,3 +1,4 @@
+export * from './Button';
 export * from './DividerHeading';
 export * from './Image';
 export * from './MenuIcons';
