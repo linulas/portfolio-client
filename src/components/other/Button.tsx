@@ -6,7 +6,10 @@ export const ButtonLink: React.FC<
   React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
 > = (props) => {
   return (
-    <a {...props} className={`${props.className} ${buttonStyles} flex items-center hover:text-white hover:no-underline`}>
+    <a
+      {...props}
+      className={`${props.className} ${buttonStyles} flex items-center hover:text-white hover:no-underline`}
+    >
       {props.children}
     </a>
   );
