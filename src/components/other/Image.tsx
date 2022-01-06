@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VSensor from 'react-visibility-sensor';
-import { getEmSize } from '../../styles/mixins';
+import { getEmSize } from '../../helpers';
 import { breakpoints } from '../../styles/variables';
 
 interface VBSensorProps {

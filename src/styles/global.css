@@ -45,5 +45,5 @@ p {
 
 .divider-lines:before,
 .divider-lines:after {
-  @apply absolute content-[""] border-y-2 border-solid border-silver-primary h-3 top-[42.5%] w-full;
+  @apply absolute content-[""] border-y-2 border-solid border-silver h-3 top-[42.5%] w-full;
 }

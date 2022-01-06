@@ -60,3 +60,8 @@ declare module "*.svg" {
   const content: any;
   export default content;
 }
+
+declare module "*/tailwind.config.js" {
+  const content: any;
+  export default content;
+}
