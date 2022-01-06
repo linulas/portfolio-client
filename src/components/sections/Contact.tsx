@@ -4,14 +4,14 @@ import { hasWindow } from '../../helpers';
 import { Page_strapi_portfolio_data_attributes_references_data } from '../../graphql/Page';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import Image from '../other/Image';
+import { Image } from '../other';
 
 export interface ContactInterface extends ComponentInterface {
   references: Page_strapi_portfolio_data_attributes_references_data[];
   avatar?: UploadFile;
 }
 
-const Contact: React.FC<ContactInterface> = ({ title, paragraph, avatar, references }) => {
+export const Contact: React.FC<ContactInterface> = ({ title, paragraph, references }) => {
   const { image } = useStaticQuery(query);
 
   if (!image) {
@@ -31,7 +31,7 @@ const Contact: React.FC<ContactInterface> = ({ title, paragraph, avatar, referen
       <div className="lg:flex">
         <div className="lg:w-1/2">
           <p>{paragraph}</p>
-          <ul className='my-4 p-0'>
+          <ul className="my-4 p-0">
             {references.map((reference, index) => {
               const icon = reference?.attributes?.icon?.data?.attributes;
               return (

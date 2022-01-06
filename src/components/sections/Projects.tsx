@@ -1,8 +1,9 @@
 import React from 'react';
-import { DividerHeading } from '../other/DividerHeading';
-import { Page_strapi_portfolio_data_attributes_projects_data } from '../../graphql/Page';
-import { Page_strapi_portfolio_data_attributes_projects_data_attributes } from '../../graphql/Page';
-import Image from '../other/Image';
+import {
+  Page_strapi_portfolio_data_attributes_projects_data,
+  Page_strapi_portfolio_data_attributes_projects_data_attributes,
+} from '../../graphql/Page';
+import { Image, DividerHeading } from '../other';
 
 export interface ProjectInterface
   extends Page_strapi_portfolio_data_attributes_projects_data_attributes {}
@@ -32,7 +33,7 @@ export interface ProjectProps extends ComponentInterface {
   items: Page_strapi_portfolio_data_attributes_projects_data[];
 }
 
-const Projects: React.FC<ProjectProps> = ({ title, items }) => {
+export const Projects: React.FC<ProjectProps> = ({ title, items }) => {
   return (
     <div>
       <div id={'projects'} />

@@ -7,7 +7,7 @@ import BackgroundImage from 'gatsby-background-image';
 import { graphql } from 'gatsby';
 import { useStaticQuery } from 'gatsby';
 
-const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }) => {
+export const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }) => {
   const { image } = useStaticQuery(query);
 
   if (!data?.attributes || !image) {

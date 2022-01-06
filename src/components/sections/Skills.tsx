@@ -2,15 +2,15 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Page_strapi_portfolio_data_attributes_skills_data } from '../../graphql/Page';
 import { SkillsParagraph } from '../../graphql/SkillsParagraph';
-import renderMarkdown from '../other/renderMarkdown';
-import Image from '../other/Image';
+import renderMarkdown from '../../helpers/renderMarkdown';
+import { Image } from '../other';
 
 export interface SkillsProps {
   programming: Page_strapi_portfolio_data_attributes_skills_data[];
 }
 
 const renderList = (items: Page_strapi_portfolio_data_attributes_skills_data[]) => (
-  <ul className='p-0 w-56'>
+  <ul className="p-0 w-56">
     {items.map((skill, index) => {
       const icon = skill.attributes?.icon?.data[0]?.attributes;
       return (
@@ -25,13 +25,13 @@ const renderList = (items: Page_strapi_portfolio_data_attributes_skills_data[]) 
   </ul>
 );
 
-const Skills: React.FC<SkillsProps> = ({ programming }) => {
+export const Skills: React.FC<SkillsProps> = ({ programming }) => {
   const { strapi } = useStaticQuery<SkillsParagraph>(query);
   const halfPoint = programming.length / 2;
   const firstList = programming.slice(0, halfPoint);
   const secondList = programming.slice(halfPoint, programming.length);
   return (
-    <div className='mt-6'>
+    <div className="mt-6">
       <h3 className="text-center">Skills</h3>
       <div className="lg:flex">
         <div className="w-full lg:flex lg:w-1/2 lg:justify-center lg:items-center">

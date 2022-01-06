@@ -1,16 +1,16 @@
 import React from 'react';
 import Skills from './Skills';
-import { DividerHeading } from '../other/dividerHeading';
+import { DividerHeading } from '../other';
 import { Page_strapi_portfolio_data_attributes_skills_data } from '../../graphql/Page';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import renderMarkdown from '../other/renderMarkdown';
+import renderMarkdown from '../../helpers/renderMarkdown';
 
 export interface AboutProps extends ComponentInterface {
   skills: Page_strapi_portfolio_data_attributes_skills_data[];
 }
 
-const About: React.FC<AboutProps> = ({ title, paragraph, skills }) => {
+export const About: React.FC<AboutProps> = ({ title, paragraph, skills }) => {
   const { image } = useStaticQuery(query);
   const fluid = image.childImageSharp.fluid;
   return (
@@ -20,7 +20,7 @@ const About: React.FC<AboutProps> = ({ title, paragraph, skills }) => {
       <div className="lg:flex lg:justify-between">
         <div className="lg:w-1/2">{renderMarkdown(paragraph || '')}</div>
         {fluid && (
-          <div className='lg:w-1/2 flex justify-center'>
+          <div className="lg:w-1/2 flex justify-center">
             <Img className={`rounded-lg shadow-md p-2 w-full lg:max-w-md`} fluid={fluid}></Img>
           </div>
         )}

@@ -1,13 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Header, Seo } from '../components';
+import { Header, Seo, Banner, Contact, About, Projects } from '../components';
 import { Page } from '../graphql/Page';
-import '../styles/normalize';
-import Banner from '../components/other/Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import Contact from '../components/sections/Contact';
-import About from '../components/sections/About';
-import Projects from '../components/sections/Projects';
 import 'typeface-montserrat';
 import '../styles/global.css';
 

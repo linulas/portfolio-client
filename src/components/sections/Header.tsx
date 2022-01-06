@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { breakpoints } from '../../styles/variables';
 import { useEffect, useState, useRef } from 'react';
-import { MenuIcon, MenuOpenIcon } from './MenuIcons';
+import { MenuIcon, MenuOpenIcon } from '../other';
 import { hasWindow } from '../../helpers';
 
 interface HeaderProps {
