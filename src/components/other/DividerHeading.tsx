@@ -10,7 +10,7 @@ export const DividerHeading: React.FC<DividerHeadingProps> = ({ text, highlight 
     <h2 className={`overflow-hidden text-center`}>
       <span className={`inline-block relative divider-lines`}>
         {text}
-        {highlight && <span className="text-blue-primary font-black ml-2">{highlight}</span>}
+        {highlight && <span className="text-rust-primary font-black ml-2">{highlight}</span>}
       </span>
     </h2>
   );

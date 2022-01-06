@@ -6,6 +6,7 @@ import { Page_strapi_portfolio_data_attributes_banner } from '../../graphql/Page
 import BackgroundImage from 'gatsby-background-image';
 import { graphql } from 'gatsby';
 import { useStaticQuery } from 'gatsby';
+import { ButtonLink } from '../other';
 
 export const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({ data }) => {
   const { image } = useStaticQuery(query);
@@ -24,9 +25,14 @@ export const Banner: React.FC<Page_strapi_portfolio_data_attributes_banner> = ({
           {
             children: fluid && (
               <BackgroundImage fluid={fluid} className={`banner`}>
-                <div className={`p-4 sm:max-w-screen-md`}>
+                <div className={`p-4 mt-32 sm:max-w-screen-md`}>
                   <h1 className={`text-white font-bold tracking-wider`}>{title}</h1>
                   {subtitle && <p className={`text-white preamble`}>{subtitle}</p>}
+                  <div className="flex w-full justify-center items-center">
+                    <ButtonLink className="ml-8" href="#contact">
+                      Contact
+                    </ButtonLink>
+                  </div>
                 </div>
               </BackgroundImage>
             ),

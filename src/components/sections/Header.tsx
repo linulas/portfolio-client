@@ -71,20 +71,26 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
     };
   }, [top, active, wrapperRef]);
 
+  const linkTopState = 'text-white hover:text-rust-primary';
+  const quickLinkStyles = (link: 'about' | 'projects' | 'contact') =>
+    `p-4 uppercase font-bold rounded-3xl ${
+      active[link] && 'bg-blue-primary'
+    } ${linkTopState}`;
+
   return (
     <div
       ref={wrapperRef}
       className={`
-        ${top ? 'h-20 bg-transparent shadow-none' : 'h-16 bg-white'} 
+        ${top && !open ? 'h-20 bg-transparent shadow-none' : 'h-16 bg-background-dark'} 
         ${open && 'h-40 items-start'} 
-        ${!top && 'shadow-md'} 
+        ${!top && 'shadow-md'}
         fixed w-screen top-0 z-10 flex flex-col sm:flex-row items-start transition-all duration-300 ease-in-out
       `}
     >
       <div className={'w-1/4 flex items-center h-full max-h-16'}>
         <a
-          className={`p-4 uppercase font-bold text-blue-primary hover:text-blue-hover transition-all ${
-            top ? 'text-3xl' : 'text-2xl'
+          className={`p-4 uppercase font-bold  transition-all ${
+            top ? 'text-3xl ' + linkTopState : 'text-blue-hover hover:text-blue-hover text-2xl'
           } duration-300 ease-in-out`}
           onClick={() => toggleOpen(false)}
           href="#top"
@@ -93,38 +99,23 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
         </a>
       </div>
       <div
-        className={`w-full sm:w-3/4 flex justify-center sm:justify-end items-center h-full max-h-16 sm:opacity-100 transition-opacity ${
+        className={`mr-4 w-full sm:w-3/4 flex justify-center sm:justify-end items-center h-full max-h-16 sm:opacity-100 transition-opacity ${
           open ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => toggleOpen(false)}
       >
         <div>
-          <a
-            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
-              active.about && 'bg-blue-300'
-            }`}
-            href="#about"
-          >
+          <a className={quickLinkStyles('about')} href="#about">
             About
           </a>
         </div>
         <div>
-          <a
-            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
-              active.projects && 'bg-blue-300'
-            }`}
-            href="#projects"
-          >
+          <a className={quickLinkStyles('projects')} href="#projects">
             Projects
           </a>
         </div>
         <div>
-          <a
-            className={`p-4 uppercase font-bold text-black-primary rounded-3xl ${
-              active.contact && 'bg-blue-300'
-            }`}
-            href="#contact"
-          >
+          <a className={quickLinkStyles('contact')} href="#contact">
             Contact
           </a>
         </div>
