@@ -65,7 +65,7 @@
   "license": "MIT",
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 gatsby build",
-    "develop": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 gatsby develop --open",
+    "develop": "gatsby develop --open",
     "dev": "npm run develop",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
