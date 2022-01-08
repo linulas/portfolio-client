@@ -71,11 +71,11 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
     };
   }, [top, active, wrapperRef]);
 
-  const linkTopState = 'text-white hover:text-rust-primary';
+  const linkTopState = 'text-white hover:text-blue-hover';
   const quickLinkStyles = (link: 'about' | 'projects' | 'contact') =>
-    `p-4 uppercase font-bold rounded-3xl ${
+    `p-4 uppercase font-bold rounded-3xl no-underline ${
       active[link] && 'bg-blue-primary'
-    } ${linkTopState}`;
+    } ${linkTopState} hover:text-rust-hover`;
 
   return (
     <div
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({ title }) => {
     >
       <div className={'w-1/4 flex items-center h-full max-h-16'}>
         <a
-          className={`p-4 uppercase font-bold  transition-all ${
+          className={`p-4 uppercase font-bold no-underline transition-all ${
             top ? 'text-3xl ' + linkTopState : 'text-blue-hover hover:text-blue-hover text-2xl'
           } duration-300 ease-in-out`}
           onClick={() => toggleOpen(false)}
