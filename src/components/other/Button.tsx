@@ -15,7 +15,7 @@ export const ButtonLink: React.FC<
     <motion.a
       {...(props as any)}
       {...animations}
-      className={`${props.className} ${buttonStyles} flex items-center hover:text-white hover:no-underline`}
+      className={`${props.className} ${buttonStyles} flex items-center hover:text-white no-underline`}
     >
       {props.children}
     </motion.a>

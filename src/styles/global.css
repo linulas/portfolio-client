@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 h1 {
-  @apply text-4xl mb-5 mt-10 sm:text-5xl sm:mb-6;
+  @apply text-4xl mb-8 mt-16 sm:text-5xl sm:mb-6;
 }
 h2 {
-  @apply text-3xl mb-4 mt-8 sm:text-4xl sm:mb-5;
+  @apply text-3xl mb-6 mt-12 sm:text-4xl sm:mb-5;
 }
 h3 {
-  @apply text-2xl mb-3 mt-6 sm:text-3xl sm:mb-4;
+  @apply text-2xl mb-4 mt-8 sm:text-3xl sm:mb-4;
 }
 h4 {
   @apply text-xl mb-2 mt-4 sm:text-2xl sm:mb-3;
@@ -20,6 +20,10 @@ h5 {
 
 p {
   @apply text-base sm:text-lg mb-2;
+}
+
+a {
+  @apply text-rust-primary hover:text-rust-hover underline hover:no-underline
 }
 
 /* dark mode */
