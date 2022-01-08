@@ -4,7 +4,7 @@ import { hasWindow } from '../../helpers';
 import { Page_strapi_portfolio_data_attributes_references_data } from '../../graphql/Page';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { Image } from '../other';
+import { Card, Image } from '../other';
 
 export interface ContactInterface extends ComponentInterface {
   references: Page_strapi_portfolio_data_attributes_references_data[];
@@ -28,22 +28,35 @@ export const Contact: React.FC<ContactInterface> = ({ title, paragraph, referenc
     <div>
       <div id={'contact'} />
       <DividerHeading text={title || ''} highlight="me" />
-      <div className="lg:flex">
+      <Card className="lg:flex">
         <div className="lg:w-1/2">
           <p>{paragraph}</p>
           <ul className="my-4 p-0">
             {references.map((reference, index) => {
               const icon = reference?.attributes?.icon?.data?.attributes;
               return (
-                <li key={`contact-${index}`} className="py-4">
+                <li key={`contact-${index}`} className="my-2">
                   {icon && (
-                    <span
-                      className="flex items-center"
+                    <Card
+                      className="flex justify-between"
                       onClick={() => handleClick(reference.attributes?.link || '')}
+                      clickable
                     >
-                      <Image {...(icon as unknown as UploadFile)} className="w-16 h-16" />
-                      <span className="ml-2">{reference.attributes?.linkText}</span>
-                    </span>
+                      <div className="flex items-center">
+                        <Image {...(icon as unknown as UploadFile)} className="w-8 h-8" />
+                        <span className="ml-2">{reference.attributes?.linkText}</span>
+                      </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        width="24px"
+                        fill="#000000"
+                      >
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                      </svg>
+                    </Card>
                   )}
                 </li>
               );
@@ -51,9 +64,11 @@ export const Contact: React.FC<ContactInterface> = ({ title, paragraph, referenc
           </ul>
         </div>
         <div className="lg:w-1/2 flex justify-center">
-          {fluid && <Img fluid={fluid} className="rounded-lg shadow-md p-2 w-full lg:max-w-md" />}
+          {fluid && (
+            <Img fluid={fluid} className="rounded-lg shadow-md p-2 w-60 h-60 lg:w-80 lg:h-80" />
+          )}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

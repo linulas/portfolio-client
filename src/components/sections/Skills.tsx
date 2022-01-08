@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Page_strapi_portfolio_data_attributes_skills_data } from '../../graphql/Page';
 import { SkillsParagraph } from '../../graphql/SkillsParagraph';
 import renderMarkdown from '../../helpers/renderMarkdown';
-import { Image } from '../other';
+import { Card, Image } from '../other';
 
 export interface SkillsProps {
   programming: Page_strapi_portfolio_data_attributes_skills_data[];
@@ -31,7 +31,7 @@ export const Skills: React.FC<SkillsProps> = ({ programming }) => {
   const firstList = programming.slice(0, halfPoint);
   const secondList = programming.slice(halfPoint, programming.length);
   return (
-    <div className="mt-6">
+    <Card className="mt-6">
       <h3 className="text-center">Skills</h3>
       <div className="lg:flex">
         <div className="w-full lg:flex lg:w-1/2 lg:justify-center lg:items-center">
@@ -44,7 +44,7 @@ export const Skills: React.FC<SkillsProps> = ({ programming }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
