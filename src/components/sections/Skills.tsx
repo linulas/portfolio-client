@@ -10,7 +10,7 @@ export interface SkillsProps {
 }
 
 const renderList = (items: Page_strapi_portfolio_data_attributes_skills_data[]) => (
-  <ul className="p-0 w-56">
+  <ul className="p-0 m-0 w-56">
     {items.map((skill, index) => {
       const icon = skill.attributes?.icon?.data[0]?.attributes;
       return (
