@@ -46,9 +46,16 @@ export const VisibilitySensor: React.FC<VBSensorProps> = ({
 
 interface ImageProps extends UploadFile {
   className?: string;
+  onLoad?: React.ReactEventHandler<HTMLImageElement>;
 }
 
-export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, className }) => {
+export const Image: React.FC<ImageProps> = ({
+  url,
+  formats,
+  alternativeText,
+  className,
+  onLoad,
+}) => {
   const imageBaseUrl = 'http://localhost:1337';
   const small = `${imageBaseUrl}${formats ? formats.small.url : url}`;
   const [srcSet, setSrcSet] = useState('');
@@ -58,17 +65,18 @@ export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, cla
     let sizes = '';
     let srcSet = '';
 
-    formats && Object.keys(formats).map((key) => {
-      const breakpoint = getBreakPoint(key);
-      const width = formats[key].width;
-      if (srcSet.length > 0) {
-        srcSet += `, ${imageBaseUrl}${formats[key].url} ${breakpoint}w`;
-        sizes += `, (min-width: ${getEmSize(breakpoint)}em) ${width}px`;
-      } else {
-        srcSet = `${imageBaseUrl}${formats[key].url} ${200}w`;
-        sizes = `(min-width: ${getEmSize(breakpoint)}em) ${1200}px`;
-      }
-    });
+    formats &&
+      Object.keys(formats).map((key) => {
+        const breakpoint = getBreakPoint(key);
+        const width = formats[key].width;
+        if (srcSet.length > 0) {
+          srcSet += `, ${imageBaseUrl}${formats[key].url} ${breakpoint}w`;
+          sizes += `, (min-width: ${getEmSize(breakpoint)}em) ${width}px`;
+        } else {
+          srcSet = `${imageBaseUrl}${formats[key].url} ${200}w`;
+          sizes = `(min-width: ${getEmSize(breakpoint)}em) ${1200}px`;
+        }
+      });
 
     setSrcSet(srcSet);
     setSizes(sizes);
@@ -85,9 +93,10 @@ export const Image: React.FC<ImageProps> = ({ url, formats, alternativeText, cla
               sizes={sizes}
               srcSet={srcSet}
               className={className}
+              onLoad={onLoad}
             />
           ) : (
-            <img className={className} src={small} alt={alternativeText} />
+            <img className={className} src={small} alt={alternativeText} onLoad={onLoad} />
           )}
         </>
       )}
