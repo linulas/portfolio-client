@@ -81,6 +81,9 @@
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
   },
+  "engines": {
+    "node": ">=16.13.2"
+  },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
