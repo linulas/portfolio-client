@@ -5,31 +5,20 @@ import {
   Page_strapi_portfolio_data_attributes_projects_data_attributes,
   Page_strapi_portfolio_data_attributes_projects_data_attributes_image,
 } from '../../graphql/Page';
-import { useIntersection, useScrollDirection } from '../../helpers';
+import { useIntersection } from '../../helpers';
 import { Image, DividerHeading } from '../other';
-
-const calculateThresholdPercentage = (ref: any, winHeight: number, topThreshold: number) => {
-  const projectHeight: number = ref.current?.clientHeight || 0;
-  const pxThreshold = winHeight - topThreshold + 32;
-
-  if (pxThreshold <= 32) {
-    return 0;
-  }
-
-  const percentage = pxThreshold / projectHeight;
-
-  return percentage <= 1 ? percentage : 0.5;
-};
 
 export interface ProjectInterface
   extends Page_strapi_portfolio_data_attributes_projects_data_attributes {
+  id: number;
   imagePos: 'left' | 'right';
-  setImagePos: React.Dispatch<React.SetStateAction<'right' | 'left'>>;
-  setCurrentImage: (addOrSubtract?: number) => void;
+  currentProject: CurrentProject;
+  setCurrentProject: React.Dispatch<React.SetStateAction<CurrentProject>>;
   imageHeight: number;
-  first?: boolean;
   last?: boolean;
 }
+
+type CurrentProject = { isInView: boolean; id: number };
 
 export const projectText = 'Hi! I would like to participate in this project.';
 export const mailTo = (subject?: string, message?: string) => {
@@ -37,48 +26,56 @@ export const mailTo = (subject?: string, message?: string) => {
 };
 
 const Project: React.FC<ProjectInterface> = ({
+  id,
   title,
   description,
   link,
   image,
   imagePos,
-  setImagePos,
-  setCurrentImage,
+  currentProject,
+  setCurrentProject,
   imageHeight,
   last,
 }) => {
   const ref = useRef() as any;
-  const winHeight = window.innerHeight;
-  const topThreshold = 128 /** img position */ + imageHeight;
-  const threshold = calculateThresholdPercentage(ref, winHeight, topThreshold);
-  const isIntersecting = useIntersection(ref, threshold);
   const isInView = useIntersection(ref);
 
   useEffect(() => {
-    if (isIntersecting && ref.current?.offsetTop > 0) {
-      //console.log(`setting ${title} pos`);
-      setImagePos(imagePos);
-      setCurrentImage();
-    } else if (ref.current?.offsetTop > 0 && isInView) {
-      //console.log(`reverting ${title} pos`);
-      setImagePos(imagePos === 'left' ? 'right' : 'left');
-      setCurrentImage(1);
+    // console.log({ title, isInView, prevInViewState });
+
+    if (isInView && id + 1 === currentProject.id) {
+      // console.log('first condition, triggered by: ' + title);
+      setCurrentProject({ isInView, id });
     }
-  }, [isIntersecting]);
+
+    if (id - 1 === currentProject.id && !currentProject.isInView && isInView) {
+      // console.log('second condition, triggered by: ' + title);
+      setCurrentProject({ isInView, id });
+    }
+  }, [currentProject, isInView, id]);
+
+  useEffect(() => {
+    if (currentProject.id === id) {
+      setCurrentProject({ isInView, id });
+    }
+  }, [isInView]);
 
   return (
-    <div ref={ref} className={`flex ${imagePos === 'left' ? 'justify-end' : 'justify-start'}`}>
-      <div className="w-96" style={{ marginBottom: !last ? imageHeight : 0 + 64 }}>
-        {title && <h3>{title}</h3>}
-        <p>{description}</p>
-        {link && (
-          <p>
-            {`${image.data?.attributes?.caption} `}
-            <a href={link.url}>{link.text}</a>
-          </p>
-        )}
+    <>
+      <div ref={ref} className={`flex ${imagePos === 'left' ? 'justify-end' : 'justify-start'}`}>
+        <div className="w-96">
+          {title && <h3>{title}</h3>}
+          <p>{description}</p>
+          {link && (
+            <p>
+              {`${image.data?.attributes?.caption} `}
+              <a href={link.url}>{link.text}</a>
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+      <div style={{ marginBottom: !last ? imageHeight : 0 + 64 }} />
+    </>
   );
 };
 
@@ -89,12 +86,11 @@ export interface ProjectProps extends ComponentInterface {
 export const Projects: React.FC<ProjectProps> = ({ title, items }) => {
   const projectsRef = useRef() as any;
   const halfWidth = (projectsRef.current?.clientWidth || 1025) / 2;
-  const scrollDirection = useScrollDirection();
 
   const [images, setImages] = useState<
     Page_strapi_portfolio_data_attributes_projects_data_attributes_image[]
   >([]);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentProject, setCurrentProject] = useState<CurrentProject>({ isInView: true, id: 0 });
   const [projectsHeight, setProjectsHeight] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
   const [imagePos, setImagePos] = useState<'right' | 'left'>('right');
@@ -107,6 +103,10 @@ export const Projects: React.FC<ProjectProps> = ({ title, items }) => {
     });
     setImages(arr);
   }, []);
+
+  useEffect(() => {
+    setImagePos(currentProject.id % 2 === 0 ? 'right' : 'left');
+  }, [currentProject]);
 
   useEffect(() => {
     setX(halfWidth);
@@ -125,7 +125,7 @@ export const Projects: React.FC<ProjectProps> = ({ title, items }) => {
         {images.map((image, index) => (
           <motion.div
             key={index}
-            animate={{ opacity: currentImage === index ? 1 : 0 }}
+            animate={{ opacity: currentProject.id === index ? 1 : 0 }}
             className="relative"
           >
             <Image
@@ -142,21 +142,12 @@ export const Projects: React.FC<ProjectProps> = ({ title, items }) => {
             project.attributes && (
               <Project
                 key={`project-${index}`}
+                id={index}
                 {...project.attributes}
                 imagePos={index % 2 === 0 ? 'right' : 'left'}
-                setImagePos={setImagePos}
-                setCurrentImage={(addOrSubtract = 0) =>
-                  setCurrentImage(
-                    index +
-                      (scrollDirection
-                        ? scrollDirection === 'down'
-                          ? addOrSubtract
-                          : -addOrSubtract
-                        : 0)
-                  )
-                }
+                currentProject={currentProject}
+                setCurrentProject={setCurrentProject}
                 imageHeight={imageHeight}
-                first={index === 0}
                 last={index === items.length - 1}
               />
             )
