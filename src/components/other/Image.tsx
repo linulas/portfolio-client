@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import VSensor from 'react-visibility-sensor';
 import { getEmSize } from '../../helpers';
 import { breakpoints } from '../../styles/variables';
@@ -47,6 +47,7 @@ export const VisibilitySensor: React.FC<VBSensorProps> = ({
 interface ImageProps extends UploadFile {
   className?: string;
   onLoad?: React.ReactEventHandler<HTMLImageElement>;
+  style?: CSSProperties;
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -55,6 +56,7 @@ export const Image: React.FC<ImageProps> = ({
   alternativeText,
   className,
   onLoad,
+  style,
 }) => {
   const imageBaseUrl = 'http://localhost:1337';
   const small = `${imageBaseUrl}${formats ? formats.small.url : url}`;
@@ -94,9 +96,16 @@ export const Image: React.FC<ImageProps> = ({
               srcSet={srcSet}
               className={className}
               onLoad={onLoad}
+              style={style}
             />
           ) : (
-            <img className={className} src={small} alt={alternativeText} onLoad={onLoad} />
+            <img
+              className={className}
+              style={style}
+              src={small}
+              alt={alternativeText}
+              onLoad={onLoad}
+            />
           )}
         </>
       )}
