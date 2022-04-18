@@ -77,7 +77,7 @@ const Project: React.FC<ProjectInterface> = ({
           )}
         </div>
       </div>
-      <div style={{ marginBottom: !last ? imageHeight : 0 + 64 }} />
+      <div style={{ marginBottom: !last ? imageHeight + 192 : 0 + 64 }} />
     </>
   );
 };
