@@ -43,17 +43,20 @@ const Project: React.FC<ProjectInterface> = ({
   useEffect(() => {
     // console.log({ title, isInView, prevInViewState });
 
+    // ? if scrolling up and previous project comes into view
     if (isInView && id + 1 === currentProject.id) {
       // console.log('first condition, triggered by: ' + title);
       setCurrentProject({ isInView, id });
     }
 
+    // ? if scrolling down and previous project exits the view
     if (id - 1 === currentProject.id && !currentProject.isInView && isInView) {
       // console.log('second condition, triggered by: ' + title);
       setCurrentProject({ isInView, id });
     }
   }, [currentProject, isInView, id]);
 
+  // ? always update the current project isInView state
   useEffect(() => {
     if (currentProject.id === id) {
       setCurrentProject({ isInView, id });
