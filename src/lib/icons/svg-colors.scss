@@ -1,0 +1,33 @@
+@import '../../style/variables.scss';
+svg {
+	&.foreground {
+		fill: $clr-foreground;
+	}
+	&.cyan {
+		fill: $clr-cyan;
+	}
+	&.green {
+		fill: $clr-green;
+	}
+	&.orange {
+		fill: $clr-orange;
+	}
+	&.pink {
+		fill: $clr-pink;
+	}
+	&.purple {
+		fill: $clr-purple;
+	}
+	&.red {
+		fill: $clr-red;
+	}
+	&.yellow {
+		fill: $clr-yellow;
+	}
+	&.clickable {
+		transition: fill 0.2s linear;
+		&:hover {
+			fill: $clr-comment;
+		}
+	}
+}
