@@ -18,7 +18,7 @@
 		}
 
 		// ? when scrolling up 200px from breakpoint, set sticky
-		if (breakpoint - y > 200) {
+		if (breakpoint - y > 50) {
 			sticky = true;
 		}
 

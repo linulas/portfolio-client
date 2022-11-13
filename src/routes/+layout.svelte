@@ -69,10 +69,11 @@
 
 		h1 {
 			@include text-2xl;
-			margin: $m-2xl;
+			margin-top: 0;
+			margin-bottom: 1.25rem;
 			@media screen and (min-width: $media-sm) {
 				@include text-3xl;
-				margin: $m-3xl;
+				margin-bottom: 1.5rem;
 			}
 		}
 
@@ -104,14 +105,8 @@
 
 		.container {
 			width: calc(100% - 2rem);
-			max-width: 64rem;
+			max-width: $page-width;
 			margin: 0 auto;
 		}
-	}
-
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
 	}
 </style>
