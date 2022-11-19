@@ -95,10 +95,36 @@
 			}
 		}
 
+		h4 {
+			@include text-md;
+			margin: $m-md;
+			@media screen and (min-width: $media-sm) {
+				@include text-lg;
+				margin: $m-lg;
+			}
+		}
+
+		p {
+			@include text-base;
+			margin: $m-base;
+			@media screen and (min-width: $media-sm) {
+				@include text-md;
+				margin: $m-md;
+			}
+		}
 		.container {
 			width: calc(100% - 2rem);
 			max-width: $page-width;
 			margin: 0 auto;
+		}
+		.preamble {
+			@include text-md;
+
+			@media screen and (min-width: $media-sm) {
+				font-size: 1.25rem;
+				line-height: 1.813rem;
+				letter-spacing: -0.01em;
+			}
 		}
 	}
 </style>
