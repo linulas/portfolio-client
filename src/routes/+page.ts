@@ -12,29 +12,17 @@ const hero: Hero = {
 
 const about: About = {
 	title: 'About',
-	text: "Hi, my name is Linus and I'm a Developer based in Umeå Sweden and are currently working fullstack at Knowit. I'm open to some spare time meetings and coding, so if you have a project I can help with, or if you just wanna chat, feel free to contact me. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node JS and C#, while my frontend experience is mostly dominated by React/Typescript.<br><br>When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games.",
+	text: "Hi, my name is Linus and I'm a Developer based in Umeå Sweden and are currently working fullstack at Knowit. I'm open to some spare time meetings and coding, so if you have a project I can help with, or if you just wanna chat, feel free to contact me. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node JS and C#, while my frontend experience is mostly dominated by React/Typescript. When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games.",
 	skills: {
-		text: 'I have learned a lot about being a team player from all my time playing in bands, sports-teams, prior jobs and of course everyday at my work as a IT-consultant at Knowit. I can work with both traditional and agile system development methods, with scrum being my most familiar territory.',
+		text: 'I have learned a lot about being a team player from all my time playing in bands, sports-teams, prior jobs and of course everyday at my work as a IT-consultant at Knowit. I can work with both traditional and agile system development methods, with scrum being my most familiar territory. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien.',
 		items: [
-			{ text: 'Node', icon: { name: 'node', alt: 'Node logo' } },
-			{ text: 'React', icon: { name: 'react', alt: 'React logo' } },
-			{
-				text: 'Typescript',
-				icon: { name: 'typescript', alt: 'typescript logo' }
-			},
-			{
-				text: 'Mongo',
-				icon: { name: 'mongodb', alt: 'Mongo database' }
-			},
-			{ text: 'Java', icon: { name: 'java', alt: 'Java logo' } },
-			{ text: 'Vue', icon: { name: 'vue', alt: 'vue logo' } },
-			{
-				text: 'ASP.NET',
-				icon: { name: 'asp_net', alt: 'Asp.net logo' }
-			},
-			{ text: 'SQL', icon: { name: 'sql_icon', alt: 'SQL logo' } },
-			{ text: 'Linux', icon: { name: 'linux', alt: 'Linux logo' } },
-			{ text: 'Bash', icon: { name: 'bash', alt: 'Bash logo' } }
+			{ text: 'Go', icon: { name: 'go', alt: '' } },
+			{ text: 'Node', icon: { name: 'node', alt: '' } },
+			{ text: 'React', icon: { name: 'react', alt: '' } },
+			{ text: 'Typescript', icon: { name: 'typescript', alt: '' } },
+			// { text: 'Mongo', icon: { name: 'mongodb', alt: '' } },
+			{ text: 'Devops', icon: { name: 'devops', alt: '' } },
+			{ text: 'C#', icon: { name: 'c#', alt: '' } }
 		]
 	}
 };
