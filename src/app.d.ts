@@ -10,8 +10,18 @@ declare namespace svelte.JSX {
 	}
 }
 
-type Skill = { text: string; icon: Image };
-type ValidIcon = 'github';
+type Skill = { text: string; icon: Icon };
+type ValidIcon =
+	| 'github'
+	| 'go'
+	| 'node'
+	| 'react'
+	| 'typescript'
+	| 'devops'
+	| 'c#'
+	| 'telegram'
+	| 'email'
+	| 'linkedin';
 type ValidColor = keyof ColorPalette;
 type ValidIconColor =
 	| 'foreground'
@@ -52,12 +62,15 @@ interface MediaInfo {
 }
 
 interface Image extends MediaInfo {}
+interface Icon extends MediaInfo {
+	name: ValidIcon;
+}
 
 type Reference = {
 	link: string;
 	text?: string;
 	linkText?: string;
-	icon?: Image;
+	icon?: Icon;
 };
 
 interface Project {

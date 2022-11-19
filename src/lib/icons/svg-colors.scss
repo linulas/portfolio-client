@@ -1,5 +1,8 @@
 @import '../../style/variables.scss';
 svg {
+	&.none {
+		fill: none;
+	}
 	&.foreground {
 		fill: $clr-foreground;
 	}
@@ -55,7 +58,7 @@ svg {
 	}
 	&.hvr-pink {
 		&:hover {
-			fill: $clr-purple;
+			fill: $clr-pink;
 		}
 	}
 	&.hvr-purple {
@@ -65,12 +68,12 @@ svg {
 	}
 	&.hvr-red {
 		&:hover {
-			fill: $clr-purple;
+			fill: $clr-red;
 		}
 	}
 	&.hvr-yellow {
 		&:hover {
-			fill: $clr-purple;
+			fill: $clr-yellow;
 		}
 	}
 }
