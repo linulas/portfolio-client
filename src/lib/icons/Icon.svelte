@@ -3,8 +3,9 @@
 	export let name: ValidIcon;
 	export let color: ValidIconColor = 'foreground';
 	export let clickable = false;
+	export let hoverColor: ValidColor = 'purple';
 </script>
 
 {#if name === 'github'}
-	<Github {color} {clickable} />
+	<Github {color} {clickable} {hoverColor} />
 {/if}

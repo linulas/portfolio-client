@@ -26,8 +26,51 @@ svg {
 	}
 	&.clickable {
 		transition: fill 0.2s linear;
+		cursor: pointer;
+	}
+	&.hvr-bg-0 {
 		&:hover {
-			fill: $clr-comment;
+			fill: $clr-bg-0;
+		}
+	}
+	&.hvr-foreground {
+		&:hover {
+			fill: $clr-foreground;
+		}
+	}
+	&.hvr-cyan {
+		&:hover {
+			fill: $clr-cyan;
+		}
+	}
+	&.hvr-green {
+		&:hover {
+			fill: $clr-green;
+		}
+	}
+	&.hvr-orange {
+		&:hover {
+			fill: $clr-orange;
+		}
+	}
+	&.hvr-pink {
+		&:hover {
+			fill: $clr-purple;
+		}
+	}
+	&.hvr-purple {
+		&:hover {
+			fill: $clr-purple;
+		}
+	}
+	&.hvr-red {
+		&:hover {
+			fill: $clr-purple;
+		}
+	}
+	&.hvr-yellow {
+		&:hover {
+			fill: $clr-purple;
 		}
 	}
 }

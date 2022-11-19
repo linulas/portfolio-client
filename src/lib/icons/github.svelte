@@ -1,10 +1,11 @@
 <script lang="ts">
 	export let color: ValidColor;
 	export let clickable = false;
+	export let hoverColor: ValidColor = 'purple';
 </script>
 
 <svg
-	class={`${color}${clickable ? ' clickable' : ''}`}
+	class={`${color}${clickable ? ` clickable hvr-${hoverColor}` : ''}`}
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="-3 -3 30 30"
 >

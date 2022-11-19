@@ -95,14 +95,6 @@
 			}
 		}
 
-		svg {
-			&.clickable {
-				&:hover {
-					fill: $clr-bg-2 !important;
-				}
-			}
-		}
-
 		.container {
 			width: calc(100% - 2rem);
 			max-width: $page-width;
