@@ -154,7 +154,7 @@
 		transition: color 0.2s linear;
 
 		&:hover {
-			background: $clr-bg-1;
+			background: $clr-purple;
 		}
 
 		@media screen and (min-width: $media-sm) {
