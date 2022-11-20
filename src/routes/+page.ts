@@ -29,7 +29,7 @@ const about: About = {
 
 const projects: Projects = {
 	title: 'Projects',
-	text: 'Lorem ipsum',
+	text: '						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien.',
 	items: [
 		{
 			title: 'DIGG',
@@ -40,8 +40,13 @@ const projects: Projects = {
 			text: "As of october 2019 until current date, I've been developing and maintaining digg.se, working with both backend and frontend. This project introduced me to episerver, typescript and graphql. Mainly I got to work with React, which by now is one of my strongest programming skills",
 			reference: {
 				text: 'You can view the site at',
-				link: 'https://digg.se',
-				linkText: 'digg.se'
+				links: [
+					{
+						href: 'https://digg.se',
+						text: 'digg.se',
+						type: 'external'
+					}
+				]
 			}
 		},
 		{
@@ -53,8 +58,13 @@ const projects: Projects = {
 			text: "A headless architechture is what the future calls for, and that's something I've learned more about when working with dataportalen. On top of that i got to futhtermore hone my skills in React, Apollo and GraphQL.",
 			reference: {
 				text: 'You can view the site at',
-				link: 'https://www.dataportal.se',
-				linkText: 'dataportalen.se'
+				links: [
+					{
+						href: 'https://www.dataportal.se',
+						text: 'dataportalen.se',
+						type: 'external'
+					}
+				]
 			}
 		},
 		{
@@ -66,8 +76,13 @@ const projects: Projects = {
 			text: "I was managing a gaming server with my friend, and that calls for some serious backups. \nYou don't want to loose all that hard work of your gaming progress by the cause of your own server crashing or becoming corrupted, so i frequently backed it up it. Manually. Even in gaming sessions. That's an interuption you don't want and it's quite tedious having to remeber to drag and drop folders everyday, so I thought, \"I should make a script for that!\". So I made a bash script that now has become my standard script for automating server or log backups.  ",
 			reference: {
 				text: 'View the source code at my',
-				link: 'https://github.com/linulas/back-me-up',
-				linkText: 'Github'
+				links: [
+					{
+						href: 'https://github.com/linulas/back-me-up',
+						text: 'Github',
+						type: 'external'
+					}
+				]
 			}
 		}
 	]
@@ -78,18 +93,33 @@ const contact: Contact = {
 	text: "I'm currently unavailable for fulltime work, but I would be interessted in teaming up for pesonal/freelance projects, so if you are interessted in working with me, feel free to use any of the options below to contact me. Or if you just want to chat. I'd like that too. Don't forget to follow me on social media to stay up to date. Also, I'd be glad if you would be interested in colaborating with me on personal my projects, two heads are better than one. Looking forward to hearing from you!",
 	references: [
 		{
-			linkText: 'Telegram',
-			link: 'https://t.me/linulas',
+			links: [
+				{
+					text: 'Telegram',
+					href: 'https://t.me/linulas',
+					type: 'external'
+				}
+			],
 			icon: { name: 'telegram', alt: 'telegram icon' }
 		},
 		{
-			linkText: 'Email',
-			link: 'mailto:contact@linusbrannstrom.dev',
+			links: [
+				{
+					text: 'Email',
+					href: 'mailto:contact@linusbrannstrom.dev',
+					type: 'external'
+				}
+			],
 			icon: { name: 'email', alt: 'email icon' }
 		},
 		{
-			linkText: 'LinkedIn',
-			link: 'https://www.linkedin.com/in/linusbrannstrom/',
+			links: [
+				{
+					text: 'LinkedIn',
+					href: 'https://www.linkedin.com/in/linusbrannstrom/',
+					type: 'external'
+				}
+			],
 			icon: { name: 'linkedin', alt: 'linkedin icon' }
 		}
 	]

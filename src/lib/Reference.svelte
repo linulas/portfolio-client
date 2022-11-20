@@ -1,20 +1,32 @@
 <script lang="ts">
+	import Icon from './icons/Icon.svelte';
 	export let reference: Reference;
-	const { link, linkText, icon } = reference;
+	const { links, icon, text } = reference;
 </script>
 
 <div class="reference">
-	<a href={link}>{linkText || link}</a>
-	{#if icon}
-		<span>{icon.name}</span>
+	{#if text}
+		<p>{text}</p>
 	{/if}
+	{#each links as link}
+		<div class="link">
+			<a href={link.href}>{link.text || link.href}</a>
+			{#if !icon && link.type === 'external'}
+				<Icon name="external" size={24} />
+			{/if}
+			{#if icon}
+				<span>{icon.name}</span>
+			{/if}
+		</div>
+	{/each}
 </div>
 
 <style lang="scss">
-	.reference {
+	.link {
 		display: flex;
-		a {
-			padding: 0.5rem;
-		}
+		align-items: center;
+	}
+	a {
+		margin-right: 0.25rem;
 	}
 </style>

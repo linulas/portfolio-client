@@ -12,16 +12,17 @@ declare namespace svelte.JSX {
 
 type Skill = { text: string; icon: Icon };
 type ValidIcon =
+	| 'c#'
+	| 'devops'
+	| 'email'
+	| 'external'
 	| 'github'
 	| 'go'
+	| 'linkedin'
 	| 'node'
 	| 'react'
-	| 'typescript'
-	| 'devops'
-	| 'c#'
 	| 'telegram'
-	| 'email'
-	| 'linkedin';
+	| 'typescript';
 type ValidColor = keyof ColorPalette;
 type ValidIconColor =
 	| 'foreground'
@@ -32,6 +33,8 @@ type ValidIconColor =
 	| 'purple'
 	| 'red'
 	| 'yellow';
+
+type LinkType = 'internal' | 'external' | 'mail';
 
 interface DraculaColorPalette {
 	background: string;
@@ -66,10 +69,15 @@ interface Icon extends MediaInfo {
 	name: ValidIcon;
 }
 
-type Reference = {
-	link: string;
+interface Link {
+	href: string;
 	text?: string;
-	linkText?: string;
+	type: LinkType;
+}
+
+type Reference = {
+	links: Link[];
+	text?: string;
 	icon?: Icon;
 };
 
