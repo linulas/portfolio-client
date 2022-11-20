@@ -55,6 +55,9 @@
 		align-items: center;
 		flex: 0.6;
 	}
+	h2 {
+		text-align: center;
+	}
 	.skills {
 		> p {
 			margin-bottom: 3rem;

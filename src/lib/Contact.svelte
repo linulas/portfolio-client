@@ -26,4 +26,7 @@
 		align-items: center;
 		flex: 0.6;
 	}
+	h2 {
+		text-align: center;
+	}
 </style>
