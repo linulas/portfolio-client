@@ -40,6 +40,7 @@
 <style lang="scss">
 	:global {
 		@import '@fontsource/fira-mono';
+		@import '../lib/icons/svg-mixins.scss';
 		:root {
 			font-family: $font-body;
 			color: $clr-text;
@@ -48,6 +49,76 @@
 			@include text-sm;
 			@media screen and (min-width: $media-sm) {
 				@include text-base;
+			}
+
+			.size-xs {
+				@include size-xs;
+			}
+			.size-sm {
+				@include size-sm;
+			}
+			.size-md {
+				@include size-md;
+			}
+			.size-lg {
+				@include size-lg;
+			}
+			.size-xl {
+				@include size-xl;
+			}
+			.lds-ripple {
+				display: inline-block;
+				position: relative;
+				width: var(--size);
+				height: var(--size);
+
+				div {
+					position: absolute;
+					border: 4px solid #fff;
+					opacity: 1;
+					border-radius: 50%;
+					animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+					&:nth-child(2) {
+						animation-delay: -0.5s;
+					}
+				}
+
+				@keyframes lds-ripple {
+					0% {
+						top: var(--keyPos);
+						top: var(--keyPos);
+						left: var(--keyPos);
+						left: var(--keyPos);
+						width: 0;
+						height: 0;
+						opacity: 0;
+					}
+					4.9% {
+						top: var(--keyPos);
+						top: var(--keyPos);
+						left: var(--keyPos);
+						left: var(--keyPos);
+						width: 0;
+						height: 0;
+						opacity: 0;
+					}
+					5% {
+						top: var(--keyPos);
+						top: var(--keyPos);
+						left: var(--keyPos);
+						left: var(--keyPos);
+						width: 0;
+						height: 0;
+						opacity: 1;
+					}
+					100% {
+						top: 0px;
+						left: 0px;
+						width: var(--keySize);
+						height: var(--keySize);
+						opacity: 0;
+					}
+				}
 			}
 		}
 

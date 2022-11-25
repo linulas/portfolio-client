@@ -76,7 +76,7 @@
 
 		<div class="corner">
 			<a href="https://github.com/linulas">
-				<Icon name="github" clickable />
+				<Icon name="github" clickable size="md" />
 			</a>
 		</div>
 	</div>

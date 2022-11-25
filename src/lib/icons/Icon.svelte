@@ -1,64 +1,94 @@
+<script lang="ts" context="module">
+	export type ValidIconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+</script>
+
 <script lang="ts">
-	import Csharp from './csharp.svelte';
-	import Devops from './devops.svelte';
-	import External from './external.svelte';
-	import Github from './github.svelte';
-	import Go from './go.svelte';
-	import Node from './node.svelte';
-	import React from './react.svelte';
-	import Typescript from './typescript.svelte';
+	import Loader from '$lib/Loader.svelte';
+	import { onMount } from 'svelte';
 
 	// props
 	export let name: ValidIcon;
 	export let color: ValidIconColor = 'foreground';
 	export let clickable = false;
 	export let hoverColor: ValidColor = 'purple';
-	export let size = 64;
+	export let size: ValidIconSize = 'lg';
 
 	// state
 	let viewBox: string | undefined = undefined;
+	let Icon: any;
+
+	onMount(async () => {
+		if (name === 'c#') {
+			Icon = (await import('./csharp.svelte')).default;
+			viewBox = '0 0 15 15';
+		} else if (name === 'devops') {
+			Icon = (await import('./devops.svelte')).default;
+			viewBox = '0 0 32 32';
+		} else if (name === 'external') {
+			Icon = (await import('./external.svelte')).default;
+			viewBox = '0 0 64 64';
+		} else if (name === 'github') {
+			Icon = (await import('./github.svelte')).default;
+			viewBox = '-3 -3 30 30';
+		} else if (name === 'go') {
+			Icon = (await import('./go.svelte')).default;
+			viewBox = '16.8 16.1 72.9 27.6';
+		} else if (name === 'node') {
+			Icon = (await import('./node.svelte')).default;
+			viewBox = '0 0 32 32';
+		} else if (name === 'react') {
+			Icon = (await import('./react.svelte')).default;
+			viewBox = '0 0 32 32';
+		} else if (name === 'typescript') {
+			Icon = (await import('./typescript.svelte')).default;
+			viewBox = '0 0 64 64';
+		}
+	});
 </script>
 
-<svg
-	width={size}
-	height={size}
-	class={`${name != 'c#' ? color : 'none'}${clickable ? ` clickable hvr-${hoverColor}` : ''}`}
-	{viewBox}
->
-	{#if name === 'c#'}
-		{(viewBox = '0 0 15 15')}
-		<Csharp stroke={color} />
+<span class={size}>
+	{#if !Icon}
+		<Loader {size} />
 	{/if}
-	{#if name === 'devops'}
-		{(viewBox = '0 0 32 32')}
-		<Devops />
+	{#if Icon}
+		<svg
+			class={`${size} ${name != 'c#' ? color : 'none'}${
+				clickable ? ` clickable hvr-${hoverColor}` : ''
+			}`}
+			{viewBox}
+		>
+			<Icon stroke={color} />
+		</svg>
 	{/if}
-	{#if name === 'external'}
-		{(viewBox = '0 0 64 64')}
-		<External />
-	{/if}
-	{#if name === 'github'}
-		{(viewBox = '-3 -3 30 30')}
-		<Github />
-	{/if}
-	{#if name === 'go'}
-		{(viewBox = '16.8 16.1 72.9 27.6')}
-		<Go />
-	{/if}
-	{#if name === 'node'}
-		{(viewBox = '0 0 32 32')}
-		<Node />
-	{/if}
-	{#if name === 'react'}
-		{(viewBox = '0 0 32 32')}
-		<React stroke={color} />
-	{/if}
-	{#if name === 'typescript'}
-		{(viewBox = '0 0 64 64')}
-		<Typescript />
-	{/if}
-</svg>
+</span>
 
 <style lang="scss">
 	@import './svg-colors.scss';
+	@import './svg-mixins.scss';
+
+	.xs {
+		@include size-xs;
+	}
+	.sm {
+		@include size-sm;
+	}
+	.md {
+		@include size-md;
+	}
+	.lg {
+		@include size-lg;
+	}
+	.xl {
+		@include size-xl;
+	}
+
+	span {
+		height: var(--size);
+		width: var(--size);
+	}
+
+	svg {
+		height: var(--size);
+		width: var(--size);
+	}
 </style>

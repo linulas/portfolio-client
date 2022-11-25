@@ -2,11 +2,9 @@
 	import About from '$lib/About.svelte';
 	import Projects from '$lib/Projects.svelte';
 	import Contact from '$lib/Contact.svelte';
-	import banner from '$lib/images/banner.webp';
-	import banner_fallback from '$lib/images/banner.jpg';
+	import banner from '$lib/__generated__/img/banner';
 	import type { PageData } from './$types';
-	import portrait from '$lib/images/portrait.webp';
-	import portrait_fallback from '$lib/images/portrait.jpg';
+	import portrait from '$lib/__generated__/img/portrait';
 	import ButtonLink from '$lib/button/ButtonLink.svelte';
 
 	export let data: PageData;
@@ -15,8 +13,13 @@
 
 <div class="banner">
 	<picture class="bg">
-		<source srcset={banner} type="image/webp" />
-		<img src={banner_fallback} alt="Welcome" />
+		{#each banner.sources as source}
+			{#if source.type === 'image/webp'}
+				<source srcset={source.srcset} type={source.type} />
+			{:else}
+				<img srcset={source.srcset} alt="" />
+			{/if}
+		{/each}
 	</picture>
 
 	<div class="greeting container">
@@ -28,8 +31,13 @@
 			</span>
 		</div>
 		<picture class="linus">
-			<source srcset={portrait} type="image/webp" />
-			<img src={portrait_fallback} alt="" />
+			{#each portrait.sources as source}
+				{#if source.type === 'image/webp'}
+					<source srcset={source.srcset} type={source.type} />
+				{:else}
+					<img srcset={source.srcset} alt="" />
+				{/if}
+			{/each}
 		</picture>
 	</div>
 </div>

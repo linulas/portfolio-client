@@ -12,7 +12,7 @@
 		<div class="link">
 			<a href={link.href}>{link.text || link.href}</a>
 			{#if !icon && link.type === 'external'}
-				<Icon name="external" size={24} />
+				<Icon name="external" size="xs" />
 			{/if}
 			{#if icon}
 				<span>{icon.name}</span>

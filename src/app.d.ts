@@ -64,7 +64,9 @@ interface MediaInfo {
 	alt?: string;
 }
 
-interface Image extends MediaInfo {}
+interface Image extends MediaInfo {
+	name: ValidImage;
+}
 interface Icon extends MediaInfo {
 	name: ValidIcon;
 }
@@ -80,13 +82,6 @@ type Reference = {
 	text?: string;
 	icon?: Icon;
 };
-
-interface Project {
-	title: string;
-	text: string;
-	image: Image;
-	reference?: Reference;
-}
 
 interface Hero {
 	title: string;

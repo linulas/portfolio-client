@@ -2,6 +2,7 @@
 // it so that it gets served as a static asset in production
 export const prerender = true;
 
+/** @ts-ignore */
 import type { PageLoad } from './$types';
 
 const hero: Hero = {
@@ -32,28 +33,10 @@ const projects: Projects = {
 	text: '						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien.',
 	items: [
 		{
-			title: 'DIGG',
-			image: {
-				name: 'digg',
-				alt: 'a image preview of the project'
-			},
-			text: "As of october 2019 until current date, I've been developing and maintaining digg.se, working with both backend and frontend. This project introduced me to episerver, typescript and graphql. Mainly I got to work with React, which by now is one of my strongest programming skills",
-			reference: {
-				text: 'You can view the site at',
-				links: [
-					{
-						href: 'https://digg.se',
-						text: 'digg.se',
-						type: 'external'
-					}
-				]
-			}
-		},
-		{
 			title: 'Dataportalen',
 			image: {
-				name: 'dataportalen',
-				alt: 'dataportalen'
+				name: 'dataportal',
+				alt: ''
 			},
 			text: "A headless architechture is what the future calls for, and that's something I've learned more about when working with dataportalen. On top of that i got to futhtermore hone my skills in React, Apollo and GraphQL.",
 			reference: {
@@ -62,6 +45,24 @@ const projects: Projects = {
 					{
 						href: 'https://www.dataportal.se',
 						text: 'dataportalen.se',
+						type: 'external'
+					}
+				]
+			}
+		},
+		{
+			title: 'Kvix',
+			image: {
+				name: 'kvix',
+				alt: ''
+			},
+			text: "As of october 2019 until current date, I've been developing and maintaining digg.se, working with both backend and frontend. This project introduced me to episerver, typescript and graphql. Mainly I got to work with React, which by now is one of my strongest programming skills",
+			reference: {
+				text: 'You can view the site at',
+				links: [
+					{
+						href: 'https://digg.se',
+						text: 'digg.se',
 						type: 'external'
 					}
 				]

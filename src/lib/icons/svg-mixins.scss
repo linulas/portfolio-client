@@ -1,0 +1,45 @@
+@mixin size-xs {
+	--size: 24px;
+	--keyPos: 10.4px;
+	--keySize: 21.6px;
+}
+@mixin size-sm {
+	--size: 24px;
+	--keyPos: 10.4px;
+	--keySize: 21.6px;
+	@media screen and (min-width: $media-sm) {
+		--size: 32px;
+		--keyPos: 14.4px;
+		--keySize: 28.8px;
+	}
+}
+@mixin size-md {
+	--size: 32px;
+	--keyPos: 14.4px;
+	--keySize: 28.8px;
+	@media screen and (min-width: $media-sm) {
+		--size: 40px;
+		--keyPos: 18px;
+		--keySize: 36px;
+	}
+}
+@mixin size-lg {
+	--size: 40px;
+	--keyPos: 18px;
+	--keySize: 36px;
+	@media screen and (min-width: $media-sm) {
+		--size: 64px;
+		--keyPos: 27px;
+		--keySize: 54px;
+	}
+}
+@mixin size-xl {
+	--size: 64px;
+	--keyPos: 28.8px;
+	--keySize: 57.6px;
+	@media screen and (min-width: $media-sm) {
+		--size: 88px;
+		--keyPos: 39.6px;
+		--keySize: 79.2px;
+	}
+}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { sections } from './helpers/store';
 	import viewport from './helpers/viewport';
+	import Image from './Image.svelte';
 	import Reference from './Reference.svelte';
 
 	export let projects: Projects;
@@ -30,9 +31,9 @@
 					{project.text}
 				</p>
 				<div class="reference">
-					<span>
-						{project.image.name}
-					</span>
+					<div class="image">
+						<Image name={project.image.name} />
+					</div>
 					{#if project.reference}
 						<span>
 							<Reference reference={project.reference} />
@@ -57,6 +58,12 @@
 		width: 100%;
 		h2 {
 			text-align: center;
+		}
+	}
+
+	.reference {
+		.image {
+			width: 50%;
 		}
 	}
 </style>

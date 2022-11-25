@@ -31,7 +31,7 @@
 				{#each skills.items as skill}
 					<div class="item">
 						<span class="title">
-							<Icon name={skill.icon.name} color="cyan" />
+							<Icon name={skill.icon.name} color="cyan" size="md" />
 							<h4>
 								{skill.text}
 							</h4>
@@ -70,9 +70,6 @@
 			background: $clr-bg-0;
 		}
 		.item {
-			/* @include box;
-			padding: 1rem; */
-			/* background: $clr-bg-0; */
 			h4 {
 				color: $clr-skill;
 				margin: 0;
