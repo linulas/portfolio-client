@@ -65,10 +65,11 @@
 		align-items: center;
 
 		.bg {
+			width: 175vw;
 			position: absolute;
 			-webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
 			filter: blur(8px);
-			transform: scale(1.1);
+			transform: scale(1.1) rotate(90deg);
 		}
 
 		.greeting {
@@ -113,6 +114,11 @@
 		.banner {
 			height: 400px;
 			justify-content: flex-start;
+
+			.bg {
+				transform: scale(1.1);
+				width: 100vw;
+			}
 			.greeting {
 				flex-direction: row-reverse;
 				align-items: flex-start;
