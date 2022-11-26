@@ -1,12 +1,18 @@
-import meta from '$lib/images/kvix.png?width=672&metadata';
-import srcsetwebp from '$lib/images/kvix.png?w=1263;672&webp&srcset';
-import srcsetauto from '$lib/images/kvix.png?w=1263;672&png&srcset';
+import meta from '$lib/images/kvix.png?width=1263&metadata';
+import srcsetwebp from '$lib/images/kvix.png?w=1263;768;672;384&webp&srcset';
+import srcsetauto from '$lib/images/kvix.png?w=1263;768;672;384&png&srcset';
+import small from '$lib/images/kvix.png?width=384';
+import medium from '$lib/images/kvix.png?width=672';
+import large from '$lib/images/kvix.png?width=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'kvix.png',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/png' },

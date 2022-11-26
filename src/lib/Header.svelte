@@ -75,7 +75,7 @@
 		</nav>
 
 		<div class="corner">
-			<a href="https://github.com/linulas">
+			<a href="https://github.com/linulas" aria-label="Linulas github">
 				<Icon name="github" clickable size="md" />
 			</a>
 		</div>

@@ -10,7 +10,7 @@ import {
 
 const __dirname = path.resolve();
 const formats = ['webp', 'auto'];
-const sizes = [672];
+const sizes = [384, 672, 1440];
 const densities = [1.0, 2.0];
 const maxWidth = sizes[sizes.length - 1];
 
@@ -20,6 +20,9 @@ sizes.forEach((sizesElement) => {
 	densities.forEach((densitiesElement) => outputSizes.push(densitiesElement * sizesElement));
 });
 outputSizes.sort((a, b) => b - a);
+const smallImageSize = sizes[0];
+const mediumImageSize = sizes[1];
+const largeImageSize = sizes[2];
 
 async function generateImageMeta(source, slug) {
 	const metaPromises = [metadata(source), dominantColour(source), lowResolutionPlaceholder(source)];
@@ -71,12 +74,18 @@ const main = async () => {
 				.join('\n')}\n  ]`;
 			const result = `import meta from '${source}?width=${Math.min(maxWidth, width)}&metadata';
 ${srcsetImportArray.join('\n')}
+import small from '${source}?width=${smallImageSize}';
+import medium from '${source}?width=${mediumImageSize}';
+import large from '${source}?width=${largeImageSize}';
 const { height, src, width } = meta;
 const data = {
   slug: '${slug}',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: ${sources},
   dominantColour: '${dominantColour}',
   placeholder:

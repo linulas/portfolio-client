@@ -1,12 +1,18 @@
-import meta from '$lib/images/banner.jpg?width=672&metadata';
-import srcsetwebp from '$lib/images/banner.jpg?w=1344;672&webp&srcset';
-import srcsetauto from '$lib/images/banner.jpg?w=1344;672&jpeg&srcset';
+import meta from '$lib/images/banner.jpg?width=1440&metadata';
+import srcsetwebp from '$lib/images/banner.jpg?w=2880;1440;1344;768;672;384&webp&srcset';
+import srcsetauto from '$lib/images/banner.jpg?w=2880;1440;1344;768;672;384&jpeg&srcset';
+import small from '$lib/images/banner.jpg?width=384';
+import medium from '$lib/images/banner.jpg?width=672';
+import large from '$lib/images/banner.jpg?width=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'banner.jpg',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/jpeg' },

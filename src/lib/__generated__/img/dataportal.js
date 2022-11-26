@@ -1,12 +1,18 @@
-import meta from '$lib/images/dataportal.png?width=672&metadata';
-import srcsetwebp from '$lib/images/dataportal.png?w=1270;672&webp&srcset';
-import srcsetauto from '$lib/images/dataportal.png?w=1270;672&png&srcset';
+import meta from '$lib/images/dataportal.png?width=1270&metadata';
+import srcsetwebp from '$lib/images/dataportal.png?w=1270;768;672;384&webp&srcset';
+import srcsetauto from '$lib/images/dataportal.png?w=1270;768;672;384&png&srcset';
+import small from '$lib/images/dataportal.png?width=384';
+import medium from '$lib/images/dataportal.png?width=672';
+import large from '$lib/images/dataportal.png?width=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'dataportal.png',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/png' },

@@ -1,12 +1,18 @@
-import meta from '$lib/images/coding.jpg?width=672&metadata';
-import srcsetwebp from '$lib/images/coding.jpg?w=1344;672&webp&srcset';
-import srcsetauto from '$lib/images/coding.jpg?w=1344;672&jpeg&srcset';
+import meta from '$lib/images/coding.jpg?width=1440&metadata';
+import srcsetwebp from '$lib/images/coding.jpg?w=1915;1440;1344;768;672;384&webp&srcset';
+import srcsetauto from '$lib/images/coding.jpg?w=1915;1440;1344;768;672;384&jpeg&srcset';
+import small from '$lib/images/coding.jpg?width=384';
+import medium from '$lib/images/coding.jpg?width=672';
+import large from '$lib/images/coding.jpg?width=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'coding.jpg',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/jpeg' },

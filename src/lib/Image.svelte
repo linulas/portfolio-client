@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Loader from './Loader.svelte';
 
 	export let name: ValidImage = 'dataportal';
+	export let box = false;
+	export let sizes = '';
+	export let alt = '';
 	let img: any;
 
 	onMount(async () => {
@@ -13,21 +15,22 @@
 {#if img !== undefined}
 	<picture>
 		{#each img.sources as source}
-			{#if source.type === 'image/webp'}
-				<source srcset={source.srcset} type={source.type} alt="" />
-			{:else}
-				<img src={source.srcset} alt="" />
-			{/if}
+			<source srcset={source.srcset} {sizes} type={source.type} />
 		{/each}
+		<img src={img.small} width={img.width} height={img.height} {alt} class:box />
 	</picture>
 {/if}
 
 {#if !img}
-	<Loader />
+	<slot name="fallback" class={box ? 'box' : ''} />
 {/if}
 
-<style>
+<style lang="scss">
+	.box {
+		@include box;
+	}
 	img {
 		width: 100%;
+		height: auto;
 	}
 </style>

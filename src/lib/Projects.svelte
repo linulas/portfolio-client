@@ -31,8 +31,10 @@
 					{project.text}
 				</p>
 				<div class="reference">
-					<div class="image">
-						<Image name={project.image.name} />
+					<div class="image_wrapper">
+						<span>
+							<Image name={project.image.name} sizes="50vw" />
+						</span>
 					</div>
 					{#if project.reference}
 						<span>
@@ -62,8 +64,15 @@
 	}
 
 	.reference {
-		.image {
+		.image_wrapper {
 			width: 50%;
+			aspect-ratio: 16 / 9;
+			position: relative;
+			overflow: hidden;
+
+			span {
+				position: absolute;
+			}
 		}
 	}
 </style>

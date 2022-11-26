@@ -1,12 +1,18 @@
-import meta from '$lib/images/avatar.jpg?width=672&metadata';
-import srcsetwebp from '$lib/images/avatar.jpg?w=1080;672&webp&srcset';
-import srcsetauto from '$lib/images/avatar.jpg?w=1080;672&jpeg&srcset';
+import meta from '$lib/images/avatar.jpg?width=1080&metadata';
+import srcsetwebp from '$lib/images/avatar.jpg?w=1080;768;672;384&webp&srcset';
+import srcsetauto from '$lib/images/avatar.jpg?w=1080;768;672;384&jpeg&srcset';
+import small from '$lib/images/avatar.jpg?width=384';
+import medium from '$lib/images/avatar.jpg?width=672';
+import large from '$lib/images/avatar.jpg?width=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'avatar.jpg',
   width,
   height,
   src,
+  small,
+  medium,
+  large,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/jpeg' },

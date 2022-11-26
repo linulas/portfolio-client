@@ -6,21 +6,25 @@
 	import type { PageData } from './$types';
 	import portrait from '$lib/__generated__/img/portrait';
 	import ButtonLink from '$lib/button/ButtonLink.svelte';
+	import Image from '$lib/Image.svelte';
 
 	export let data: PageData;
 	const { about, projects, contact } = data;
 </script>
 
 <div class="banner">
-	<picture class="bg">
-		{#each banner.sources as source}
-			{#if source.type === 'image/webp'}
-				<source srcset={source.srcset} type={source.type} />
-			{:else}
-				<img srcset={source.srcset} alt="" />
-			{/if}
-		{/each}
-	</picture>
+	<div class="bg">
+		<Image name="banner" sizes="100vw">
+			<img
+				slot="fallback"
+				width={banner.width}
+				height={banner.height}
+				sizes="100vw"
+				src={banner.placeholder}
+				alt=""
+			/>
+		</Image>
+	</div>
 
 	<div class="greeting container">
 		<div class="text">
@@ -30,15 +34,11 @@
 				<ButtonLink href="#contact">Contact</ButtonLink>
 			</span>
 		</div>
-		<picture class="linus">
-			{#each portrait.sources as source}
-				{#if source.type === 'image/webp'}
-					<source srcset={source.srcset} type={source.type} />
-				{:else}
-					<img srcset={source.srcset} alt="" />
-				{/if}
-			{/each}
-		</picture>
+		<div class="linus">
+			<Image name="portrait" sizes="192px" box>
+				<img slot="fallback" class="fallback" sizes="192px" src={portrait.placeholder} alt="" />
+			</Image>
+		</div>
 	</div>
 </div>
 
@@ -69,9 +69,6 @@
 			-webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
 			filter: blur(8px);
 			transform: scale(1.1);
-			img {
-				width: 210%;
-			}
 		}
 
 		.greeting {
@@ -89,9 +86,14 @@
 					display: block;
 				}
 			}
-			img {
-				width: 12rem;
+			.linus,
+			.fallback {
+				width: 192px;
+				height: 222px;
+			}
+			.fallback {
 				@include box;
+				filter: blur(8px);
 			}
 			.subtitle {
 				margin-top: 0;
@@ -111,12 +113,6 @@
 		.banner {
 			height: 400px;
 			justify-content: flex-start;
-			.bg {
-				img {
-					width: 100%;
-				}
-			}
-
 			.greeting {
 				flex-direction: row-reverse;
 				align-items: flex-start;
