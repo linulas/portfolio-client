@@ -72,7 +72,8 @@ const main = async () => {
 						} },`
 				)
 				.join('\n')}\n  ]`;
-			const result = `import meta from '${source}?width=${Math.min(maxWidth, width)}&metadata';
+			const result = `// @ts-nocheck
+import meta from '${source}?width=${Math.min(maxWidth, width)}&metadata';
 ${srcsetImportArray.join('\n')}
 import small from '${source}?width=${smallImageSize}';
 import medium from '${source}?width=${mediumImageSize}';

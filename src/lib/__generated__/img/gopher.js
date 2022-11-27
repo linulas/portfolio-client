@@ -1,3 +1,4 @@
+// @ts-nocheck
 import meta from '$lib/images/gopher.png?width=900&metadata';
 import srcsetwebp from '$lib/images/gopher.png?w=900;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/gopher.png?w=900;768;672;384&png&srcset';

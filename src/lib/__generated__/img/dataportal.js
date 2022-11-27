@@ -1,3 +1,4 @@
+// @ts-nocheck
 import meta from '$lib/images/dataportal.png?width=1270&metadata';
 import srcsetwebp from '$lib/images/dataportal.png?w=1270;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/dataportal.png?w=1270;768;672;384&png&srcset';

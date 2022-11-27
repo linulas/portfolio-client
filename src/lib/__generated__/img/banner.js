@@ -1,3 +1,4 @@
+// @ts-nocheck
 import meta from '$lib/images/banner.jpg?width=1440&metadata';
 import srcsetwebp from '$lib/images/banner.jpg?w=2880;1440;1344;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/banner.jpg?w=2880;1440;1344;768;672;384&jpeg&srcset';

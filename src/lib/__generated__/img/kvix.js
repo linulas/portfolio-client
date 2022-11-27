@@ -1,3 +1,4 @@
+// @ts-nocheck
 import meta from '$lib/images/kvix.png?width=1263&metadata';
 import srcsetwebp from '$lib/images/kvix.png?w=1263;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/kvix.png?w=1263;768;672;384&png&srcset';
