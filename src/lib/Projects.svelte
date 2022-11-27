@@ -2,6 +2,7 @@
 	import { sections } from './helpers/store';
 	import viewport from './helpers/viewport';
 	import Image from './Image.svelte';
+	import SkeletonImage from './loading/SkeletonImage.svelte';
 	import Reference from './Reference.svelte';
 
 	export let projects: Projects;
@@ -33,7 +34,9 @@
 				<div class="reference">
 					<div class="image_wrapper">
 						<span>
-							<Image name={project.image.name} sizes="50vw" />
+							<Image name={project.image.name} sizes="50vw">
+								<SkeletonImage slot="fallback" />
+							</Image>
 						</span>
 					</div>
 					{#if project.reference}
@@ -69,9 +72,14 @@
 			aspect-ratio: 16 / 9;
 			position: relative;
 			overflow: hidden;
+			@include box;
 
 			span {
+				width: 100%;
 				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 			}
 		}
 	}

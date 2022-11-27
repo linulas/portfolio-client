@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ValidIconSize } from './icons/Icon.svelte';
+	import type { ValidIconSize } from '../icons/Icon.svelte';
 	export let size: ValidIconSize = 'lg';
 </script>
 
