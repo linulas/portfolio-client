@@ -1,3 +1,4 @@
+// @ts-nocheck
 import sharp from 'sharp';
 
 export const IMAGES_PATH = 'src/lib/images';

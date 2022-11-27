@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { promises as fsp } from 'fs';
 
 export async function makeDirectory(directoryPath) {
