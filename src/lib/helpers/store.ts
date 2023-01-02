@@ -5,11 +5,15 @@ export interface SectionsInView {
 	about: boolean;
 	projects: boolean;
 	contact: boolean;
+  scrollDirection: ScrollDirection;
 }
 
-export const sections = writable<SectionsInView>({
+type ScrollDirection = "up" | "down";
+
+export const app = writable<SectionsInView>({
 	top: false,
 	about: false,
 	projects: false,
-	contact: false
+	contact: false,
+  scrollDirection: "down"
 });

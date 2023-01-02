@@ -1,7 +1,7 @@
 <script lang="ts">
 	// imports
 	import Icon from './icons/Icon.svelte';
-	import { sections, type SectionsInView } from './helpers/store';
+	import { app, type SectionsInView } from './helpers/store';
 
 	// variables
 	let y = 0;
@@ -24,9 +24,11 @@
 
 		// ? Detect scroll up or down
 		if (y > previous) {
+      $app.scrollDirection = "down";
 			up = false;
 			sticky = false;
 		} else {
+      $app.scrollDirection = "up";
 			up = true;
 		}
 
@@ -35,7 +37,7 @@
 	};
 
 	$: isActive = (section: keyof SectionsInView) => {
-		const { top, about, projects, contact } = $sections;
+		const { top, about, projects, contact } = $app;
 		switch (section) {
 			case 'top':
 				return top;

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Footer from '$lib/Footer.svelte';
 	import Header from '$lib/Header.svelte';
-	import { sections, type SectionsInView } from '$lib/helpers/store';
+	import { app, type SectionsInView } from '$lib/helpers/store';
 	import viewport from '$lib/helpers/viewport';
 
 	const setInView = (inView: boolean, section: keyof SectionsInView) => {
-		sections.set({ ...$sections, [section]: inView });
+		app.set({ ...$app, [section]: inView });
 	};
 </script>
 

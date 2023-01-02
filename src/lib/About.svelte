@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { sections } from '$lib/helpers/store';
+	import { app } from '$lib/helpers/store';
 	import Grid from './Grid.svelte';
 	import viewport from './helpers/viewport';
 	import Icon from './icons/Icon.svelte';
@@ -10,7 +10,7 @@
 
 	const { title, text, skills } = about;
 	const setInView = (inView: boolean) => {
-		sections.set({ ...$sections, about: inView });
+		app.set({ ...$app, about: inView });
 	};
 </script>
 
