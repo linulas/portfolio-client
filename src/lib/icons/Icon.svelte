@@ -17,6 +17,20 @@
 	let viewBox: string | undefined = undefined;
 	let Icon: any;
 
+	// variables
+	const useColor = () => {
+		switch (name) {
+			case 'react':
+				return true;
+			case 'c#':
+				return true;
+			case 'docker':
+				return true;
+			default:
+				return false;
+		}
+	};
+
 	onMount(async () => {
 		if (name === 'c#') {
 			Icon = (await import('./csharp.svelte')).default;
@@ -24,12 +38,18 @@
 		} else if (name === 'devops') {
 			Icon = (await import('./devops.svelte')).default;
 			viewBox = '0 0 32 32';
+		} else if (name === 'docker') {
+			Icon = (await import('./docker.svelte')).default;
+			viewBox = '0 0 48 48';
 		} else if (name === 'external') {
 			Icon = (await import('./external.svelte')).default;
 			viewBox = '0 0 64 64';
 		} else if (name === 'github') {
 			Icon = (await import('./github.svelte')).default;
 			viewBox = '-3 -3 30 30';
+		} else if (name === 'graphql') {
+			Icon = (await import('./graphql.svelte')).default;
+			viewBox = '0 0 29.999 30';
 		} else if (name === 'go') {
 			Icon = (await import('./go.svelte')).default;
 			viewBox = '16.8 16.1 72.9 27.6';
@@ -38,6 +58,9 @@
 			viewBox = '0 0 32 32';
 		} else if (name === 'react') {
 			Icon = (await import('./react.svelte')).default;
+			viewBox = '0 0 32 32';
+		} else if (name === 'rust') {
+			Icon = (await import('./rust.svelte')).default;
 			viewBox = '0 0 32 32';
 		} else if (name === 'typescript') {
 			Icon = (await import('./typescript.svelte')).default;
@@ -57,7 +80,11 @@
 			}`}
 			{viewBox}
 		>
-			<Icon stroke={color} />
+			{#if useColor()}
+				<Icon {color} />
+			{:else}
+				<Icon />
+			{/if}
 		</svg>
 	{/if}
 </span>

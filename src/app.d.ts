@@ -14,13 +14,16 @@ type Skill = { text: string; icon: Icon };
 type ValidIcon =
 	| 'c#'
 	| 'devops'
+	| 'docker'
 	| 'email'
 	| 'external'
 	| 'github'
+	| 'graphql'
 	| 'go'
 	| 'linkedin'
 	| 'node'
 	| 'react'
+	| 'rust'
 	| 'telegram'
 	| 'typescript';
 type ValidColor = keyof ColorPalette;
@@ -87,6 +90,14 @@ interface Hero {
 	title: string;
 	subtitle: string;
 	preamble: string;
+}
+
+interface Project {
+  title: string;
+  text: string;
+  image: Image;
+  techniques: Skill[];
+  reference: Reference;
 }
 
 interface About {

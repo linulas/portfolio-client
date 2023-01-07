@@ -1,8 +1,3 @@
-<script lang="ts">
-	import { palette } from '$lib/helpers/colors';
-	export let color: ValidColor = 'green';
-</script>
-
 <path
 	id="devops_1_"
 	d="M18,31.36h-4c-0.128,0-0.248-0.069-0.312-0.181l-2-3.464c-0.064-0.111-0.064-0.248,0-0.359l2-3.464
