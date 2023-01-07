@@ -126,6 +126,7 @@
 			min-height: 100vh;
 			margin: 0;
 			background: $clr-bg-1;
+			contain: paint;
 		}
 
 		a {
