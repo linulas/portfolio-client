@@ -81,9 +81,9 @@
 			{viewBox}
 		>
 			{#if useColor()}
-				<Icon {color} />
+				<svelte:component this={Icon} {color} />
 			{:else}
-				<Icon />
+				<svelte:component this={Icon} />
 			{/if}
 		</svg>
 	{/if}
