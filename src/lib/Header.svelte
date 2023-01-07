@@ -91,10 +91,11 @@
 		display: flex;
 		justify-content: space-between;
 		background: $clr-bg-0;
-		z-index: 20;
+		z-index: 100;
 		box-shadow: rgb(39 39 39 / 50%) 0px 3px 2px;
 		transition: top 0.2s;
 		top: -50px;
+    width: 100vw;
 
 		&.sticky {
 			position: sticky;
