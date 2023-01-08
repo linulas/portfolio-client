@@ -26,23 +26,21 @@
 		<p class="skills--intro">
 			{skills.text}
 		</p>
-		<div class="box">
-			<Grid>
-				{#each skills.items as skill}
-					<div class="item">
-						<span class="title">
-							<Icon name={skill.icon.name} color="cyan" size="md" />
-							<h4>
-								{skill.title}
-							</h4>
-						</span>
-						<p>
-              {skill.text}
-						</p>
-					</div>
-				{/each}
-			</Grid>
-		</div>
+		<Grid>
+			{#each skills.items as skill}
+				<div class="item">
+					<span class="title">
+						<Icon name={skill.icon.name} color="cyan" size="md" />
+						<h4>
+							{skill.title}
+						</h4>
+					</span>
+					<p>
+						{skill.text}
+					</p>
+				</div>
+			{/each}
+		</Grid>
 	</div>
 </div>
 
@@ -61,12 +59,10 @@
 		> p {
 			margin-bottom: 3rem;
 		}
-		.box {
+		.item {
 			@include box;
 			padding: 1rem;
 			background: $clr-bg-0;
-		}
-		.item {
 			h4 {
 				color: $clr-skill;
 				margin: 0;
