@@ -56,7 +56,7 @@ const about: About = {
 
 const projects: Projects = {
 	title: 'Projects',
-	text: '						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien. 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna, vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.  Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur in sapien.',
+	text: "I have a habit of starting many ambitious projects, and sadly, most of them never gets to reach 1.0, but still I get to learn a lot of things along the way. Thankfully I have job that gives me projects that must be completed, so I'll give you a handpick of both finised and unfinished projects that I find relevant, that focuses on me getting to work with my above mentioned skills.",
 	items: [
 		{
 			title: 'Dataportalen',
@@ -72,14 +72,40 @@ const projects: Projects = {
 				{ title: 'Typescript', icon: { name: 'typescript', alt: '' } },
 				{ title: 'React', icon: { name: 'react', alt: '' } }
 			],
-			text: "A headless architechture is what the future calls for, and that's something I've learned more about when working with dataportalen. On top of that i got to futhtermore hone my skills in React, Apollo and GraphQL.",
+			text: "A headless architechture is what the future calls for, and that's something I've learned a lot about when working with dataportalen. By making standardized interfaces in Nexus(Graphql), we could resolve that in any headless CMS we wanted to, in this case we choose Strapi(Node). Furthermore I got to do some devops, write a dockerized proxy in Go alongside apollo router, and futhtermore hone my skills in React/Typescript.",
 			reference: {
 				text: 'You can view the site at',
 				links: [
 					{
-						href: 'https://www.dataportal.se',
-						text: 'dataportalen.se',
+						href: 'https://beta.dataportal.se',
+						text: 'beta.dataportal.se',
 						type: 'external'
+					}
+				]
+			}
+		},
+		{
+			title: 'Shelf',
+			image: {
+				name: 'back_me_up',
+				alt: 'back me up'
+			},
+			techniques: [
+				{ title: 'Go', icon: { name: 'go', alt: '' } },
+				{ title: 'Rust', icon: { name: 'rust', alt: '' } },
+				{ title: 'Graphql', icon: { name: 'graphql', alt: '' } },
+				{ title: 'Native', icon: { name: 'react', alt: '' } },
+				{ title: 'Typescript', icon: { name: 'typescript', alt: '' } },
+				{ title: 'Devops', icon: { name: 'devops', alt: '' } }
+			],
+			text: 'One of my more long lasting personal projects, here I get to work with the things I love the most. Go and Rust on the backend, React native with typescript as a client and Graphql APIs between for typesafety. I write all parts as microsevices and Dockerize them with Github actions. For testing I use the native solutions for both Rust and Go',
+			reference: {
+				text: 'The project repos are private at the moment, but if you really want to see the source code, contact me and I can share it with you',
+				links: [
+					{
+						href: '#contact',
+						text: 'Contact options',
+						type: 'internal'
 					}
 				]
 			}
@@ -97,44 +123,28 @@ const projects: Projects = {
 				{ title: 'Devops', icon: { name: 'devops', alt: '' } },
 				{ title: 'Docker', icon: { name: 'docker', alt: '' } }
 			],
-			text: "As of october 2019 until current date, I've been developing and maintaining digg.se, working with both backend and frontend. This project introduced me to episerver, typescript and graphql. Mainly I got to work with React, which by now is one of my strongest programming skills",
+			text: 'Native mobile apps are supercool and an important part of todays society. In the fall of 2021 I got work on a React Native project at Kvix, which is a streaming platform for health and wellbeing. Naturally that gave me experience in working with native apps for Android and iOS, but also to furthermore get better at my other skills.',
 			reference: {
-				text: 'You can view the site at',
+				text: 'You can download the app or visit the website to check it out',
 				links: [
 					{
-						href: 'https://digg.se',
-						text: 'digg.se',
+						href: 'https://kvix.tv',
+						text: 'Website',
+						type: 'external'
+					},
+					{
+						href: 'https://apps.apple.com/se/app/kvix/id1536433992',
+						text: 'Apple Appstore',
+						type: 'external'
+					},
+					{
+						href: 'https://play.google.com/store/apps/details?id=se.kvix.app',
+						text: 'Google play',
 						type: 'external'
 					}
 				]
 			}
 		},
-		{
-			title: 'Back me up',
-			image: {
-				name: 'back_me_up',
-				alt: 'back me up'
-			},
-			techniques: [
-				{ title: 'Go', icon: { name: 'go', alt: '' } },
-				{ title: 'Rust', icon: { name: 'rust', alt: '' } },
-				{ title: 'Graphql', icon: { name: 'graphql', alt: '' } },
-				{ title: 'Native', icon: { name: 'react', alt: '' } },
-				{ title: 'Typescript', icon: { name: 'typescript', alt: '' } },
-				{ title: 'Devops', icon: { name: 'devops', alt: '' } }
-			],
-			text: "I was managing a gaming server with my friend, and that calls for some serious backups. \nYou don't want to loose all that hard work of your gaming progress by the cause of your own server crashing or becoming corrupted, so i frequently backed it up it. Manually. Even in gaming sessions. That's an interuption you don't want and it's quite tedious having to remeber to drag and drop folders everyday, so I thought, \"I should make a script for that!\". So I made a bash script that now has become my standard script for automating server or log backups.  ",
-			reference: {
-				text: 'View the source code at my',
-				links: [
-					{
-						href: 'https://github.com/linulas/back-me-up',
-						text: 'Github',
-						type: 'external'
-					}
-				]
-			}
-		}
 	]
 };
 
