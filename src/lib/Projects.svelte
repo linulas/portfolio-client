@@ -1,15 +1,69 @@
 <script lang="ts">
-	import { sections } from './helpers/store';
+	import { app } from './helpers/store';
 	import viewport from './helpers/viewport';
 	import Image from './Image.svelte';
 	import SkeletonImage from './loading/SkeletonImage.svelte';
 	import Reference from './Reference.svelte';
+	import { spring } from 'svelte/motion';
+	import Icon from './icons/Icon.svelte';
 
+	// props
 	export let projects: Projects;
 
+	// types
+	type Direction = 'left' | 'right';
+
+	//states
+	let currentImage: any = undefined;
+	let currentTech = 0;
+	let imageDirection: Direction = 'right';
+
+	// variables
+	const leftImageSpring = {
+		translate: 5,
+		x: -1,
+		y: 25,
+		left: 15,
+		right: -5,
+		shadow: -6,
+		leftScale: 1,
+		rightScale: 0
+	};
+	const rightImageSpring = {
+		translate: 100,
+		x: 1,
+		y: -25,
+		left: -5,
+		right: 0,
+		shadow: 6,
+		leftScale: 0,
+		rightScale: 1
+	};
+	const springOptions = {
+		stiffness: 0.1,
+		damping: 0.25
+	};
+	const imageSpring = spring(rightImageSpring, springOptions);
 	const { title, text, items } = projects;
+	const images = items.map((p) => p.image);
+	const projectsTechnique = items.map((p) => p.techniques);
+
+	// reactive
+	$: boxStyle = `box-shadow: ${$imageSpring.shadow}px 1px 10px -1px rgba(0, 0, 0, 1);`;
+	$: imageAnimations = `transform: translate(${$imageSpring.translate}%, 50px) rotateX(${$imageSpring.x}deg) rotateY(${$imageSpring.y}deg);`;
+
+	// functions
 	const setInView = (inView: boolean) => {
-		sections.set({ ...$sections, projects: inView });
+		app.set({ ...$app, projects: inView });
+	};
+
+	const handleImage = (imgIndex: number, imgDir: Direction) => {
+		if (imgIndex >= 0 && imgIndex < images.length) {
+			imageDirection = imgDir;
+			imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
+			currentImage = images[imgIndex];
+			currentTech = imgIndex;
+		}
 	};
 </script>
 
@@ -22,28 +76,76 @@
 			{text}
 		</p>
 	</div>
-	<div class="projects">
-		{#each items as project}
-			<div class="project">
-				<h3>
-					{project.title}
-				</h3>
-				<p>
-					{project.text}
-				</p>
-				<div class="reference">
-					<div class="image_wrapper">
-						<span>
-							<Image name={project.image.name} sizes="50vw">
+	<div class="items">
+		{#if currentImage}
+			<div class="obj_background">
+				<div class={`obj ${imageDirection}`} style={imageAnimations}>
+					<div class={`image_wrapper`} style={boxStyle}>
+						{#key currentImage}
+							<Image name={currentImage.name} sizes="50vw">
 								<SkeletonImage slot="fallback" />
 							</Image>
-						</span>
+						{/key}
 					</div>
-					{#if project.reference}
-						<span>
-							<Reference reference={project.reference} />
-						</span>
-					{/if}
+					<div class="overlay" style={`left: ${$imageSpring.left}%;${boxStyle}`}>
+						<div class="background_image">
+							<Image name="code" />
+						</div>
+						<div class="tech_wrapper">
+							{#each projectsTechnique as techs, i}
+								<div class="tech" class:active={i === currentTech ? 1 : 0}>
+									{#each techs as tech}
+										<div
+											style={`transform: scale(${
+												i % 2 === 0 ? $imageSpring.rightScale : $imageSpring.leftScale
+											})`}
+										>
+											<span class="icon">
+												<Icon name={tech.icon.name} color="pink" size="xs" />
+											</span>
+											<p>{tech.text}</p>
+										</div>
+									{/each}
+								</div>
+							{/each}
+						</div>
+					</div>
+				</div>
+			</div>
+		{/if}
+		{#each items as project, i}
+			{@const textDirection = i % 2 == 0 ? 'left' : 'right'}
+			<div class={`project ${textDirection}`}>
+				<div
+					class="content"
+					use:viewport
+					on:enter={() => handleImage(i, textDirection == 'left' ? 'right' : 'left')}
+					on:exit={() =>
+						handleImage(
+							i + ($app.scrollDirection === 'down' ? 1 : -1),
+							textDirection == 'left' ? 'left' : 'right'
+						)}
+				>
+					<span>
+						<h3>
+							{project.title}
+						</h3>
+						<div class={`image_wrapper mobile`}>
+							<Image name={project.image.name} sizes="100%">
+								<SkeletonImage slot="fallback" />
+							</Image>
+						</div>
+						<p>
+							{project.text}
+						</p>
+					</span>
+					<div class="reference">
+						{#if project.reference}
+							<span>
+								<Reference reference={project.reference} />
+							</span>
+						{/if}
+					</div>
 				</div>
 			</div>
 		{/each}
@@ -66,20 +168,171 @@
 		}
 	}
 
-	.reference {
-		.image_wrapper {
-			width: 50%;
-			aspect-ratio: 16 / 9;
-			position: relative;
-			overflow: hidden;
-			@include box;
+	.items {
+		position: relative;
+		margin-top: 2rem;
+		h3 {
+			margin-top: 0;
+		}
+	}
 
-			span {
+	.project {
+		width: 100%;
+	}
+
+	.image_wrapper {
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		@include box;
+
+		/* span { */
+		/* 	width: 100%; */
+		/* 	position: absolute; */
+		/* 	top: 50%; */
+		/* 	left: 50%; */
+		/* 	transform: translate(-50%, -50%); */
+		/* } */
+	}
+
+	.obj_background,
+	.overlay {
+		display: none;
+	}
+
+	@media screen and (min-width: $media-md) {
+		.mobile {
+			display: none;
+		}
+		/* .animation_background { */
+		/* 	display: block; */
+		/* 	position: absolute; */
+		/* 	top: 0; */
+		/* 	width: 100%; */
+		/* 	height: 100%; */
+		/* 	z-index: 0; */
+		/* 	contain: paint; */
+		/* } */
+		.obj_background {
+			position: sticky;
+			top: 27.5vh;
+			display: flex;
+			align-items: flex-start;
+			perspective: 1800px;
+			/* background-color: red; */
+			width: 100%;
+			height: 500px;
+			z-index: 75;
+		}
+		.obj {
+			position: relative;
+			width: 49%;
+			will-change: transform;
+			transform-style: preserve-3d;
+		}
+		.items {
+			margin-bottom: 8rem;
+		}
+		.project {
+			position: relative;
+			z-index: 50;
+			width: 45%;
+
+			&:not(:last-of-type) {
+				margin-bottom: 80vh;
+			}
+
+			&:nth-of-type(2) {
+				margin-top: -500px;
+			}
+
+			&.left {
+				float: left;
+				padding-right: 25%;
+			}
+
+			&.right {
+				float: right;
+				padding-left: 25%;
+			}
+		}
+		.overlay {
+			display: block;
+			position: absolute;
+			background-color: $clr-bg-0;
+			top: 30%;
+			width: 90%;
+			aspect-ratio: 16 / 9;
+			@include box;
+      overflow: hidden;
+
+			.background_image {
 				width: 100%;
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+			}
+
+			.tech_wrapper {
+				width: 65%;
+				height: 100%;
+				position: relative;
+				z-index: 80;
+				float: right;
+			}
+
+			.tech {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 95%;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+				gap: 1.75rem;
+				transition: all 0.2s ease-in-out;
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+        }
+
+				div {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+				}
+
+				span {
+					height: 2.75rem;
+					width: 2.75rem;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background-color: $clr-bg-0;
+					@include box;
+				}
+
+				p {
+					font-size: 0.75rem;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: $media-lg) {
+		.overlay {
+			.tech {
+				grid-template-columns: repeat(auto-fit, minmax(3.75rem, 1fr));
+				row-gap: 2rem;
+				column-gap: 2rem;
+
+				span {
+					height: 3.75rem;
+					width: 3.75rem;
+				}
 			}
 		}
 	}

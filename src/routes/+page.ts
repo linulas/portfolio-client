@@ -7,7 +7,7 @@ import type { PageLoad } from './$types';
 
 const hero: Hero = {
 	title: "I don't see problems, I see Puzzles",
-	subtitle: 'Solving it by picking the right pieces of code to build it',
+	subtitle: 'Pick the right peices of code to solve it',
 	preamble: ''
 };
 
@@ -38,6 +38,14 @@ const projects: Projects = {
 				name: 'dataportal',
 				alt: ''
 			},
+			techniques: [
+				{ text: 'Go', icon: { name: 'go', alt: '' } },
+				{ text: 'Graphql', icon: { name: 'graphql', alt: '' } },
+				{ text: 'Node', icon: { name: 'node', alt: '' } },
+				{ text: 'Devops', icon: { name: 'devops', alt: '' } },
+				{ text: 'Typescript', icon: { name: 'typescript', alt: '' } },
+				{ text: 'React', icon: { name: 'react', alt: '' } },
+			],
 			text: "A headless architechture is what the future calls for, and that's something I've learned more about when working with dataportalen. On top of that i got to futhtermore hone my skills in React, Apollo and GraphQL.",
 			reference: {
 				text: 'You can view the site at',
@@ -56,6 +64,13 @@ const projects: Projects = {
 				name: 'kvix',
 				alt: ''
 			},
+			techniques: [
+				{ text: 'Typescript', icon: { name: 'typescript', alt: '' } },
+				{ text: 'Native', icon: { name: 'react', alt: '' } },
+				{ text: 'Node', icon: { name: 'node', alt: '' } },
+				{ text: 'Devops', icon: { name: 'devops', alt: '' } },
+				{ text: 'Docker', icon: { name: 'docker', alt: '' } },
+			],
 			text: "As of october 2019 until current date, I've been developing and maintaining digg.se, working with both backend and frontend. This project introduced me to episerver, typescript and graphql. Mainly I got to work with React, which by now is one of my strongest programming skills",
 			reference: {
 				text: 'You can view the site at',
@@ -74,6 +89,14 @@ const projects: Projects = {
 				name: 'back_me_up',
 				alt: 'back me up'
 			},
+			techniques: [
+				{ text: 'Go', icon: { name: 'go', alt: '' } },
+				{ text: 'Rust', icon: { name: 'rust', alt: '' } },
+				{ text: 'Graphql', icon: { name: 'graphql', alt: '' } },
+				{ text: 'Native', icon: { name: 'react', alt: '' } },
+				{ text: 'Typescript', icon: { name: 'typescript', alt: '' } },
+				{ text: 'Devops', icon: { name: 'devops', alt: '' } },
+			],
 			text: "I was managing a gaming server with my friend, and that calls for some serious backups. \nYou don't want to loose all that hard work of your gaming progress by the cause of your own server crashing or becoming corrupted, so i frequently backed it up it. Manually. Even in gaming sessions. That's an interuption you don't want and it's quite tedious having to remeber to drag and drop folders everyday, so I thought, \"I should make a script for that!\". So I made a bash script that now has become my standard script for automating server or log backups.  ",
 			reference: {
 				text: 'View the source code at my',
