@@ -87,8 +87,8 @@ const projects: Projects = {
 		{
 			title: 'Shelf',
 			image: {
-				name: 'back_me_up',
-				alt: 'back me up'
+				name: 'shelf',
+				alt: 'me up'
 			},
 			techniques: [
 				{ title: 'Go', icon: { name: 'go', alt: '' } },
