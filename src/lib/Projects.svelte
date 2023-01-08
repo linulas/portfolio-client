@@ -14,7 +14,8 @@
 	type Direction = 'left' | 'right';
 
 	//states
-	let currentImage: any = undefined;
+	let currentImage = 0;
+	let previousImage = 0;
 	let currentTech = 0;
 	let imageDirection: Direction = 'right';
 
@@ -60,8 +61,10 @@
 	const handleImage = (imgIndex: number, imgDir: Direction) => {
 		if (imgIndex >= 0 && imgIndex < images.length) {
 			imageDirection = imgDir;
-			imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
-			currentImage = images[imgIndex];
+			imgIndex !== currentImage &&
+				imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
+			previousImage = currentImage;
+			currentImage = imgIndex;
 			currentTech = imgIndex;
 		}
 	};
@@ -77,42 +80,40 @@
 		</p>
 	</div>
 	<div class="items">
-		{#if currentImage}
-			<div class="obj_background">
-				<div class={`obj ${imageDirection}`} style={imageAnimations}>
-					<div class={`image_wrapper`} style={boxStyle}>
-						{#key currentImage}
-							<Image name={currentImage.name} sizes="50vw">
-								<SkeletonImage slot="fallback" />
-							</Image>
-						{/key}
+		<div class="obj_background">
+			<div class={`obj ${imageDirection}`} style={imageAnimations}>
+				<div class={`image_wrapper`} style={boxStyle}>
+					{#key currentImage}
+						<Image name={images[currentImage].name} sizes="50vw">
+							<SkeletonImage slot="fallback" />
+						</Image>
+					{/key}
+				</div>
+				<div class="overlay" style={`left: ${$imageSpring.left}%;${boxStyle}`}>
+					<div class="background_image">
+						<Image name="code" />
 					</div>
-					<div class="overlay" style={`left: ${$imageSpring.left}%;${boxStyle}`}>
-						<div class="background_image">
-							<Image name="code" />
-						</div>
-						<div class="tech_wrapper">
-							{#each projectsTechnique as techs, i}
-								<div class="tech" class:active={i === currentTech ? 1 : 0}>
-									{#each techs as tech}
-										<div
-											style={`transform: scale(${
-												i % 2 === 0 ? $imageSpring.rightScale : $imageSpring.leftScale
-											})`}
-										>
-											<span class="icon">
-												<Icon name={tech.icon.name} color="pink" size="xs" />
-											</span>
-											<p>{tech.title}</p>
-										</div>
-									{/each}
-								</div>
-							{/each}
-						</div>
+					<div class="tech_wrapper">
+						{#each projectsTechnique as techs, i}
+							<div class="tech" class:active={i === currentTech ? 1 : 0}>
+								{#each techs as tech}
+									<div
+										style={`transform: scale(${
+											i % 2 === 0 ? $imageSpring.rightScale : $imageSpring.leftScale
+										})`}
+									>
+										<span class="icon">
+											<Icon name={tech.icon.name} color="pink" size="xs" />
+										</span>
+										<p>{tech.title}</p>
+									</div>
+								{/each}
+							</div>
+						{/each}
 					</div>
 				</div>
 			</div>
-		{/if}
+		</div>
 		{#each items as project, i}
 			{@const textDirection = i % 2 == 0 ? 'left' : 'right'}
 			<div class={`project ${textDirection}`}>
@@ -121,10 +122,8 @@
 					use:viewport
 					on:enter={() => handleImage(i, textDirection == 'left' ? 'right' : 'left')}
 					on:exit={() =>
-						handleImage(
-							i + ($app.scrollDirection === 'down' ? 1 : -1),
-							textDirection == 'left' ? 'left' : 'right'
-						)}
+						i != previousImage &&
+						handleImage(previousImage, textDirection == 'left' ? 'left' : 'right')}
 				>
 					<span>
 						<h3>
@@ -201,10 +200,8 @@
 			display: flex;
 			align-items: flex-start;
 			perspective: 1800px;
-			/* background-color: red; */
 			width: 100%;
 			height: 500px;
-			z-index: 75;
 		}
 		.obj {
 			position: relative;
