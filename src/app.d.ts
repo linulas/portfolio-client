@@ -10,7 +10,6 @@ declare namespace svelte.JSX {
 	}
 }
 
-type Skill = { text: string; icon: Icon };
 type ValidIcon =
 	| 'c#'
 	| 'devops'
@@ -38,6 +37,16 @@ type ValidIconColor =
 	| 'yellow';
 
 type LinkType = 'internal' | 'external' | 'mail';
+
+interface Section {
+	title: string;
+	text: string;
+}
+
+interface Skill extends Section {
+	icon: Icon;
+	text?: string;
+}
 
 interface DraculaColorPalette {
 	background: string;
@@ -92,31 +101,23 @@ interface Hero {
 	preamble: string;
 }
 
-interface Project {
-  title: string;
-  text: string;
-  image: Image;
-  techniques: Skill[];
-  reference: Reference;
+interface Project extends Section {
+	image: Image;
+	techniques: Skill[];
+	reference: Reference;
 }
 
-interface About {
-	title: string;
-	text: string;
+interface About extends Section {
 	skills: {
 		text: string;
 		items: Skill[];
 	};
 }
 
-interface Projects {
-	title: string;
-	text: string;
+interface Projects extends Section {
 	items: Project[];
 }
 
-interface Contact {
-	title: string;
-	text: string;
+interface Contact extends Section {
 	references: Reference[];
 }

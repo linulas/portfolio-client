@@ -103,7 +103,7 @@
 											<span class="icon">
 												<Icon name={tech.icon.name} color="pink" size="xs" />
 											</span>
-											<p>{tech.text}</p>
+											<p>{tech.title}</p>
 										</div>
 									{/each}
 								</div>

@@ -33,14 +33,11 @@
 						<span class="title">
 							<Icon name={skill.icon.name} color="cyan" size="md" />
 							<h4>
-								{skill.text}
+								{skill.title}
 							</h4>
 						</span>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dictum magna,
-							vitae feugiat quam feugiat non. Duis a lobortis magna, imperdiet accumsan augue.
-							Maecenas sit amet imperdiet magna. In erat dolor, luctus eu fermentum at, consectetur
-							in sapien.
+              {skill.text}
 						</p>
 					</div>
 				{/each}
