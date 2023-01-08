@@ -125,8 +125,14 @@
 		body {
 			min-height: 100vh;
 			margin: 0;
-			background: $clr-bg-1;
 			contain: paint;
+			background: rgb(68, 71, 90);
+			background: linear-gradient(
+				150deg,
+				rgba(68, 71, 90, 1) 0%,
+				rgba(40, 42, 54, 1) 25%,
+				rgba(40, 42, 54, 1) 100%
+			);
 		}
 
 		a {

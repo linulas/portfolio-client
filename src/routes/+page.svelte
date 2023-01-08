@@ -107,9 +107,6 @@
 		z-index: 0;
 	}
 
-	main {
-		background: $clr-bg-1;
-	}
 	@media screen and (min-width: $media-sm) {
 		.banner {
 			height: 400px;
