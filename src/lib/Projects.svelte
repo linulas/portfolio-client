@@ -184,14 +184,6 @@
 		aspect-ratio: 16 / 9;
 		overflow: hidden;
 		@include box;
-
-		/* span { */
-		/* 	width: 100%; */
-		/* 	position: absolute; */
-		/* 	top: 50%; */
-		/* 	left: 50%; */
-		/* 	transform: translate(-50%, -50%); */
-		/* } */
 	}
 
 	.obj_background,
@@ -203,15 +195,6 @@
 		.mobile {
 			display: none;
 		}
-		/* .animation_background { */
-		/* 	display: block; */
-		/* 	position: absolute; */
-		/* 	top: 0; */
-		/* 	width: 100%; */
-		/* 	height: 100%; */
-		/* 	z-index: 0; */
-		/* 	contain: paint; */
-		/* } */
 		.obj_background {
 			position: sticky;
 			top: 27.5vh;
@@ -263,7 +246,7 @@
 			width: 90%;
 			aspect-ratio: 16 / 9;
 			@include box;
-      overflow: hidden;
+			overflow: hidden;
 
 			.background_image {
 				width: 100%;
@@ -291,11 +274,11 @@
 				grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 				gap: 1.75rem;
 				transition: all 0.2s ease-in-out;
-        opacity: 0;
+				opacity: 0;
 
-        &.active {
-          opacity: 1;
-        }
+				&.active {
+					opacity: 1;
+				}
 
 				div {
 					display: flex;
