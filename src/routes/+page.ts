@@ -13,7 +13,7 @@ const hero: Hero = {
 
 const about: About = {
 	title: 'About',
-	text: "Hi, my name is Linus and I'm a Developer based in Umeå Sweden and are currently working fullstack at Knowit. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node, Go and Rust, while my frontend experience is mostly dominated by React/Typescript. When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games. I love coding on my spare time, so if you have a project I can help with, or dig into one of mine, or if you just wanna chat, feel free to contact me.",
+	text: "Hi, my name is Linus and I'm a developer based in Umeå Sweden and are currently working fullstack at Knowit. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node, Go and Rust, while my frontend experience is mostly dominated by React/Typescript. When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games. I love coding on my spare time, so if you have a project I can help with, or dig into one of mine, or if you just wanna chat, feel free to contact me.",
 	skills: {
 		text: "I have learned a lot about being a team player from all my time playing in bands, sports-teams, prior jobs and of course everyday at my work as a IT-consultant at Knowit, so I always excell when working with others. Although I consider myself more of a backend person, I do also enjoy frontend work and have been doing both simultaniously ever since I started coding, which has helped me a lot to learn how to develop quality solutions, both my backend and frontend code gets better when I can see the big picture. I started out with a lot of Javascript/Typescript, but over time I've been shifting to write most of my projects in Go and/or Rust. Below is a handpick of the techniques I feel most comfortable with. Some honorable mentions would be C# and Java, but if I have the choice, I tend to seek out the other mentioned options instead.",
 		items: [
@@ -34,12 +34,12 @@ const about: About = {
 			},
 			{
 				title: 'Typescript',
-				text: 'Typesafety is a big quality ensurance, which is why I always use typescript whenever possible. It has become a daily companion and I often get to comine it with graphql, which has given my ways to learn typesafety between server and client.',
+				text: 'Typesafety is a big quality ensurance, which is why I always use typescript whenever possible. It has become a daily companion and I often get to combine it with graphql, which has given my ways to master typesafety between server and client.',
 				icon: { name: 'typescript', alt: '' }
 			},
 			{
 				title: 'Devops',
-				text: 'When talking fullstack, I also love doing devops, which is mostly dominated by Github actions, Docker and Azure. For automated tests we use cypress at work, privately I often write my projects in Go, which has its own testing methods. I also have some small experience with kubernetes and bitbucket.',
+				text: 'When talking fullstack, I also love doing devops, which is mostly consists of Github actions, Docker and Azure. For automated tests we use cypress at work, privately I often write my projects in Go, which has its own testing methods. I also have some small experience with kubernetes and bitbucket.',
 				icon: { name: 'devops', alt: '' }
 			},
 			{
@@ -56,7 +56,7 @@ const about: About = {
 
 const projects: Projects = {
 	title: 'Projects',
-	text: "I have a habit of starting many ambitious projects, and sadly, most of them never gets to reach 1.0, but still I get to learn a lot of things along the way. Thankfully I have job that gives me projects that must be completed, so I'll give you a handpick of both finised and unfinished projects that I find relevant, that focuses on me getting to work with my above mentioned skills.",
+	text: "I have a habit of starting many ambitious projects, but to be honest, most of them never gets to reach 1.0, but still I get to learn a lot of things along the way. Thankfully I have job that gives me projects that must be completed, so I'll give you a handpick of both finised and unfinished projects that I find relevant, that focuses on me working with my above mentioned skills.",
 	items: [
 		{
 			title: 'Dataportalen',
@@ -98,7 +98,7 @@ const projects: Projects = {
 				{ title: 'Typescript', icon: { name: 'typescript', alt: '' } },
 				{ title: 'Devops', icon: { name: 'devops', alt: '' } }
 			],
-			text: 'One of my more long lasting personal projects, here I get to work with the things I love the most. Go and Rust on the backend, React native with typescript as a client and Graphql APIs between for typesafety. I write all parts as microsevices and Dockerize them with Github actions. For testing I use the native solutions for both Rust and Go',
+			text: 'One of my more long lasting personal projects, here I get to work with the things I love the most. Go and Rust on the backend, React native with typescript as a client and Graphql APIs between them for typesafety. I write all parts as microsevices and Dockerize them with Github actions. For testing I use the native solutions for both Rust and Go',
 			reference: {
 				text: 'The project repos are private at the moment, but if you really want to see the source code, contact me and I can share it with you',
 				links: [
@@ -150,7 +150,7 @@ const projects: Projects = {
 
 const contact: Contact = {
 	title: 'Contact',
-	text: "I love coding. I spend 40 workhours every week writing software, and probably about 10-20 ours on my free time, so if you are in need of a programmer, I'm your guy! Feel free to use any of the options below to contact me. Don't forget to follow me on social media to stay up to date. Also, I'd be glad if you would be interested in colaborating with me on personal my projects, two heads are better than one. Mainly that would be for my Shelf project mentioned above, so if you have any experience in the coresponding techniques and want to work on something cool, don't hesitate to send me a message. Looking forward to hearing from you!",
+	text: "I love coding. I spend 40 workhours every week writing software, and probably about 10-20 ours on my free time, so if you are in need of a programmer, I'm your guy! Feel free to use any of the options below to contact me. Don't forget to follow me on social media to stay up to date. Also, I'd be glad if you would be interested in colaborating with me on personal my projects, two heads are better than one. Mainly that would be for my Shelf project mentioned above, so if you have any experience in the coresponding techniques and want to work on something cool, don't hesitate to send me a message. Looking forward to hear from you!",
 	reference: {
 		links: [
 			{

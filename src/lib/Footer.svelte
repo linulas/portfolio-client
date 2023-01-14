@@ -1,5 +1,5 @@
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p>Visit <a href="https://github.com/linulas/portfolio-client">My Github</a> to learn how i build this site</p>
 </footer>
 
 <style lang="scss">
