@@ -177,6 +177,7 @@
 
 	.project {
 		width: 100%;
+    margin-bottom: 3rem;
 	}
 
 	.image_wrapper {
