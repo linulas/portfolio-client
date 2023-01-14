@@ -177,7 +177,7 @@
 
 	.project {
 		width: 100%;
-    margin-bottom: 3rem;
+		margin-bottom: 3rem;
 	}
 
 	.image_wrapper {
@@ -189,6 +189,12 @@
 	.obj_background,
 	.overlay {
 		display: none;
+	}
+
+	@media screen and (min-width: $media-sm) {
+		.reference {
+			width: 50%;
+		}
 	}
 
 	@media screen and (min-width: $media-md) {
@@ -301,9 +307,6 @@
 				}
 			}
 		}
-    .reference {
-      width: 50%;
-    }
 	}
 
 	@media screen and (min-width: $media-lg) {

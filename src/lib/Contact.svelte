@@ -33,18 +33,33 @@
 		margin-bottom: 2rem;
 	}
 
-	.options {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-	}
 	.image_wrapper {
 		@include box;
-    justify-self: center;
+		justify-self: center;
 		overflow: hidden;
 		width: 240px;
 		aspect-ratio: 1 / 1;
+		margin: auto;
+	}
+
+	.references_wrapper {
+		margin-bottom: 2rem;
+	}
+
+	.options {
+		width: 100%;
+	}
+
+	@media screen and (min-width: $media-sm) {
+		.options {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+			gap: 2rem;
+			justify-content: center;
+			align-items: center;
+		}
+		.references_wrapper {
+			margin-bottom: 0;
+		}
 	}
 </style>
