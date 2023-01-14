@@ -41,6 +41,9 @@
 		} else if (name === 'docker') {
 			Icon = (await import('./docker.svelte')).default;
 			viewBox = '0 0 48 48';
+		} else if (name === 'email') {
+			Icon = (await import('./email.svelte')).default;
+			viewBox = '0 0 48 48';
 		} else if (name === 'external') {
 			Icon = (await import('./external.svelte')).default;
 			viewBox = '0 0 64 64';
@@ -53,6 +56,9 @@
 		} else if (name === 'go') {
 			Icon = (await import('./go.svelte')).default;
 			viewBox = '16.8 16.1 72.9 27.6';
+		} else if (name === 'linkedin') {
+			Icon = (await import('./linkedin.svelte')).default;
+			viewBox = '0 0 30 30';
 		} else if (name === 'node') {
 			Icon = (await import('./node.svelte')).default;
 			viewBox = '0 0 32 32';
@@ -62,6 +68,9 @@
 		} else if (name === 'rust') {
 			Icon = (await import('./rust.svelte')).default;
 			viewBox = '0 0 32 32';
+		} else if (name === 'telegram') {
+			Icon = (await import('./telegram.svelte')).default;
+			viewBox = '0 0 50 50';
 		} else if (name === 'typescript') {
 			Icon = (await import('./typescript.svelte')).default;
 			viewBox = '0 0 64 64';
