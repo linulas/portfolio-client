@@ -301,6 +301,9 @@
 				}
 			}
 		}
+    .reference {
+      width: 50%;
+    }
 	}
 
 	@media screen and (min-width: $media-lg) {
