@@ -28,6 +28,9 @@
 </div>
 
 <style lang="scss">
+  .reference {
+    width: 100%;
+  }
 	.wrapper {
 		display: grid;
 		grid-template-rows: repeat(auto-fit, minmax(3.5rem, 1fr));
@@ -54,11 +57,5 @@
 	}
 	a {
 		margin-left: 0.25rem;
-	}
-
-	@media screen and (min-width: $media-sm) {
-		.link {
-			max-width: 50%;
-		}
 	}
 </style>
