@@ -87,12 +87,12 @@ interface Link {
 	href: string;
 	text?: string;
 	type: LinkType;
+	icon?: Icon;
 }
 
 type Reference = {
 	links: Link[];
 	text?: string;
-	icon?: Icon;
 };
 
 interface Hero {
@@ -119,5 +119,5 @@ interface Projects extends Section {
 }
 
 interface Contact extends Section {
-	references: Reference[];
+	reference: Reference;
 }
