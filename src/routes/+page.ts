@@ -144,45 +144,35 @@ const projects: Projects = {
 					}
 				]
 			}
-		},
+		}
 	]
 };
 
 const contact: Contact = {
 	title: 'Contact',
-	text: "I'm currently unavailable for fulltime work, but I would be interessted in teaming up for pesonal/freelance projects, so if you are interessted in working with me, feel free to use any of the options below to contact me. Or if you just want to chat. I'd like that too. Don't forget to follow me on social media to stay up to date. Also, I'd be glad if you would be interested in colaborating with me on personal my projects, two heads are better than one. Looking forward to hearing from you!",
-	references: [
-		{
-			links: [
-				{
-					text: 'Telegram',
-					href: 'https://t.me/linulas',
-					type: 'external'
-				}
-			],
-			icon: { name: 'telegram', alt: 'telegram icon' }
-		},
-		{
-			links: [
-				{
-					text: 'Email',
-					href: 'mailto:contact@linusbrannstrom.dev',
-					type: 'external'
-				}
-			],
-			icon: { name: 'email', alt: 'email icon' }
-		},
-		{
-			links: [
-				{
-					text: 'LinkedIn',
-					href: 'https://www.linkedin.com/in/linusbrannstrom/',
-					type: 'external'
-				}
-			],
-			icon: { name: 'linkedin', alt: 'linkedin icon' }
-		}
-	]
+	text: "I love coding. I spend 40 workhours every week writing software, and probably about 10-20 ours on my free time, so if you are in need of a programmer, I'm your guy! Feel free to use any of the options below to contact me. Don't forget to follow me on social media to stay up to date. Also, I'd be glad if you would be interested in colaborating with me on personal my projects, two heads are better than one. Mainly that would be for my Shelf project mentioned above, so if you have any experience in the coresponding techniques and want to work on something cool, don't hesitate to send me a message. Looking forward to hearing from you!",
+	reference: {
+		links: [
+			{
+				text: 'Telegram',
+				href: 'https://t.me/linulas',
+				type: 'external',
+				icon: { name: 'telegram', alt: 'telegram icon' }
+			},
+			{
+				text: 'Email',
+				href: 'mailto:contact@linusbrannstrom.dev',
+				type: 'external',
+				icon: { name: 'email', alt: 'email icon' }
+			},
+			{
+				text: 'LinkedIn',
+				href: 'https://www.linkedin.com/in/linusbrannstrom/',
+				type: 'external',
+				icon: { name: 'linkedin', alt: 'linkedin icon' }
+			}
+		]
+	}
 };
 
 export const load: PageLoad = () => {

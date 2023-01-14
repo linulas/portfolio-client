@@ -1,9 +1,10 @@
 <script lang="ts">
+	import Image from './Image.svelte';
 	import Reference from './Reference.svelte';
 
 	export let contact: Contact;
 
-	const { title, text, references } = contact;
+	const { title, text, reference } = contact;
 </script>
 
 <div id="contact">
@@ -11,22 +12,39 @@
 		<h2>{title}</h2>
 		<p>{text}</p>
 	</div>
-	<div class="references">
-		{#each references as reference}
+	<div class="options">
+		<div class="references_wrapper">
 			<Reference {reference} />
-		{/each}
+		</div>
+		<div class="image_wrapper">
+			<Image name="avatar" />
+		</div>
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	#contact {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+		margin-bottom: 4rem;
 	}
 	h2 {
 		text-align: center;
+	}
+	.intro {
+		margin-bottom: 2rem;
+	}
+
+	.options {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+	}
+	.image_wrapper {
+		@include box;
+    justify-self: center;
+		overflow: hidden;
+		width: 240px;
+		aspect-ratio: 1 / 1;
 	}
 </style>
