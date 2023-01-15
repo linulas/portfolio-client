@@ -6,6 +6,7 @@
 	import Reference from './Reference.svelte';
 	import { spring } from 'svelte/motion';
 	import Icon from './icons/Icon.svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	// props
 	export let projects: Projects;
@@ -14,9 +15,8 @@
 	type Direction = 'left' | 'right';
 
 	//states
-	let currentImage = 0;
-	let previousImage = 0;
-	let currentTech = 0;
+	let currentObject = 0;
+	let previousObject = 0;
 	let imageDirection: Direction = 'right';
 
 	// variables
@@ -61,11 +61,10 @@
 	const handleImage = (imgIndex: number, imgDir: Direction) => {
 		if (imgIndex >= 0 && imgIndex < images.length) {
 			imageDirection = imgDir;
-			imgIndex !== currentImage &&
+			imgIndex !== currentObject &&
 				imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
-			previousImage = currentImage;
-			currentImage = imgIndex;
-			currentTech = imgIndex;
+			previousObject = currentObject;
+			currentObject = imgIndex;
 		}
 	};
 </script>
@@ -83,8 +82,8 @@
 		<div class="obj_background">
 			<div class={`obj ${imageDirection}`} style={imageAnimations}>
 				<div class={`image_wrapper`} style={boxStyle}>
-					{#key currentImage}
-						<Image name={images[currentImage].name} sizes="50vw">
+					{#key currentObject}
+						<Image name={images[currentObject].name} sizes="50vw">
 							<SkeletonImage slot="fallback" />
 						</Image>
 					{/key}
@@ -95,7 +94,7 @@
 					</div>
 					<div class="tech_wrapper">
 						{#each projectsTechnique as techs, i}
-							<div class="tech" class:active={i === currentTech ? 1 : 0}>
+							<div class="tech" class:active={i === currentObject ? 1 : 0}>
 								{#each techs as tech}
 									<div
 										style={`transform: scale(${
@@ -122,10 +121,10 @@
 					use:viewport
 					on:enter={() => handleImage(i, textDirection == 'left' ? 'right' : 'left')}
 					on:exit={() =>
-						i != previousImage &&
-						handleImage(previousImage, textDirection == 'left' ? 'left' : 'right')}
+						i != previousObject &&
+						handleImage(previousObject, textDirection == 'left' ? 'left' : 'right')}
 				>
-					<span>
+					<div in:fly="{{ y: 200, duration: 2000 }}" out:fade>
 						<h3>
 							{project.title}
 						</h3>
@@ -137,13 +136,13 @@
 						<p>
 							{project.text}
 						</p>
-					</span>
-					<div class="reference">
-						{#if project.reference}
-							<span>
-								<Reference reference={project.reference} />
-							</span>
-						{/if}
+						<div class="reference">
+							{#if project.reference}
+								<span>
+									<Reference reference={project.reference} />
+								</span>
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -240,6 +239,16 @@
 			&.right {
 				float: right;
 				padding-left: 25%;
+			}
+		}
+
+		.content {
+			.wrapper {
+				opacity: 0;
+				transition: opacity 0.2s;
+				&.visible {
+					opacity: 1;
+				}
 			}
 		}
 		.overlay {
