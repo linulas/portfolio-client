@@ -59,13 +59,15 @@
 	};
 
 	const handleImage = (imgIndex: number, imgDir: Direction) => {
-		if (imgIndex >= 0 && imgIndex < images.length) {
+		if (imgIndex < 0 || imgIndex >= images.length) return;
+
+		if (imgIndex !== currentObject) {
 			imageDirection = imgDir;
-			imgIndex !== currentObject &&
-				imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
-			previousObject = currentObject;
-			currentObject = imgIndex;
+			imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
 		}
+
+		previousObject = currentObject;
+		currentObject = imgIndex;
 	};
 </script>
 
@@ -120,11 +122,14 @@
 					class="content"
 					use:viewport
 					on:enter={() => handleImage(i, textDirection == 'left' ? 'right' : 'left')}
-					on:exit={() =>
-						i != previousObject &&
-						handleImage(previousObject, textDirection == 'left' ? 'left' : 'right')}
+					on:exit={() => {
+						const firstItem = i === 0 && previousObject === 1;
+						if (i != previousObject && !firstItem) {
+							handleImage(previousObject, textDirection == 'left' ? 'left' : 'right');
+						}
+					}}
 				>
-					<div in:fly="{{ y: 200, duration: 2000 }}" out:fade>
+					<div in:fly={{ y: 200, duration: 2000 }} out:fade>
 						<h3>
 							{project.title}
 						</h3>
