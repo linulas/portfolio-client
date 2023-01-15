@@ -1,9 +1,24 @@
 <script lang="ts">
+	import viewport from './helpers/viewport';
 	import Icon from './icons/Icon.svelte';
+	import { fly } from 'svelte/transition';
+
+	// props
 	export let reference: Reference;
+
+	// states
+	let itemHasBeenInView = false;
+
+	// variables
 	const { links, text } = reference;
+
+	// methods
 	const handleClick = (link: string) => {
 		window.location.href = link;
+	};
+
+	const handleEnter = () => {
+		itemHasBeenInView = true;
 	};
 </script>
 
@@ -11,16 +26,24 @@
 	{#if text}
 		<p>{text}</p>
 	{/if}
-	<div class="wrapper">
-		{#each links as link}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" on:click={() => handleClick(link.href)}>
-				<a href={link.href}>{link.text || link.href}</a>
-				{#if !link.icon && link.type === 'external'}
-					<Icon name="external" size="xs" />
-				{/if}
-				{#if link.icon}
-					<Icon name={link.icon.name} size="sm" />
+	<div class="wrapper" use:viewport={{ unobserveAfterEnter: true }} on:enter={() => handleEnter()}>
+		{#each links as link, i}
+			<div>
+				{#if itemHasBeenInView}
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<div
+						class="link"
+						on:click={() => handleClick(link.href)}
+						in:fly={{ y: 200, duration: i * 500 }}
+					>
+						<a href={link.href}>{link.text || link.href}</a>
+						{#if !link.icon && link.type === 'external'}
+							<Icon name="external" size="xs" />
+						{/if}
+						{#if link.icon}
+							<Icon name={link.icon.name} size="sm" />
+						{/if}
+					</div>
 				{/if}
 			</div>
 		{/each}
@@ -28,13 +51,17 @@
 </div>
 
 <style lang="scss">
-  .reference {
-    width: 100%;
-  }
+	.reference {
+		width: 100%;
+	}
 	.wrapper {
 		display: grid;
 		grid-template-rows: repeat(auto-fit, minmax(3.5rem, 1fr));
 		gap: 1rem;
+
+		> div {
+			height: 3.5rem;
+		}
 	}
 	.link {
 		@include box;
