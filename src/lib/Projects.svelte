@@ -11,13 +11,9 @@
 	// props
 	export let projects: Projects;
 
-	// types
-	type Direction = 'left' | 'right';
-
 	//states
 	let currentObject = 0;
 	let previousObject = 0;
-	let imageDirection: Direction = 'right';
 
 	// variables
 	const leftImageSpring = {
@@ -58,12 +54,11 @@
 		app.set({ ...$app, projects: inView });
 	};
 
-	const handleImage = (imgIndex: number, imgDir: Direction) => {
+	const handleImage = (imgIndex: number) => {
 		if (imgIndex < 0 || imgIndex >= images.length) return;
 
 		if (imgIndex !== currentObject) {
-			imageDirection = imgDir;
-			imageSpring.update(() => (imgDir === 'left' ? leftImageSpring : rightImageSpring));
+			imageSpring.update(() => (imgIndex % 2 == 0 ? rightImageSpring : leftImageSpring));
 		}
 
 		previousObject = currentObject;
@@ -73,7 +68,7 @@
 
 <div id="projects" use:viewport on:enter={() => setInView(true)} on:exit={() => setInView(false)}>
 	<div class="intro">
-		<h2>
+		<h2 use:viewport on:enter={() => previousObject != 0 && handleImage(0)}>
 			{title}
 		</h2>
 		<p>
@@ -82,7 +77,7 @@
 	</div>
 	<div class="items">
 		<div class="obj_background">
-			<div class={`obj ${imageDirection}`} style={imageAnimations}>
+			<div class={`obj`} style={imageAnimations}>
 				<div class={`image_wrapper`} style={boxStyle}>
 					{#key currentObject}
 						<Image name={images[currentObject].name} sizes="50vw">
@@ -121,11 +116,11 @@
 				<div
 					class="content"
 					use:viewport
-					on:enter={() => handleImage(i, textDirection == 'left' ? 'right' : 'left')}
+					on:enter={() => handleImage(i)}
 					on:exit={() => {
-						const firstItem = i === 0 && previousObject === 1;
-						if (i != previousObject && !firstItem) {
-							handleImage(previousObject, textDirection == 'left' ? 'left' : 'right');
+						const firstItem = i === 0 && previousObject === 0;
+						if (i != previousObject) {
+							handleImage(previousObject);
 						}
 					}}
 				>
