@@ -239,9 +239,6 @@
 			will-change: transform;
 			transform-style: preserve-3d;
 		}
-		.items {
-			margin-bottom: 8rem;
-		}
 		.project {
 			position: relative;
 			z-index: 50;
