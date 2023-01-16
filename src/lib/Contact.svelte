@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Image from './Image.svelte';
 	import Reference from './Reference.svelte';
+	import avatar from '$lib/__generated__/img/avatar';
 
 	export let contact: Contact;
 
@@ -17,7 +18,9 @@
 			<Reference {reference} />
 		</div>
 		<div class="image_wrapper">
-			<Image name="avatar" />
+			<Image name="avatar" small>
+				<img slot="fallback" class="fallback" sizes="384px" src={avatar.placeholder} alt="" />
+			</Image>
 		</div>
 	</div>
 </div>
@@ -33,13 +36,14 @@
 		margin-bottom: 2rem;
 	}
 
-	.image_wrapper {
-		@include box;
-		justify-self: center;
-		overflow: hidden;
+	.image_wrapper,
+	.fallback {
 		width: 240px;
 		aspect-ratio: 1 / 1;
+		justify-self: center;
+		overflow: hidden;
 		margin: auto;
+		@include box;
 	}
 
 	.references_wrapper {
