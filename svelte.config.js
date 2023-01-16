@@ -12,7 +12,16 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		csp: {
+			directives: {
+				'default-src': ['self'],
+				'script-src': ['self'],
+				'style-src': ['self'],
+				'img-src': ['self', 'data:'],
+				'frame-src': ['none'],
+			}
+		}
 	}
 };
 
