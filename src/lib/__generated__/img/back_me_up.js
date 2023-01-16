@@ -1,5 +1,6 @@
 // @ts-nocheck
 import meta from '$lib/images/back_me_up.jpg?width=1440&metadata';
+import smallMeta from '$lib/images/back_me_up.jpg?width=384&metadata';
 import srcsetwebp from '$lib/images/back_me_up.jpg?w=2560;1440;1344;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/back_me_up.jpg?w=2560;1440;1344;768;672;384&jpeg&srcset';
 import small from '$lib/images/back_me_up.jpg?width=384';
@@ -14,6 +15,7 @@ const data = {
   small,
   medium,
   large,
+  mobile: smallMeta,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/jpeg' },

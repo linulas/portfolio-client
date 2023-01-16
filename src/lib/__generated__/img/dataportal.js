@@ -1,5 +1,6 @@
 // @ts-nocheck
 import meta from '$lib/images/dataportal.png?width=1270&metadata';
+import smallMeta from '$lib/images/dataportal.png?width=384&metadata';
 import srcsetwebp from '$lib/images/dataportal.png?w=1270;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/dataportal.png?w=1270;768;672;384&png&srcset';
 import small from '$lib/images/dataportal.png?width=384';
@@ -14,6 +15,7 @@ const data = {
   small,
   medium,
   large,
+  mobile: smallMeta,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/png' },

@@ -74,6 +74,7 @@ const main = async () => {
 				.join('\n')}\n  ]`;
 			const result = `// @ts-nocheck
 import meta from '${source}?width=${Math.min(maxWidth, width)}&metadata';
+import smallMeta from '${source}?width=${smallImageSize}&metadata';
 ${srcsetImportArray.join('\n')}
 import small from '${source}?width=${smallImageSize}';
 import medium from '${source}?width=${mediumImageSize}';
@@ -87,6 +88,7 @@ const data = {
   small,
   medium,
   large,
+  mobile: smallMeta,
   sources: ${sources},
   dominantColour: '${dominantColour}',
   placeholder:

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import meta from '$lib/images/shelf.png?width=1440&metadata';
+import smallMeta from '$lib/images/shelf.png?width=384&metadata';
 import srcsetwebp from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&webp&srcset';
 import srcsetauto from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&png&srcset';
 import small from '$lib/images/shelf.png?width=384';
@@ -14,6 +15,7 @@ const data = {
   small,
   medium,
   large,
+  mobile: smallMeta,
   sources: [
     { srcset: srcsetwebp, type: 'image/webp' },
     { srcset: srcsetauto, type: 'image/png' },
