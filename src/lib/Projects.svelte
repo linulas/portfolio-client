@@ -76,9 +76,7 @@
 		const mobile = document.getElementsByClassName('mobile');
 		items.map((_, i) => {
 			visible[i] = false;
-			mobile
-				.item(i)
-				?.setAttribute('style', `opacity: 1; min-height: ${mobile.item(i)?.clientHeight};`);
+			mobile.item(i)?.setAttribute('style', `opacity: 1;`);
 		});
 	});
 </script>
@@ -212,6 +210,7 @@
 	}
 
 	.mobile {
+		aspect-ratio: 16 / 9;
 		opacity: 0;
 	}
 
