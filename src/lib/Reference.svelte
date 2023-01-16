@@ -34,7 +34,7 @@
 					<div
 						class="link"
 						on:click={() => handleClick(link.href)}
-						in:fly={{ y: 200, duration: i * 500 }}
+						in:fly={{ x: -1000, duration: i * 500 }}
 					>
 						<a href={link.href}>{link.text || link.href}</a>
 						{#if !link.icon && link.type === 'external'}
@@ -54,6 +54,9 @@
 	.reference {
 		width: 100%;
 	}
+  p {
+    margin-bottom: 1.5rem;
+  }
 	.wrapper {
 		display: grid;
 		grid-template-rows: repeat(auto-fit, minmax(3.5rem, 1fr));
