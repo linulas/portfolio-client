@@ -55,7 +55,7 @@
 		width: 100%;
 	}
 	p {
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 	}
 	.wrapper {
 		display: grid;
