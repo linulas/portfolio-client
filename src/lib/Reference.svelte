@@ -54,9 +54,9 @@
 	.reference {
 		width: 100%;
 	}
-  p {
-    margin-bottom: 1.5rem;
-  }
+	p {
+		margin-bottom: 1.5rem;
+	}
 	.wrapper {
 		display: grid;
 		grid-template-rows: repeat(auto-fit, minmax(3.5rem, 1fr));
