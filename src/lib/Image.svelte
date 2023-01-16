@@ -4,6 +4,7 @@
 	export let name: ValidImage = 'dataportal';
 	export let box = false;
 	export let sizes = '';
+	export let small = false;
 	export let alt = '';
 	let img: any;
 
@@ -15,7 +16,8 @@
 {#if img !== undefined}
 	<picture>
 		{#each img.sources as source}
-			<source srcset={source.srcset} {sizes} type={source.type} />
+			{@const srcset = source.srcset.split(',')}
+			<source srcset={small ? srcset[srcset.length - 1] : source.srcset} {sizes} type={source.type} />
 		{/each}
 		<img src={img.small} width={img.width} height={img.height} {alt} class:box />
 	</picture>
