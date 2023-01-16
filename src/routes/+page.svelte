@@ -2,7 +2,6 @@
 	import About from '$lib/About.svelte';
 	import Projects from '$lib/Projects.svelte';
 	import Contact from '$lib/Contact.svelte';
-	import banner from '$lib/__generated__/img/banner';
 	import type { PageData } from './$types';
 	import portrait from '$lib/__generated__/img/portrait';
 	import ButtonLink from '$lib/button/ButtonLink.svelte';
@@ -13,19 +12,6 @@
 </script>
 
 <div class="banner">
-	<div class="bg">
-		<Image name="banner" sizes="100vw">
-			<img
-				slot="fallback"
-				width={banner.width}
-				height={banner.height}
-				sizes="100vw"
-				src={banner.placeholder}
-				alt=""
-			/>
-		</Image>
-	</div>
-
 	<div class="greeting container">
 		<div class="text">
 			<h1>{data.hero.title}</h1>
@@ -35,7 +21,7 @@
 			</span>
 		</div>
 		<div class="linus">
-			<Image name="portrait" sizes="192px" box>
+			<Image name="portrait" sizes="384px" small box>
 				<img slot="fallback" class="fallback" sizes="192px" src={portrait.placeholder} alt="" />
 			</Image>
 		</div>
@@ -63,14 +49,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
-		.bg {
-			width: 175vw;
-			position: absolute;
-			-webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-			filter: blur(8px);
-			transform: scale(1.1) rotate(90deg);
-		}
+		background-image: url('$lib/images/banner.webp');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
 
 		.greeting {
 			padding: 1rem;
@@ -111,11 +93,6 @@
 		.banner {
 			height: 400px;
 			justify-content: flex-start;
-
-			.bg {
-				transform: scale(1.1);
-				width: 100vw;
-			}
 			.greeting {
 				flex-direction: row-reverse;
 				align-items: flex-start;
