@@ -3,15 +3,26 @@
 	import Grid from './Grid.svelte';
 	import viewport from './helpers/viewport';
 	import Icon from './icons/Icon.svelte';
-	// import portrait from '$lib/images/portrait.webp';
-	// import portrait_fallback from '$lib/images/portrait.jpg';
+	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	export let about: About;
+
+	let visible = true;
 
 	const { title, text, skills } = about;
 	const setInView = (inView: boolean) => {
 		app.set({ ...$app, about: inView });
 	};
+
+	onMount(() => {
+		const grid = document.getElementById('grid_wrapper');
+		if (grid) {
+			grid.style.minHeight = `${grid?.clientHeight || 715}px`;
+		}
+    visible = false;
+    grid && (grid.style.opacity = "1");
+	});
 </script>
 
 <div id="about" use:viewport on:enter={() => setInView(true)} on:exit={() => setInView(false)}>
@@ -26,21 +37,25 @@
 		<p class="skills--intro">
 			{skills.text}
 		</p>
-		<Grid>
-			{#each skills.items as skill}
-				<div class="item">
-					<span class="title">
-						<Icon name={skill.icon.name} color="cyan" size="md" />
-						<h4>
-							{skill.title}
-						</h4>
-					</span>
-					<p>
-						{skill.text}
-					</p>
-				</div>
-			{/each}
-		</Grid>
+		<div id="grid_wrapper" use:viewport on:enter={() => (visible = true)}>
+			<Grid>
+				{#each skills.items as skill, i}
+					{#if visible}
+						<div class="item" in:fly={{ y: 200, duration: i * 500 }}>
+							<span class="title">
+								<Icon name={skill.icon.name} color="cyan" size="md" />
+								<h4>
+									{skill.title}
+								</h4>
+							</span>
+							<p>
+								{skill.text}
+							</p>
+						</div>
+					{/if}
+				{/each}
+			</Grid>
+		</div>
 	</div>
 </div>
 
@@ -56,6 +71,10 @@
 		text-align: center;
 	}
 	.skills {
+		#grid_wrapper {
+			height: 100%;
+      opacity: 0;
+		}
 		> p {
 			margin-bottom: 3rem;
 		}
