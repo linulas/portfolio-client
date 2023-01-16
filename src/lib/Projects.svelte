@@ -6,7 +6,8 @@
 	import Reference from './Reference.svelte';
 	import { spring } from 'svelte/motion';
 	import Icon from './icons/Icon.svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	// props
 	export let projects: Projects;
@@ -14,6 +15,11 @@
 	//states
 	let currentObject = 0;
 	let previousObject = 0;
+	let visible: { [key: number]: boolean } = {};
+
+	projects.items.map((_, i) => {
+		visible[i] = true;
+	});
 
 	// variables
 	const leftImageSpring = {
@@ -64,6 +70,17 @@
 		previousObject = currentObject;
 		currentObject = imgIndex;
 	};
+
+	// lifecycles
+	onMount(() => {
+		const mobile = document.getElementsByClassName('mobile');
+		items.map((_, i) => {
+			visible[i] = false;
+			mobile
+				.item(i)
+				?.setAttribute('style', `opacity: 1; min-height: ${mobile.item(i)?.clientHeight};`);
+		});
+	});
 </script>
 
 <div id="projects" use:viewport on:enter={() => setInView(true)} on:exit={() => setInView(false)}>
@@ -118,31 +135,35 @@
 					use:viewport
 					on:enter={() => handleImage(i)}
 					on:exit={() => {
-						const firstItem = i === 0 && previousObject === 0;
 						if (i != previousObject) {
 							handleImage(previousObject);
 						}
 					}}
 				>
-					<div in:fly={{ y: 200, duration: 2000 }} out:fade>
-						<h3>
-							{project.title}
-						</h3>
-						<div class={`image_wrapper mobile`}>
-							<Image name={project.image.name} sizes="100%">
-								<SkeletonImage slot="fallback" />
-							</Image>
-						</div>
-						<p>
-							{project.text}
-						</p>
-						<div class="reference">
-							{#if project.reference}
-								<span>
-									<Reference reference={project.reference} />
-								</span>
-							{/if}
-						</div>
+					<h3>
+						{project.title}
+					</h3>
+					<div class={`mobile`} use:viewport on:enter={() => (visible[i] = true)}>
+						{#if visible[i]}
+							<div
+								class={`image_wrapper`}
+								in:fly={{ x: textDirection === 'left' ? 500 : -500, duration: 500 }}
+							>
+								<Image name={project.image.name} sizes="100%">
+									<SkeletonImage slot="fallback" />
+								</Image>
+							</div>
+						{/if}
+					</div>
+					<p>
+						{project.text}
+					</p>
+					<div class="reference">
+						{#if project.reference}
+							<span>
+								<Reference reference={project.reference} />
+							</span>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -188,6 +209,10 @@
 	.obj_background,
 	.overlay {
 		display: none;
+	}
+
+	.mobile {
+		opacity: 0;
 	}
 
 	@media screen and (min-width: $media-sm) {
