@@ -46,6 +46,7 @@
 			color: $clr-text;
 			box-sizing: border-box;
 			scroll-behavior: smooth;
+			background-color: $clr-bg-1;
 			@include text-sm;
 			@media screen and (min-width: $media-sm) {
 				@include text-base;
@@ -126,7 +127,6 @@
 			min-height: 100vh;
 			margin: 0;
 			contain: paint;
-			background: rgb(68, 71, 90);
 			background: linear-gradient(
 				150deg,
 				rgba(68, 71, 90, 1) 0%,
