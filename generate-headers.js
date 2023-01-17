@@ -5,7 +5,7 @@ const __dirname = path.resolve();
 const buildDir = path.join(__dirname, 'build');
 
 function main() {
-	const headers = `/_app/immutable/*
+	const headers = `/*
    X-Frame-Options: DENY
    X-XSS-Protection: 1; mode=block
    X-Content-Type-Options: nosniff
