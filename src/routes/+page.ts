@@ -7,13 +7,13 @@ import type { PageLoad } from './$types';
 
 const hero: Hero = {
 	title: "I don't see problems, I see Puzzles",
-	subtitle: 'Pick the right peices of code to solve it',
+	subtitle: 'Picking the right peices of code to solve it',
 	preamble: ''
 };
 
 const about: About = {
 	title: 'About',
-	text: "Hi, my name is Linus and I'm a developer based in Umeå Sweden and are currently working fullstack at Knowit. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node, Go and Rust, while my frontend experience is mostly dominated by React/Typescript. When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games. I love coding on my spare time, so if you have a project I can help with, or dig into one of mine, or if you just wanna chat, feel free to contact me.",
+	text: "Hi, my name is Linus and I'm a developer based in Umeå Sweden and are currently working fullstack at Knowit Experience. My goal is to never settle, by being open to new challenges and willing to learn new things that can promote the quality of my work, and be a positive force among the people around me. I've always loved creating things, that's probably why I got into music, and later on, programming. On the backend side I work a lot with Node, Go and Rust, while my frontend experience is mostly dominated by React/Typescript. When I'm not hammering my keyboard for programming, I'm probably hanging out with my beautiful wife or my friends, jogging, strumming my guitar or hammering my keyboard some more playing video games. I love coding on my spare time, so if you have a project I can help with, or dig into one of mine, or if you just wanna chat, feel free to contact me.",
 	skills: {
 		text: "I have learned a lot about being a team player from all my time playing in bands, sports-teams, prior jobs and of course everyday at my work as a IT-consultant at Knowit, so I always excell when working with others. Although I consider myself more of a backend person, I do also enjoy frontend work and have been doing both simultaniously ever since I started coding, which has helped me a lot to learn how to develop quality solutions, both my backend and frontend code gets better when I can see the big picture. I started out with a lot of Javascript/Typescript, but over time I've been shifting to write most of my projects in Go and/or Rust. Below is a handpick of the techniques I feel most comfortable with. Some honorable mentions would be C# and Java, but if I have the choice, I tend to seek out the other mentioned options instead.",
 		items: [
