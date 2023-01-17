@@ -14,11 +14,19 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		csp: {
-      // TODO: add style-src when the following issue is solved: https://github.com/sveltejs/svelte/issues/6662
+			// FIX: remove unsafe-inline from style-src when the following issue is solved: https://github.com/sveltejs/svelte/issues/6662
 			directives: {
+				'default-src': ['none'],
 				'script-src': ['self'],
 				'img-src': ['self', 'data:'],
-				'frame-src': ['none']
+				'font-src': ['self'],
+				'frame-src': ['none'],
+				'base-uri': ['none'],
+				'frame-ancestors': ['none'],
+				'frame-src': ['none'],
+				'style-src': ['self', 'unsafe-inline'],
+				'form-action': ['none'],
+				'object-src': ['none']
 			}
 		}
 	}
