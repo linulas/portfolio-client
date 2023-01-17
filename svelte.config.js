@@ -14,12 +14,11 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		csp: {
+      // TODO: add style-src when the following issue is solved: https://github.com/sveltejs/svelte/issues/6662
 			directives: {
-				'default-src': ['self'],
 				'script-src': ['self'],
-				'style-src': ['self'],
 				'img-src': ['self', 'data:'],
-				'frame-src': ['none'],
+				'frame-src': ['none']
 			}
 		}
 	}
