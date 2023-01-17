@@ -1,6 +1,6 @@
 {
-	"name": "sveltekit-sandbox",
-	"version": "0.0.1",
+	"name": "Linus-Portfolio",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run generate:headers",
