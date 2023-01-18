@@ -12,7 +12,7 @@ function main() {
    Referrer-Policy: same-origin
    Permissions-Policy: accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), sync-xhr=(), usb=(), xr-spatial-tracking=(), geolocation=()
    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-   Content-Security-Policy: default-src 'none'; base-uri 'none'; frame-ancestors 'none'; frame-src 'none'; script-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; form-action 'none'; object-src 'none';
+   Content-Security-Policy: style-src 'self' 'unsafe-inline'; default-src 'none'; base-uri 'none'; frame-ancestors 'none'; frame-src 'none'; script-src 'self' 'sha256-M5WnlUSfydSPfn1DyqijhBDc7/+1sBHf/D3TKW3NKg4='; font-src 'self'; form-action 'none'; object-src 'none'; img-src 'self' data:;
    cache-control: public
    cache-control: immutable
    cache-control: max-age=31536000
