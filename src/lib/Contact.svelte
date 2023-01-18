@@ -15,7 +15,7 @@
 	</div>
 	<div class="options">
 		<div class="references_wrapper">
-			<Reference {reference} />
+			<Reference {reference} light />
 		</div>
 		<div class="image_wrapper">
 			<Image name="avatar" small>
@@ -28,8 +28,12 @@
 <style lang="scss">
 	#contact {
 		margin-bottom: 4rem;
+    @include box;
+    background-color: $clr-bg-0;
+    padding: 2rem;
 	}
 	h2 {
+    margin-top: 0;
 		text-align: center;
 	}
 	.intro {
