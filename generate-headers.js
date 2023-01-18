@@ -1,25 +1,71 @@
+import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
+import { parse } from 'node-html-parser';
 
 const __dirname = path.resolve();
 const buildDir = path.join(__dirname, 'build');
 
-function main() {
+const { VITE_SENTRY_ORG_ID, VITE_SENTRY_KEY, VITE_SENTRY_PROJECT_ID } = process.env;
+
+function removeCspMeta(inputFile) {
+	const fileContents = fs.readFileSync(inputFile, { encoding: 'utf-8' });
+	const root = parse(fileContents);
+	const element = root.querySelector('head meta[http-equiv="content-security-policy"]');
+	const content = element.getAttribute('content');
+	root.remove(element);
+	return content;
+}
+
+const cspMap = new Map();
+
+function findCspMeta(startPath, filter = /.html$/) {
+	if (!fs.existsSync(startPath)) {
+		console.error(`Unable to find CSP start path: ${startPath}`);
+		return;
+	}
+	const files = fs.readdirSync(startPath);
+	files.forEach((item) => {
+		const filename = path.join(startPath, item);
+		const stat = fs.lstatSync(filename);
+		if (stat.isDirectory()) {
+			findCspMeta(filename, filter);
+		} else if (filter.test(filename)) {
+			cspMap.set(
+				filename
+					.replace(buildDir, '')
+					.replace(/.html$/, '')
+					.replace(/^\/index$/, '/'),
+				removeCspMeta(filename)
+			);
+		}
+	});
+}
+
+function createHeaders() {
 	const headers = `/*
-   X-Frame-Options: DENY
-   X-XSS-Protection: 1; mode=block
-   X-Content-Type-Options: nosniff
-   Referrer-Policy: same-origin
-   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), document-domain=(), encrypted-media=(), fullscreen=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), sync-xhr=(), usb=(), xr-spatial-tracking=(), geolocation=()
-   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-   Content-Security-Policy: style-src 'self' 'unsafe-inline'; default-src 'none'; base-uri 'none'; frame-ancestors 'none'; frame-src 'none'; script-src 'self' 'sha256-M5WnlUSfydSPfn1DyqijhBDc7/+1sBHf/D3TKW3NKg4='; font-src 'self'; form-action 'none'; object-src 'none'; img-src 'self' data:;
-   cache-control: public
-   cache-control: immutable
-   cache-control: max-age=31536000
+    X-Frame-Options:DENY
+    X-XSS-Protection:1; mode=block
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: same-origin
+    Permissions-Policy: accelerometer=(), camera=(), document-domain=(), encrypted-media=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), sync-xhr=(), usb=(), xr-spatial-tracking=(), geolocation=()
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+    Report-To:{"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url":"https://o${VITE_SENTRY_KEY}.ingest.sentry.io/api/${VITE_SENTRY_ORG_ID}/security/?sentry_key=${VITE_SENTRY_PROJECT_ID}"}]}
  `;
+	const cspArray = [];
+	cspMap.forEach((csp, pagePath) =>
+		cspArray.push(`${pagePath}
+   Content-Security-Policy: ${csp}`)
+	);
 
 	const headersFile = path.join(buildDir, '_headers');
-	fs.writeFileSync(headersFile, headers);
+  console.log(cspArray);
+	fs.writeFileSync(headersFile, `${headers}${cspArray.join(' ')}`);
+}
+
+async function main() {
+	findCspMeta(buildDir);
+	createHeaders();
 }
 
 main();
