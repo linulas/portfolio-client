@@ -59,7 +59,6 @@ function createHeaders() {
 	);
 
 	const headersFile = path.join(buildDir, '_headers');
-  console.log(cspArray);
 	fs.writeFileSync(headersFile, `${headers}${cspArray.join(' ')}`);
 }
 
