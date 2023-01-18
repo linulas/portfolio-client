@@ -176,6 +176,7 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+    margin-bottom: 3rem;
 	}
 
 	.intro {
