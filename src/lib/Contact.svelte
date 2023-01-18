@@ -15,7 +15,7 @@
 	</div>
 	<div class="options">
 		<div class="references_wrapper">
-			<Reference {reference} light />
+			<Reference {reference} options={{ desktop: { light: true } }} />
 		</div>
 		<div class="image_wrapper">
 			<Image name="avatar" small>
@@ -28,12 +28,9 @@
 <style lang="scss">
 	#contact {
 		margin-bottom: 4rem;
-    @include box;
-    background-color: $clr-bg-0;
-    padding: 2rem;
 	}
 	h2 {
-    margin-top: 0;
+		margin-top: 0;
 		text-align: center;
 	}
 	.intro {
@@ -59,6 +56,11 @@
 	}
 
 	@media screen and (min-width: $media-sm) {
+		#contact {
+			@include box;
+			background-color: $clr-bg-0;
+			padding: 2rem;
+		}
 		.options {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));

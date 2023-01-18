@@ -3,15 +3,25 @@
 	import Icon from './icons/Icon.svelte';
 	import { fly } from 'svelte/transition';
 
+	type options = {
+		light?: boolean;
+	};
+
+	interface ReferenceOptions {
+		mobile?: options;
+		desktop?: options;
+	}
+
 	// props
 	export let reference: Reference;
-	export let light = false;
+	export let options: ReferenceOptions = {};
 
 	// states
 	let itemHasBeenInView = false;
 
 	// variables
 	const { links, text } = reference;
+	const { mobile, desktop } = options;
 
 	// methods
 	const handleClick = (link: string) => {
@@ -34,7 +44,8 @@
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div
 						class="link"
-						class:light
+						class:mobile_light={mobile?.light}
+						class:desktop_light={desktop?.light}
 						on:click={() => handleClick(link.href)}
 						in:fly={{ x: -1000, duration: i * 500 }}
 					>
@@ -87,7 +98,7 @@
 			background-color: #2f313d;
 		}
 
-		&.light {
+		&.mobile_light {
 			background-color: $clr-bg-1;
 			&:hover {
 				background-color: $clr-bg-2;
@@ -99,5 +110,20 @@
 	}
 	a {
 		margin-left: 0.25rem;
+	}
+
+	@media screen and (min-width: $media-sm) {
+		.link {
+			background-color: $clr-bg-0;
+			&.desktop_light {
+				background-color: $clr-bg-1;
+				&:hover {
+					background-color: $clr-bg-2;
+				}
+				&:active {
+					background-color: $clr-comment;
+				}
+			}
+		}
 	}
 </style>
