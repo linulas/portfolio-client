@@ -5,6 +5,7 @@
 
 	// props
 	export let reference: Reference;
+	export let light = false;
 
 	// states
 	let itemHasBeenInView = false;
@@ -33,6 +34,7 @@
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div
 						class="link"
+						class:light
 						on:click={() => handleClick(link.href)}
 						in:fly={{ x: -1000, duration: i * 500 }}
 					>
@@ -83,6 +85,16 @@
 		&:active {
 			transform: scale(1.03);
 			background-color: #2f313d;
+		}
+
+		&.light {
+			background-color: $clr-bg-1;
+			&:hover {
+				background-color: $clr-bg-2;
+			}
+			&:active {
+				background-color: $clr-comment;
+			}
 		}
 	}
 	a {
