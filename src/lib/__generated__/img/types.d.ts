@@ -1,1 +1,1 @@
-type ValidImage = 'avatar'|'back_me_up'|'banner'|'code'|'coding'|'dataportal'|'gopher'|'kvix'|'portrait'|'shelf';
+type ValidImage = 'avatar'|'banner'|'code'|'coding'|'dataportal'|'gopher'|'kvix'|'portrait'|'portrait_2020'|'shelf';
