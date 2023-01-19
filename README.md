@@ -47,6 +47,8 @@ It might just be a simple static website, but it still has some cool stuff going
 
 <img src="./.github/images/performance.png" alt="alt PageSpeed insights top score" style="zoom:50%;" />
 
+![alt results from dataskydd.net](./.github/images/webbkoll.png)
+
 ### ⚙️  Optimizations
 
 The biggest challenge to optimize a website is, IMO, images and CSP. Here I owe a big thanks to [Rodney Johnson](https://github.com/rodneylab) for sharing [his solution](https://github.com/rodneylab/sveltekit-content-security-policy) which I could tweak to fit my needs.
