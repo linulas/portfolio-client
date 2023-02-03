@@ -34,7 +34,7 @@ const about: About = {
 			},
 			{
 				title: 'Typescript',
-				text: 'Typesafety is a big quality ensurance, which is why I always use typescript whenever possible. It has become a daily companion and I often get to combine it with graphql, which has given my ways to master typesafety between server and client.',
+				text: 'Typesafety is a big quality ensurance, which is why I always use typescript whenever possible. It has become a daily companion and I often get to combine it with graphql, which has given me ways to master typesafety between server and client.',
 				icon: { name: 'typescript', alt: '' }
 			},
 			{
