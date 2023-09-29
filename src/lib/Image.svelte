@@ -16,8 +16,8 @@
 {#if img !== undefined}
 	<picture>
 		{#each img.sources as source}
-			{@const srcset = source.srcset.split(',')}
-			<source srcset={small ? srcset[srcset.length - 1] : source.srcset} {sizes} type={source.type} />
+			{@const srcset = source.srcset}
+			<source srcset={small ? srcset[srcset.length - 1] : source.srcset[0]} {sizes} type={source.type} />
 		{/each}
 		<img src={img.small} width={img.width} height={img.height} {alt} class:box />
 	</picture>
