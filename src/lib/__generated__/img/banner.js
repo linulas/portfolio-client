@@ -1,11 +1,11 @@
 // @ts-nocheck
-import meta from '$lib/images/banner.webp?width=1440&metadata';
-import smallMeta from '$lib/images/banner.webp?width=384&metadata';
-import srcsetwebp from '$lib/images/banner.webp?w=1440;1440;1344;768;672;384&webp&srcset';
-import srcsetauto from '$lib/images/banner.webp?w=1440;1440;1344;768;672;384&webp&srcset';
-import small from '$lib/images/banner.webp?width=384';
-import medium from '$lib/images/banner.webp?width=672';
-import large from '$lib/images/banner.webp?width=1440';
+import meta from '$lib/images/banner.webp?w=1440&as=meta:height;width;src';
+import smallMeta from '$lib/images/banner.webp?w=384&as=meta:height;width;src';
+import srcsetwebp from '$lib/images/banner.webp?w=1440;1440;1344;768;672;384&format=webp&srcset';
+import srcsetauto from '$lib/images/banner.webp?w=1440;1440;1344;768;672;384&format=webp&srcset';
+import small from '$lib/images/banner.webp?w=384';
+import medium from '$lib/images/banner.webp?w=672';
+import large from '$lib/images/banner.webp?w=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'banner.webp',

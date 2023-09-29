@@ -1,11 +1,11 @@
 // @ts-nocheck
-import meta from '$lib/images/dataportal.png?width=1270&metadata';
-import smallMeta from '$lib/images/dataportal.png?width=384&metadata';
-import srcsetwebp from '$lib/images/dataportal.png?w=1270;768;672;384&webp&srcset';
-import srcsetauto from '$lib/images/dataportal.png?w=1270;768;672;384&png&srcset';
-import small from '$lib/images/dataportal.png?width=384';
-import medium from '$lib/images/dataportal.png?width=672';
-import large from '$lib/images/dataportal.png?width=1440';
+import meta from '$lib/images/dataportal.png?w=1270&as=meta:height;width;src';
+import smallMeta from '$lib/images/dataportal.png?w=384&as=meta:height;width;src';
+import srcsetwebp from '$lib/images/dataportal.png?w=1270;768;672;384&format=webp&srcset';
+import srcsetauto from '$lib/images/dataportal.png?w=1270;768;672;384&format=png&srcset';
+import small from '$lib/images/dataportal.png?w=384';
+import medium from '$lib/images/dataportal.png?w=672';
+import large from '$lib/images/dataportal.png?w=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'dataportal.png',

@@ -1,11 +1,11 @@
 // @ts-nocheck
-import meta from '$lib/images/shelf.png?width=1440&metadata';
-import smallMeta from '$lib/images/shelf.png?width=384&metadata';
-import srcsetwebp from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&webp&srcset';
-import srcsetauto from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&png&srcset';
-import small from '$lib/images/shelf.png?width=384';
-import medium from '$lib/images/shelf.png?width=672';
-import large from '$lib/images/shelf.png?width=1440';
+import meta from '$lib/images/shelf.png?w=1440&as=meta:height;width;src';
+import smallMeta from '$lib/images/shelf.png?w=384&as=meta:height;width;src';
+import srcsetwebp from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&format=webp&srcset';
+import srcsetauto from '$lib/images/shelf.png?w=2560;1440;1344;768;672;384&format=png&srcset';
+import small from '$lib/images/shelf.png?w=384';
+import medium from '$lib/images/shelf.png?w=672';
+import large from '$lib/images/shelf.png?w=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'shelf.png',
