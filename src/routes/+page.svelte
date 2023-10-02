@@ -6,12 +6,25 @@
 	import portrait from '$lib/__generated__/img/portrait';
 	import ButtonLink from '$lib/button/ButtonLink.svelte';
 	import Image from '$lib/Image.svelte';
+	import banner from '$lib/__generated__/img/banner';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
 	const { about, projects, contact } = data;
+
+	let mounted = false;
+
+	$: bannerStyle = mounted
+		? `background-image: url(${banner.large})`
+		: `background-image: url(${banner.placeholder});` +
+		  ' background-position: center; background-repeat: no-repeat; background-size: cover;';
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
-<div class="banner">
+<div class="banner" style={bannerStyle} class:banner_fallback={!mounted}>
 	<div class="greeting container">
 		<div class="text">
 			<h1>{data.hero.title}</h1>
@@ -43,20 +56,23 @@
 </main>
 
 <style lang="scss">
+	.fallback {
+		@include box;
+		filter: blur(8px);
+	}
+  .banner_fallback {
+    backdrop-filter: blur(8px);
+  }
 	.banner {
 		position: relative;
 		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-image: url('$lib/images/banner.webp');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
 
 		.greeting {
 			padding: 1rem;
-			z-index: 10;
+			z-index: 100;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -73,10 +89,6 @@
 			.fallback {
 				width: 192px;
 				height: 222px;
-			}
-			.fallback {
-				@include box;
-				filter: blur(8px);
 			}
 			.subtitle {
 				margin-top: 0;
