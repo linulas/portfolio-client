@@ -14,10 +14,11 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		csp: {
-      mode: 'hash',
+			mode: 'hash',
 			// FIX: remove unsafe-inline from style-src when the following issue is solved: https://github.com/sveltejs/svelte/issues/6662
 			directives: {
 				'default-src': ['none'],
+				'connect-src': ['self'],
 				'script-src': ['self'],
 				'img-src': ['self', 'data:'],
 				'font-src': ['self'],

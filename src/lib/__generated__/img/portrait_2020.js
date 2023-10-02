@@ -1,11 +1,11 @@
 // @ts-nocheck
-import meta from '$lib/images/portrait_2020.jpg?width=1440&metadata';
-import smallMeta from '$lib/images/portrait_2020.jpg?width=384&metadata';
-import srcsetwebp from '$lib/images/portrait_2020.jpg?w=2005;1440;1344;768;672;384&webp&srcset';
-import srcsetauto from '$lib/images/portrait_2020.jpg?w=2005;1440;1344;768;672;384&jpeg&srcset';
-import small from '$lib/images/portrait_2020.jpg?width=384';
-import medium from '$lib/images/portrait_2020.jpg?width=672';
-import large from '$lib/images/portrait_2020.jpg?width=1440';
+import meta from '$lib/images/portrait_2020.jpg?w=1440&as=meta:height;width;src';
+import smallMeta from '$lib/images/portrait_2020.jpg?w=384&as=meta:height;width;src';
+import srcsetwebp from '$lib/images/portrait_2020.jpg?w=2005;1440;1344;768;672;384&format=webp&srcset';
+import srcsetauto from '$lib/images/portrait_2020.jpg?w=2005;1440;1344;768;672;384&format=jpeg&srcset';
+import small from '$lib/images/portrait_2020.jpg?w=384';
+import medium from '$lib/images/portrait_2020.jpg?w=672';
+import large from '$lib/images/portrait_2020.jpg?w=1440';
 const { height, src, width } = meta;
 const data = {
   slug: 'portrait_2020.jpg',

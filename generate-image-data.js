@@ -60,9 +60,9 @@ const main = async () => {
 				(formatsElement) =>
 					`import srcset${formatsElement} from '${source}?w=${
 						width < outputSizes[0] ? `${width};` : ''
-					}${outputSizes.filter((outputSizesElement) => outputSizesElement <= width).join(';')}&${
-						formatsElement === 'auto' ? format : formatsElement
-					}&srcset';`
+					}${outputSizes
+						.filter((outputSizesElement) => outputSizesElement <= width)
+						.join(';')}&format=${formatsElement === 'auto' ? format : formatsElement}&srcset';`
 			);
 			const sources = `[\n${formats
 				.map(
@@ -73,12 +73,12 @@ const main = async () => {
 				)
 				.join('\n')}\n  ]`;
 			const result = `// @ts-nocheck
-import meta from '${source}?width=${Math.min(maxWidth, width)}&metadata';
-import smallMeta from '${source}?width=${smallImageSize}&metadata';
+import meta from '${source}?w=${Math.min(maxWidth, width)}&as=meta:height;width;src';
+import smallMeta from '${source}?w=${smallImageSize}&as=meta:height;width;src';
 ${srcsetImportArray.join('\n')}
-import small from '${source}?width=${smallImageSize}';
-import medium from '${source}?width=${mediumImageSize}';
-import large from '${source}?width=${largeImageSize}';
+import small from '${source}?w=${smallImageSize}';
+import medium from '${source}?w=${mediumImageSize}';
+import large from '${source}?w=${largeImageSize}';
 const { height, src, width } = meta;
 const data = {
   slug: '${slug}',

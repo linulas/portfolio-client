@@ -24,7 +24,7 @@ const about: About = {
 			},
 			{
 				title: 'Node',
-				text: "When looking at web backends, you see a lot of Node, so there's no surprise that I have been writing a lot of it. This is probably one of the techniques I have poored most ours into both in personal projects and at work, all from sererside rendering, APIs, proxys and so on.",
+				text: "When looking at web backends, you see a lot of Node, so there's no surprise that I have been writing a lot of it. This is probably one of the techniques I have poured most ours into both in personal projects and at work, all from serverside rendering, APIs, proxys and so on.",
 				icon: { name: 'node', alt: '' }
 			},
 			{
@@ -39,7 +39,7 @@ const about: About = {
 			},
 			{
 				title: 'Devops',
-				text: 'When talking fullstack, I also love doing devops, which is mostly consists of Github actions, Docker and Azure. For automated tests we use cypress at work, privately I often write my projects in Go, which has its own testing methods. I also have some small experience with kubernetes and bitbucket.',
+				text: 'When talking fullstack, I also love doing devops, which mostly consists of Github actions, Docker, AWS and Azure. For automated tests we use cypress at work, privately I often write my projects in Go, which has its own testing methods. I also have some small experience with kubernetes and bitbucket.',
 				icon: { name: 'devops', alt: '' }
 			},
 			{
@@ -72,7 +72,7 @@ const projects: Projects = {
 				{ title: 'Typescript', icon: { name: 'typescript', alt: '' } },
 				{ title: 'React', icon: { name: 'react', alt: '' } }
 			],
-			text: "A headless architechture is what the future calls for, and that's something I've learned a lot about when working with dataportalen. By making standardized interfaces in Nexus(Graphql), we could resolve that in any headless CMS we wanted to, in this case we choose Strapi(Node). Furthermore I got to do some devops, write a dockerized proxy in Go alongside apollo router, and futhtermore hone my skills in React/Typescript.",
+			text: "A headless architechture is important in todays world with data being shared across mutiple platforms, and that's something I've learned a lot about when working with dataportalen. By making standardized interfaces in Nexus(Graphql), we could resolve that in any headless CMS we wanted to, in this case we choose Strapi(Node). Furthermore I got to do some devops, write a dockerized proxy in Go alongside apollo router, and futhtermore hone my skills in React/Typescript.",
 			reference: {
 				text: 'You can view the site at',
 				links: [
