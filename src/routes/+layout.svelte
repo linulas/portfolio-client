@@ -148,8 +148,6 @@
 
 		h1 {
 			@include text-2xl;
-			margin-top: 0;
-			margin-bottom: 1.25rem;
 			@media screen and (min-width: $media-sm) {
 				@include text-3xl;
 				margin-bottom: 1.5rem;
