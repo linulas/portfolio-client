@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { palette } from '$lib/helpers/colors';
+	import { palette } from '$lib/colors';
 
 	export let color: ValidIconColor = 'foreground';
 </script>

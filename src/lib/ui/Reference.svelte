@@ -1,5 +1,5 @@
 <script lang="ts">
-	import viewport from './helpers/viewport';
+	import viewport from '$lib/viewport';
 	import Icon from './icons/Icon.svelte';
 	import { fly } from 'svelte/transition';
 

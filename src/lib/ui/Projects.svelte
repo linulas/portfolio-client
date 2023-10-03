@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { app } from './helpers/store';
-	import viewport from './helpers/viewport';
+	import { app } from '$lib/store';
+	import viewport from '$lib/viewport';
 	import Image from './Image.svelte';
 	import SkeletonImage from './loading/SkeletonImage.svelte';
 	import Reference from './Reference.svelte';
