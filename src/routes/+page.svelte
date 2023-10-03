@@ -1,13 +1,14 @@
 <script lang="ts">
-	import About from '$lib/About.svelte';
-	import Projects from '$lib/Projects.svelte';
-	import Contact from '$lib/Contact.svelte';
-	import type { PageData } from './$types';
+	import About from '$lib/ui/About.svelte';
+	import Projects from '$lib/ui/Projects.svelte';
+	import Contact from '$lib/ui/Contact.svelte';
+	import ButtonLink from '$lib/ui/button/ButtonLink.svelte';
+	import Image from '$lib/ui/Image.svelte';
 	import portrait from '$lib/__generated__/img/portrait';
-	import ButtonLink from '$lib/button/ButtonLink.svelte';
-	import Image from '$lib/Image.svelte';
 	import banner from '$lib/__generated__/img/banner';
 	import { onMount } from 'svelte';
+
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 	const { about, projects, contact } = data;

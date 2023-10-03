@@ -1,7 +1,7 @@
 <script lang="ts">
 	// imports
 	import Icon from './icons/Icon.svelte';
-	import { app, type SectionsInView } from './helpers/store';
+	import { app, type SectionsInView } from '$lib/store';
 
 	// variables
 	let y = 0;
@@ -24,11 +24,11 @@
 
 		// ? Detect scroll up or down
 		if (y > previous) {
-      $app.scrollDirection = "down";
+			$app.scrollDirection = 'down';
 			up = false;
 			sticky = false;
 		} else {
-      $app.scrollDirection = "up";
+			$app.scrollDirection = 'up';
 			up = true;
 		}
 
@@ -95,7 +95,7 @@
 		box-shadow: rgb(39 39 39 / 50%) 0px 3px 2px;
 		transition: top 0.2s;
 		top: -50px;
-    width: 100vw;
+		width: 100vw;
 
 		&.sticky {
 			position: sticky;

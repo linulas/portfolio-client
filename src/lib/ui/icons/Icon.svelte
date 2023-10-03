@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import Loader from '$lib/loading/Ripple.svelte';
+	import Loader from '$lib/ui/loading/Ripple.svelte';
 	import { onMount } from 'svelte';
 
 	// props

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { app } from '$lib/helpers/store';
+	import { app } from '$lib/store';
 	import Grid from './Grid.svelte';
-	import viewport from './helpers/viewport';
+	import viewport from '$lib/viewport';
 	import Icon from './icons/Icon.svelte';
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';

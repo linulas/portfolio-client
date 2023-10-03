@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Footer from '$lib/Footer.svelte';
-	import Header from '$lib/Header.svelte';
-	import { app, type SectionsInView } from '$lib/helpers/store';
-	import viewport from '$lib/helpers/viewport';
+	import Footer from '$lib/ui/Footer.svelte';
+	import Header from '$lib/ui/Header.svelte';
+	import { app, type SectionsInView } from '$lib/store';
+	import viewport from '$lib/viewport';
 
 	const setInView = (inView: boolean, section: keyof SectionsInView) => {
 		app.set({ ...$app, [section]: inView });
@@ -42,7 +42,7 @@
 <style lang="scss">
 	:global {
 		@import '@fontsource/fira-mono';
-		@import '../lib/icons/svg-mixins.scss';
+		@import '../lib/ui/icons/svg-mixins.scss';
 		:root {
 			font-family: $font-body;
 			color: $clr-text;
