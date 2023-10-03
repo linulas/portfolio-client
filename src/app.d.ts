@@ -121,3 +121,10 @@ interface Projects extends Section {
 interface Contact extends Section {
 	reference: Reference;
 }
+
+interface ApiResponse {
+	hero: Hero;
+	about: About;
+	projects: Project;
+	contact: Contact;
+}
