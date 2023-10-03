@@ -1,5 +1,8 @@
 <footer>
-	<p>Visit <a href="https://github.com/linulas/portfolio-client">My Github</a> to learn how i build this site</p>
+	<p>
+		Visit <a href="https://github.com/linulas/portfolio-client">My Github</a> to learn how i build this
+		site
+	</p>
 </footer>
 
 <style lang="scss">
@@ -10,6 +13,7 @@
 		align-items: center;
 		padding: 12px;
 		background: $clr-bg-0;
+		margin-top: auto;
 	}
 
 	footer a {
