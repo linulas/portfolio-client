@@ -60,9 +60,9 @@
 		@include box;
 		filter: blur(8px);
 	}
-  .banner_fallback {
-    backdrop-filter: blur(8px);
-  }
+	.banner_fallback {
+		backdrop-filter: blur(8px);
+	}
 	.banner {
 		position: relative;
 		overflow: hidden;
@@ -94,6 +94,14 @@
 				margin-top: 0;
 				@include text-md;
 			}
+		}
+	}
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 1.25rem;
+		@media screen and (min-width: $media-sm) {
+			margin-bottom: 1.5rem;
 		}
 	}
 

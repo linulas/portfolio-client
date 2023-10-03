@@ -26,7 +26,9 @@
 		on:exit={() => setInView(false, 'top')}
 	/>
 	<Header />
-	<slot />
+	<main>
+		<slot />
+	</main>
 	<Footer />
 	<!-- ? Dummy element to set contact active when scolling to absolute bottom of page -->
 	<div
@@ -124,7 +126,6 @@
 		}
 
 		body {
-			min-height: 100vh;
 			margin: 0;
 			contain: paint;
 			background: linear-gradient(
@@ -147,8 +148,6 @@
 
 		h1 {
 			@include text-2xl;
-			margin-top: 0;
-			margin-bottom: 1.25rem;
 			@media screen and (min-width: $media-sm) {
 				@include text-3xl;
 				margin-bottom: 1.5rem;
@@ -204,5 +203,11 @@
 				letter-spacing: -0.01em;
 			}
 		}
+	}
+
+	.app {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
 	}
 </style>
