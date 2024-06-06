@@ -125,6 +125,6 @@ interface Contact extends Section {
 interface ApiResponse {
 	hero: Hero;
 	about: About;
-	projects: Project;
+	projects: Projects;
 	contact: Contact;
 }
